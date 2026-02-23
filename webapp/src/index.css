@@ -1,0 +1,1542 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Ojuju:wght@200..800&display=swap');
+
+:root {
+  /* Common Defaults */
+  --font-sans: Helvetica, Arial, sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+
+  /* Galerie Theme (Light) */
+  --bg-color: #F3F1EA;
+  /* Warm Paper */
+  --text-primary: #1A1918;
+  /* Soft Black */
+  --text-secondary: #5A5A58;
+  --accent-primary: #1A1918;
+  /* Monochrome accent */
+  --accent-secondary: #8C8C88;
+  --border-color: rgba(26, 25, 24, 0.15);
+  /* Thin subtle border */
+  --glass-bg: rgba(243, 241, 234, 0.95);
+  --chip-bg: transparent;
+  /* Transparent cards by default */
+}
+
+[data-theme='dark'] {
+  /* Galerie Theme (Dark) */
+  --bg-color: #1A1918;
+  /* Warm Charcoal */
+  --text-primary: #F3F1EA;
+  /* Text is now the paper color */
+  --text-secondary: #AFAFA5;
+  --accent-primary: #F3F1EA;
+  --accent-secondary: #8C8C88;
+  --border-color: rgba(243, 241, 234, 0.2);
+  --glass-bg: rgba(26, 25, 24, 0.95);
+  --chip-bg: transparent;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+  /* No scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Background Image Container */
+.app-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.8s ease-in-out;
+  /* Cinematic slow fade */
+  transform: scale(1.02);
+  /* Slight scale to prevent edge bleeding */
+}
+
+/* Dark Overlay for Readability */
+.app-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
+  /* 60% Dark overlay */
+  backdrop-filter: blur(2px);
+  /* Slight blur for focus */
+}
+
+/* Film Grain Effect - LIGHTWEIGHT */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.15;
+  /* Lower opacity for subtlety and speed */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Cinematic Vignette */
+.cinematic-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 40;
+  /* Below grain, above bg */
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Breathing Animation */
+@keyframes breathe {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.015);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Organic Border Frame REMOVED */
+
+/* ... */
+
+/* FIX: Override the global white text for Active/Hover states */
+.vocab-chip.active .vocab-term,
+.vocab-chip:hover .vocab-term {
+  color: #1A1918 !important;
+  /* Force DARK ink text on the LIGHT paper card */
+  text-shadow: none !important;
+  font-weight: 500;
+}
+
+.vocab-chip.active .vocab-translation,
+.vocab-chip:hover .vocab-translation {
+  color: #4A4A48 !important;
+  /* Dark gray for translation */
+  text-shadow: none !important;
+  font-weight: 500;
+}
+
+/* Override Text Colors for Background Mode */
+.app-container {
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 3rem;
+  /* Increased padding regarding the frame */
+  margin: 0 auto;
+  color: #F3F1EA;
+  /* Force light text on photos */
+}
+
+.main-question,
+.brand,
+.vocab-term,
+.control-btn,
+.category-tag {
+  color: #F3F1EA !important;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+  /* Softer, deeper shadow */
+}
+
+.vocab-chip {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  /* Glassy chip */
+  backdrop-filter: blur(5px);
+}
+
+.vocab-chip:hover {
+  background: #F3F1EA;
+  border-color: #F3F1EA;
+  color: #1A1918 !important;
+}
+
+.vocab-chip:hover .vocab-term {
+  color: #1A1918 !important;
+  text-shadow: none;
+}
+
+/* ... Existing Header ... */
+
+/* --- Header --- */
+.top-bar {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  /* Match app padding */
+  z-index: 20;
+}
+
+.brand {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  /* Matches author credit visual weight */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.author-credit {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.3;
+  color: #F3F1EA;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.app-footer {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.stats {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Hide stats on very small screens if needed */
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* --- Main Stage --- */
+.main-stage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.content-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  /* Increased spacing */
+  padding: 2rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Question Area */
+/* Question Area - Revised for spacing */
+.question-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+  width: 100%;
+  /* Removed scroll/max-height for dynamic sizing */
+}
+
+/* ... existing scrollbar hiding ... */
+
+/* FIX: Override the global white text for Active/Hover states */
+.vocab-chip.active .vocab-term,
+.vocab-chip:hover .vocab-term {
+  color: #1A1918 !important;
+  /* Force LIGHT text on the DARK card */
+  text-shadow: none !important;
+}
+
+.vocab-chip.active .vocab-translation,
+.vocab-chip:hover .vocab-translation {
+  color: #AFAFA5 !important;
+  /* Soft light gray for translation */
+  text-shadow: none !important;
+}
+
+.question-area::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.main-question {
+  font-family: var(--font-serif);
+  /* Dynamic font size handled inline */
+  font-weight: 400;
+  /* Lighter weight for elegance */
+  /* The "Wanderlust" touch */
+  line-height: 1.2;
+  color: var(--text-primary);
+  max-width: 1100px;
+  letter-spacing: -0.02em;
+  /* Tighter letter spacing */
+  animation: breathe 7s ease-in-out infinite;
+  /* Living UI */
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+  .main-question {
+    font-size: 3rem;
+  }
+}
+
+/* ... existing code ... */
+
+.vocab-list {
+  display: flex;
+  flex-direction: column;
+  /* List view by default for streamlined look */
+  align-items: center;
+  gap: 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Grid mode if screen is wide enough or for specific layout preferences? 
+   Actually, user asked for "less blocky". A clean vertical list or Masonry is often better.
+   Let's try a responsive grid that looks like a list on mobile. */
+@media (min-width: 768px) {
+  .vocab-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.vocab-chip {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  /* Lighter touch */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  /* underline style instead of box */
+  padding: 1rem 2rem;
+  /* Reduced padding */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  width: 100%;
+  /* Full width in list mode */
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .vocab-chip {
+    max-width: fit-content;
+    /* Hug content on desktop */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* light border on desktop */
+  }
+
+  /* When showing all, use a dense grid layout */
+  .vocab-list.show-all-mode {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Auto columns */
+    gap: 1.5rem;
+    align-items: start;
+    /* Align to top */
+    width: 100%;
+    max-width: 1400px;
+    /* Wider container */
+    padding: 2rem 0;
+    /* Add vertical breathing room */
+  }
+
+  /* Reset max-width on chips in grid mode so they fill their cells */
+  .vocab-list.show-all-mode .vocab-chip {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    /* Uniform height */
+    justify-content: flex-start;
+    /* Content at top */
+  }
+}
+
+/* Streamlined Controls Area - Minimalist */
+.controls-area {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  /* More space at bottom */
+}
+
+/* Minimal Bar - No capsule background */
+.nav-bar {
+  display: flex;
+  gap: 2rem;
+  /* Wider gaps for air */
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  align-items: center;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  /* Slight rounding or none */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.nav-btn:hover {
+  background: transparent;
+  /* No bg change */
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Make key hints invisible */
+.key-hint {
+  display: none;
+}
+
+/* "Worksheet" button stands out slightly */
+.practice-btn {
+  color: #F3F1EA;
+  /* Brighter */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  /* Underline only */
+  border-radius: 0;
+  padding-bottom: 0.2rem;
+}
+
+.practice-btn:hover {
+  background: transparent;
+  border-color: #fff;
+  padding-bottom: 0.4rem;
+  /* Animate line */
+}
+
+.category-indicator {
+  /* Removed from footer, but keeping class just in case */
+  display: none;
+}
+
+
+.vocab-chip:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.vocab-chip.active {
+  background: rgba(243, 241, 234, 0.98);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  color: #1A1918;
+  z-index: 10;
+}
+
+[data-theme='dark'] .vocab-chip.active {
+  background: rgba(26, 25, 24, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #F3F1EA;
+}
+
+.vocab-term {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  /* Slightly smaller than before for elegance */
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+/* Vocab Detail Popup / Expansion */
+.vocab-detail {
+  margin-top: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: center;
+  overflow: hidden;
+  /* For animation */
+  width: 100%;
+}
+
+.vocab-example {
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+/* FIX: Ensure ALL text inside active card is dark */
+.vocab-chip.active .vocab-term {
+  color: #1A1918 !important;
+  text-shadow: none !important;
+}
+
+.vocab-chip.active .vocab-detail,
+.vocab-chip.active .vocab-detail p,
+.vocab-chip.active .vocab-translation,
+.vocab-chip.active .vocab-type,
+.vocab-chip.active .vocab-example {
+  color: #2A2A28 !important;
+  /* Force nearly black */
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Specific styling for hierarchy while keeping them dark */
+.vocab-chip.active .vocab-type {
+  color: #5A5A58 !important;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.vocab-chip.active .vocab-translation {
+  font-style: italic;
+  color: #4A4A48 !important;
+}
+
+.vocab-chip.active .vocab-detail p {
+  color: #1A1918 !important;
+  /* Definition is darkest */
+}
+
+/* Practice Modal */
+.practice-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.practice-modal {
+  background: #F3F1EA;
+  /* The "Warm Paper" color */
+  width: 100%;
+  max-width: 600px;
+  border-radius: 4px;
+  /* Editorial feel */
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  color: #1A1918;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5A5A58;
+}
+
+.practice-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.practice-header h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.practice-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  border-bottom: 1px solid #E0E0DC;
+  padding-bottom: 1rem;
+}
+
+.practice-tabs button {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #8A8A85;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.practice-tabs button.active {
+  color: #1A1918;
+  border-bottom: 2px solid #1A1918;
+  padding-bottom: 0.4rem;
+  /* Compensate for border */
+}
+
+/* Gym View */
+.exercise-card {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.exercise-card h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8A8A85;
+  margin-bottom: 1rem;
+}
+
+.sentence-display {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.gap-slot {
+  display: inline-block;
+  min-width: 100px;
+  border-bottom: 2px solid #ccc;
+  color: transparent;
+  margin: 0 0.4rem;
+  transition: all 0.3s;
+}
+
+.gap-slot.correct {
+  border-color: #4CAF50;
+  color: #1A1918;
+}
+
+.gap-slot.incorrect {
+  border-color: #E53935;
+}
+
+.input-area {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.input-area input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: #FFF;
+  color: #333;
+}
+
+.check-btn {
+  padding: 0 1.5rem;
+  background: #1A1918;
+  color: #F3F1EA;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.check-btn.correct {
+  background: #4CAF50;
+}
+
+.hint-text {
+  color: #E53935;
+  font-size: 0.9rem;
+}
+
+/* Discuss View */
+.guided-intro {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #5A5A58;
+}
+
+.guided-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.guided-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #FFF;
+  border: 1px solid #EAE8E0;
+  border-radius: 4px;
+}
+
+.guided-number {
+  background: #EAE8E0;
+  color: #5A5A58;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.guided-text {
+  color: #2A2A28;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: var(--font-serif);
+}
+
+.guided-text strong {
+  font-weight: 600;
+  color: #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn .key-hint {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  margin-bottom: 0.2rem;
+  opacity: 0.7;
+}
+
+/* ... animation ... */
+
+.vocab-translation {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  /* Large and elegant */
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.vocab-chip:hover .vocab-translation,
+.vocab-chip.active .vocab-translation {
+  color: var(--bg-color);
+  opacity: 0.9;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Controls */
+.controls-area {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  z-index: 10;
+}
+
+/* Minimalist Footer Controls */
+.footer-modes {
+  display: flex;
+  gap: 3rem;
+  margin-top: auto;
+  padding: 2rem;
+  z-index: 20;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.footer-modes:hover {
+  opacity: 1;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #F3F1EA;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.control-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #F3F1EA;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.control-btn:hover::after {
+  width: 100%;
+}
+
+.control-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.shortcut-hint {
+  font-size: 0.6rem;
+  opacity: 0.5;
+  margin-left: 0.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.control-btn.primary {
+  border-color: var(--text-primary);
+  /* Stronger border for primary */
+}
+
+.control-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-color);
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.control-btn.secondary {
+  border-color: transparent;
+  /* Text only mostly */
+  color: var(--text-secondary);
+}
+
+.control-btn.secondary:hover {
+  border-color: var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+/* --- Footer Modes --- */
+.footer-modes {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-modes button {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #999;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.footer-modes button:hover,
+.footer-modes button.active {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--accent-primary);
+}
+
+/* Category Overlay */
+.category-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.category-list button {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+.category-list button:hover {
+  color: var(--accent-primary);
+}
+
+.close-cat {
+  margin-top: 2rem;
+  background: none;
+  border: 1px solid var(--text-secondary);
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+}
+
+/* Loaders/Spinners */
+.loader-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elegant-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Ensure content stays above */
+.main-stage,
+.footer-modes,
+.top-bar {
+  z-index: 10;
+}
+
+/* Botanical Watermarks */
+.plants-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.plant-left {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 200px;
+  height: 380px;
+  opacity: 0.15;
+  filter: blur(0px);
+  transform: rotate(-5deg);
+}
+
+.plant-right {
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  width: 240px;
+  height: 300px;
+  opacity: 0.15;
+  filter: blur(0px);
+  transform: rotate(5deg);
+}
+
+.vocab-translation {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  /* Larger translation text */
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent-secondary);
+  /* Use accent color for visibility */
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Ensure translation is very clear in active state - handled by .vocab-chip.active .vocab-translation rule */
+
+/* Streamlined Navigation Bar - Matching Author Credit Style */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  /* More breathing room */
+  padding: 0;
+  background: transparent;
+  border: none;
+  margin-top: 1rem;
+  width: auto;
+}
+
+.nav-btn {
+  background: transparent !important;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  /* Smaller, elegant */
+  text-transform: lowercase;
+  /* Lowercase like author credit */
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.5) !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+.nav-btn:hover {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  transform: none;
+}
+
+/* Primary action - slightly brighter */
+.nav-btn.practice-btn {
+  color: rgba(255, 255, 255, 0.7) !important;
+  border: none;
+}
+
+.nav-btn.practice-btn:hover {
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none;
+}
+
+
+/* Multiple Choice Options */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.option-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+}
+
+.option-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  border-color: #D4AF37;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.option-btn.correct {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+  color: #2E7D32;
+}
+
+.option-btn.incorrect {
+  background: #FFEBEE;
+  border-color: #E53935;
+  color: #C62828;
+  opacity: 0.8;
+}
+
+.option-btn:disabled {
+  cursor: default;
+  transform: none;
+}
+
+/* Focus Modal for Vocab Cards */
+.vocab-focus-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.vocab-focus-card {
+  background: #F3F1EA;
+  color: #1A1918;
+  padding: 3rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: default;
+  /* Do not show pointer inside */
+}
+
+.close-focus-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-focus-btn:hover {
+  color: #000;
+}
+
+.vocab-term.large {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  color: #1A1918 !important;
+  /* Force dark text */
+  text-shadow: none !important;
+  /* Remove any shadows */
+  font-family: var(--font-serif);
+  font-weight: 500;
+  /* Slightly thicker */
+}
+
+.vocab-detail.large {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: #2A2A28;
+  line-height: 1.5;
+}
+
+.vocab-detail.large .vocab-translation {
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #555;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.vocab-detail.large .vocab-type {
+  margin-bottom: 1.5rem;
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: #888;
+}
+
+.vocab-detail.large .vocab-example {
+  font-size: 1.5rem;
+  /* Larger example text */
+  line-height: 1.4;
+  margin-top: 2rem;
+  opacity: 1;
+  color: #1A1918;
+  font-style: italic;
+}
+
+/* Shareable Card Capture Stage */
+#share-capture-card {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  height: 1080px;
+  background: linear-gradient(135deg, #1A1918 0%, #2A2A28 100%);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #F3F1EA;
+  font-family: var(--font-serif);
+  z-index: -1;
+}
+
+#share-capture-card .share-category {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 1.5rem;
+  /* Large enough for 1080p */
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+}
+
+#share-capture-card .share-question {
+  font-size: 5rem;
+  line-height: 1.3;
+  font-style: italic;
+  margin-bottom: auto;
+  /* Push footer down */
+  margin-top: auto;
+  max-width: 900px;
+}
+
+#share-capture-card .share-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 2rem;
+  width: 100%;
+}
+
+#share-capture-card .share-brand {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#share-capture-card .share-link {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+}
+
+/* Search Overlay */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 25, 24, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  padding-top: 10vh;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.search-header:focus-within {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.search-icon-inner {
+  color: #AFAFA5;
+  margin-right: 1rem;
+}
+
+.search-header input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #F3F1EA;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  padding: 0.75rem 0;
+  outline: none;
+}
+
+.close-search {
+  background: transparent;
+  border: none;
+  color: #AFAFA5;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.close-search:hover {
+  color: #F3F1EA;
+}
+
+.search-results {
+  flex: 1;
+  overflow: hiddne;
+  /* Use flex and overflow on child */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 4rem;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.result-category {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8C8C88;
+}
+
+.result-text {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: #F3F1EA;
+  line-height: 1.4;
+}
+
+.no-results,
+.search-hint {
+  text-align: center;
+  padding: 3rem;
+  color: #5A5A58;
+  font-family: var(--font-sans);
+  font-style: italic;
+}
+
+/* Scrollbar for search results */
+.search-results::-webkit-scrollbar {
+  width: 4px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.category-footer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.bulk-download-btn {
+  background: rgba(243, 241, 234, 0.1);
+  border: 1px solid rgba(243, 241, 234, 0.3);
+  color: #F3F1EA;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.bulk-download-btn:hover {
+  background: #F3F1EA;
+  color: #1A1918;
+  transform: translateY(-2px);
+}
+
+.close-cat {
+  background: transparent;
+  border: none;
+  color: rgba(243, 241, 234, 0.5);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.close-cat:hover {
+  color: #F3F1EA;
+}

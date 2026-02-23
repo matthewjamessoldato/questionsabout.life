@@ -1,0 +1,58 @@
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Build artifacts
+dist/
+build/
+release/
+*.app
+*.dmg
+*.zip
+
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+webapp/node_modules/
+webapp/dist/
+webapp/build/
+webapp/release/
+webapp/.DS_Store
+webapp/*.pdf
