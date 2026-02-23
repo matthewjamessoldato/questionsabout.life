@@ -4,7 +4,6 @@
 .LSOverride
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -26,11 +25,13 @@ Temporary Items
 
 # Build artifacts
 dist/
+dist-ssr/
 build/
 release/
 *.app
 *.dmg
 *.zip
+*.pdf
 
 # Dependencies
 node_modules/
@@ -48,11 +49,16 @@ jspm_packages/
 .idea/
 *.swp
 *.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
-# Project specific
-webapp/node_modules/
-webapp/dist/
-webapp/build/
-webapp/release/
-webapp/.DS_Store
-webapp/*.pdf
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
