@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Download, ChevronRight, ChevronLeft, Share2, Eye, EyeOff, Search, X } from 'lucide-react';
+import { Download, ChevronRight, ChevronLeft, Share2, Eye, EyeOff, Search, X, Info as InfoIcon } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { motion, AnimatePresence } from 'framer-motion';
 import { questions, categories } from './data/questions';
@@ -30,6 +30,7 @@ type Mode = 'random' | 'categories';
 function App() {
   const [mode, setMode] = useState<Mode>('random');
   const [showCopyright, setShowCopyright] = useState(true);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const shareRef = useRef<HTMLDivElement>(null);
 
@@ -232,6 +233,15 @@ function App() {
           >
             <Search size={16} />
             <span className="hidden md:inline">Search</span>
+          </button>
+
+          <button
+            className="control-btn"
+            onClick={() => setIsInfoOpen(true)}
+            title="About this Project"
+          >
+            <InfoIcon size={16} />
+            <span className="hidden md:inline">Info</span>
           </button>
         </div>
       </header>
@@ -456,6 +466,60 @@ function App() {
         </div>
       )}
 
+      {/* Info Overlay */}
+      <AnimatePresence>
+        {isInfoOpen && (
+          <motion.div
+            className="info-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsInfoOpen(false)}
+          >
+            <motion.div
+              className="info-container"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="close-info" onClick={() => setIsInfoOpen(false)}>
+                <X size={24} />
+              </button>
+
+              <div className="info-content">
+                <h2 className="info-title">About the Project</h2>
+
+                <section className="info-section">
+                  <h3>Who I Am</h3>
+                  <p>
+                    I am Matthew James Soldato, an educator and designer passionate about merging technology with meaningful human connection.
+                    My work focuses on creating tools that facilitate deeper conversations and structured learning.
+                  </p>
+                </section>
+
+                <section className="info-section">
+                  <h3>Why I Created This</h3>
+                  <p>
+                    "Questions About Life" was born from a simple belief: that the right question at the right time
+                    can shift a perspective. I wanted to build a space that strips away the noise and provides a
+                    focused, aesthetic experience for exploring the big ideas that matter most.
+                  </p>
+                  <p>
+                    This application is designed to be a companion for reflection, a tool for language learners
+                    to practice complex expression, and a catalyst for honest dialogue.
+                  </p>
+                </section>
+
+                <footer className="info-footer">
+                  <p>Built with curiosity by Matthew James Soldato.</p>
+                  <p className="version">v1.0.0</p>
+                </footer>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hidden Capture Card */}
       {currentQuestion && (
