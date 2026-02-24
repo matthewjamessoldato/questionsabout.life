@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Download, ChevronRight, ChevronLeft, Share2, Eye, EyeOff, Search, X, Info as InfoIcon, Timer } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { SplitText } from './utils/SplitText';
 import { questions, categories } from './data/questions';
 import type { Question } from './data/questions';
 import { generatePDF } from './utils/PDFGenerator';
@@ -59,10 +57,6 @@ function App() {
   // History State
   const [history, setHistory] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
-
-  // Animation Refs
-  const bgRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
 
   const [expandedVocab, setExpandedVocab] = useState<number | null>(null);
   const [focusedVocabIndex, setFocusedVocabIndex] = useState<number | null>(null);
@@ -243,63 +237,6 @@ function App() {
   const bgIndex = currentQuestion ? currentQuestion.id % backgrounds.length : 0;
   const bgImage = backgrounds[bgIndex];
 
-  // GSAP Cinematic Animations
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. Ken Burns Background Effect
-      if (bgRef.current) {
-        // Reset scale and opacity
-        gsap.killTweensOf(bgRef.current);
-        gsap.set(bgRef.current, { scale: 1, x: 0, y: 0, opacity: 0 });
-
-        // Fade in
-        gsap.to(bgRef.current, { opacity: 1, duration: 1.5, ease: 'power2.inOut' });
-
-        // Slow pan and zoom
-        gsap.to(bgRef.current, {
-          scale: 1.15,
-          x: '2%',
-          y: '1%',
-          duration: 30,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1
-        });
-      }
-
-      // 2. Staggered Text Reveal
-      if (!showAllMeanings && currentQuestion) {
-        // We use a tiny timeout to ensure the DOM has updated with the new SplitText elements from React
-        setTimeout(() => {
-          if (!textRef.current) return;
-          const words = textRef.current.querySelectorAll('.gsap-word');
-          if (words.length > 0) {
-            gsap.killTweensOf(words);
-
-            gsap.fromTo(words,
-              {
-                y: '100%',
-                opacity: 0,
-                rotation: 2
-              },
-              {
-                y: '0%',
-                opacity: 1,
-                rotation: 0,
-                duration: 1.2,
-                stagger: 0.03,
-                ease: 'power3.out',
-                delay: 0.2 // slight delay after bg starts fading
-              }
-            );
-          }
-        }, 50);
-      }
-    });
-
-    return () => ctx.revert(); // Cleanup animations on unmount or question change
-  }, [bgImage, currentQuestion, showAllMeanings]);
-
   const handleDownloadPDF = () => {
     if (currentQuestion) {
       generatePDF(currentQuestion);
@@ -322,13 +259,12 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Dynamic GSAP Ken Burns Background */}
+      {/* Dynamic Background */}
       <div
-        ref={bgRef}
         className="app-background"
         style={{
           backgroundImage: `url(${bgImage})`,
-          opacity: 0 // GSAP handles the fade in
+          opacity: 1
         }}
       />
       <div className="app-overlay" />
@@ -444,7 +380,6 @@ function App() {
               <div className="question-area">
                 {!showAllMeanings && (
                   <h2
-                    ref={textRef}
                     className="main-question"
                     style={{
                       fontSize: currentQuestion.question.length > 200 ? '2.5rem' :
@@ -452,7 +387,7 @@ function App() {
                           currentQuestion.question.length > 60 ? '4rem' : '5rem'
                     }}
                   >
-                    <SplitText text={currentQuestion.question} />
+                    {currentQuestion.question}
                   </h2>
                 )}
               </div>
