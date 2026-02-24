@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Download, ChevronRight, ChevronLeft, Share2, Eye, EyeOff, Search, X, Info as InfoIcon } from 'lucide-react';
+import { Download, ChevronRight, ChevronLeft, Share2, Eye, EyeOff, Search, X, Info as InfoIcon, Timer } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { motion, AnimatePresence } from 'framer-motion';
 import { questions, categories } from './data/questions';
@@ -66,6 +66,48 @@ function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Timer State
+  const [isTimerMenuOpen, setIsTimerMenuOpen] = useState(false);
+  const [timerDuration, setTimerDuration] = useState<number | null>(null); // in seconds
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
+  const [isTimerActive, setIsTimerActive] = useState(false);
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isTimerActive && timeLeft !== null && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft(prev => prev! - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      setIsTimerActive(false);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerActive, timeLeft]);
+
+  const startTimer = (minutes: number) => {
+    const seconds = minutes * 60;
+    setTimerDuration(seconds);
+    setTimeLeft(seconds);
+    setIsTimerActive(true);
+    setIsTimerMenuOpen(false);
+  };
+
+  const cancelTimer = () => {
+    setIsTimerActive(false);
+    setTimerDuration(null);
+    setTimeLeft(null);
+  };
+
+  const toggleTimer = () => {
+    setIsTimerActive(prev => !prev);
+  };
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
 
 
 
@@ -89,6 +131,7 @@ function App() {
     setSearchQuery('');
     setExpandedVocab(null);
     setShowAllMeanings(false);
+    window.location.hash = `q=${q.id}`;
   };
 
   const getRandomQuestion = () => {
@@ -112,6 +155,7 @@ function App() {
     setCurrentQuestion(newQuestion);
     setHistory(prev => [...prev, newQuestion]);
     setCurrentIndex(prev => prev + 1);
+    window.location.hash = `q=${newQuestion.id}`;
   };
 
   const handlePrevious = () => {
@@ -121,6 +165,7 @@ function App() {
       setCurrentQuestion(history[prevIndex]);
       setExpandedVocab(null);
       setShowAllMeanings(false);
+      window.location.hash = `q=${history[prevIndex].id}`;
     }
   };
 
@@ -158,11 +203,24 @@ function App() {
   // Initial Load once
   useEffect(() => {
     if (!currentQuestion && history.length === 0) {
-      const randomIndex = Math.floor(Math.random() * questions.length);
-      const firstQ = questions[randomIndex];
-      setCurrentQuestion(firstQ);
-      setHistory([firstQ]);
+      let initialQuestion: Question | undefined;
+
+      // Check for hash
+      const hash = window.location.hash;
+      if (hash.startsWith('#q=')) {
+        const id = parseInt(hash.replace('#q=', ''), 10);
+        initialQuestion = questions.find(q => q.id === id);
+      }
+
+      if (!initialQuestion) {
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        initialQuestion = questions[randomIndex];
+      }
+
+      setCurrentQuestion(initialQuestion);
+      setHistory([initialQuestion]);
       setCurrentIndex(0);
+      window.location.hash = `q=${initialQuestion.id}`;
     }
 
     // Preload backgrounds with a slight delay to avoid initial lag
@@ -226,6 +284,42 @@ function App() {
             <span className="hidden md:inline">{showAllMeanings ? "Hide All" : "Show All"}</span>
           </button>
 
+          <div className="timer-dropdown-container" style={{ position: 'relative' }}>
+            <button
+              className={`control-btn ${timerDuration ? 'active' : ''}`}
+              onClick={() => {
+                if (timerDuration && timeLeft !== 0) {
+                  toggleTimer(); // Pause or Resume
+                } else {
+                  setIsTimerMenuOpen(!isTimerMenuOpen);
+                }
+              }}
+              title={timerDuration ? (isTimerActive ? "Pause Timer" : "Resume Timer") : "Timer"}
+            >
+              <Timer size={16} />
+              <span className="hidden md:inline">
+                {timerDuration ? (timeLeft !== null ? formatTime(timeLeft) : 'Timer') : 'Timer'}
+              </span>
+            </button>
+            <AnimatePresence>
+              {isTimerMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="timer-menu"
+                >
+                  <button onClick={() => startTimer(2)}>2 Minutes</button>
+                  <button onClick={() => startTimer(5)}>5 Minutes</button>
+                  <button onClick={() => startTimer(10)}>10 Minutes</button>
+                  {timerDuration && (
+                    <button className="cancel-timer" onClick={cancelTimer}>Clear Timer</button>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <button
             className="control-btn"
             onClick={() => setIsSearchOpen(true)}
@@ -245,6 +339,25 @@ function App() {
           </button>
         </div>
       </header>
+
+      {/* Timer Progress Bar */}
+      <AnimatePresence>
+        {timerDuration && timeLeft !== null && (
+          <motion.div
+            className="timer-bar-container"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 4, opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+          >
+            <motion.div
+              className={`timer-bar-fill ${timeLeft === 0 ? 'timer-done' : ''}`}
+              initial={{ width: '100%' }}
+              animate={{ width: `${(timeLeft / timerDuration) * 100}%` }}
+              transition={{ ease: "linear", duration: 1 }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main className="main-stage">
         <AnimatePresence mode='wait'>
