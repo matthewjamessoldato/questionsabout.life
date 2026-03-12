@@ -379,28 +379,92 @@ function App() {
             >
               <div className="question-area">
                 {!showAllMeanings && (
-                  <h2
-                    className="main-question"
-                    style={{
-                      fontSize: currentQuestion.question.length > 200 ? '2.5rem' :
-                        currentQuestion.question.length > 100 ? '3rem' :
-                          currentQuestion.question.length > 60 ? '4rem' : '5rem'
-                    }}
-                  >
-                    {currentQuestion.question}
-                  </h2>
+                  <>
+                    {/* Depth Indicator */}
+                    {currentQuestion.depthLevel && (
+                      <motion.div 
+                        className="depth-indicator"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 0.7, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        style={{ display: 'flex', gap: '6px', marginBottom: '2rem', justifyContent: 'center' }}
+                      >
+                         {[1, 2, 3, 4].map(level => (
+                           <div 
+                             key={level} 
+                             style={{ 
+                               width: '6px', 
+                               height: '6px', 
+                               borderRadius: '50%', 
+                               background: currentQuestion.depthLevel && currentQuestion.depthLevel >= level ? '#F3F1EA' : 'rgba(255,255,255,0.2)',
+                               transition: 'background 0.5s ease'
+                             }} 
+                             title={`Depth Level: ${currentQuestion.depthLevel}`}
+                           />
+                         ))}
+                      </motion.div>
+                    )}
+                    
+                    <motion.h2
+                      className="main-question"
+                      style={{
+                        fontSize: currentQuestion.question.length > 200 ? '2.5rem' :
+                          currentQuestion.question.length > 100 ? '3rem' :
+                            currentQuestion.question.length > 60 ? '4rem' : '4.5rem' // adjusted for outfit
+                      }}
+                      variants={{
+                        hidden: { opacity: 1 },
+                        visible: {
+                          opacity: 1,
+                          transition: { staggerChildren: 0.04, delayChildren: 0.1 }
+                        }
+                      }}
+                      initial="hidden"
+                      animate="visible"
+                      key={currentQuestion.id}
+                    >
+                      {currentQuestion.question.split(' ').map((word, i) => (
+                        <motion.span 
+                          key={`${currentQuestion.id}-${i}`} 
+                          variants={{
+                            hidden: { opacity: 0, y: 15, filter: 'blur(8px)' },
+                            visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 100, damping: 20 } }
+                          }} 
+                          style={{ display: 'inline-block', marginRight: '0.25em' }}
+                        >
+                          {word}
+                        </motion.span>
+                      ))}
+                    </motion.h2>
+                  </>
                 )}
               </div>
 
 
               {/* Vocab Area - Streamlined */}
               <div className="vocab-area">
-                <div className={`vocab-list ${showAllMeanings ? 'show-all-mode' : ''}`}>
+                <motion.div 
+                  className={`vocab-list ${showAllMeanings ? 'show-all-mode' : ''}`}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: { staggerChildren: 0.1, delayChildren: 0.4 }
+                    }
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  key={currentQuestion.id + "-vocab"} // re-trigger on new question
+                >
                   {currentQuestion.vocabulary.map((v, i) => {
                     const isExpanded = expandedVocab === i || showAllMeanings;
                     return (
-                      <div
+                      <motion.div
                         key={i}
+                        variants={{
+                          hidden: { opacity: 0, y: 15 },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                        }}
                         className={`vocab-chip ${isExpanded ? 'active' : ''}`}
                         onClick={() => {
                           if (showAllMeanings) {
@@ -426,10 +490,10 @@ function App() {
                             </motion.div>
                           )}
                         </AnimatePresence>
-                      </div>
+                      </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
 
                 {/* Focus Modal Overlay */}
                 <AnimatePresence>

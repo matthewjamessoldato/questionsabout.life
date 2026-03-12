@@ -9,7 +9,6 @@ export interface Question {
   id: number;
   question: string;
   category: string;
-  depthLevel: number;
   vocabulary: VocabularyItem[];
   guidedQuestions?: string[]; // New field for practice mode
 }
@@ -19,7 +18,6 @@ export const questions: Question[] = [
     "id": 1,
     "question": "What makes you feel calm?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "calm down",
@@ -81,7 +79,6 @@ export const questions: Question[] = [
     "id": 2,
     "question": "What is one goal you have for this year?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "set the bar high",
@@ -125,7 +122,6 @@ export const questions: Question[] = [
     "id": 3,
     "question": "What is something you wish you believed sooner?",
     "category": "Wisdom",
-    "depthLevel": 4,
     "vocabulary": [
       {
         "phrase": "imposter syndrome",
@@ -169,7 +165,6 @@ export const questions: Question[] = [
     "id": 4,
     "question": "What would you do with one free day?",
     "category": "Fun",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "sleep in",
@@ -213,7 +208,6 @@ export const questions: Question[] = [
     "id": 5,
     "question": "What is something you like about your classmates?",
     "category": "Social",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "diverse backgrounds",
@@ -257,7 +251,6 @@ export const questions: Question[] = [
     "id": 6,
     "question": "What is one thing that makes you feel strong?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "work on",
@@ -313,7 +306,6 @@ export const questions: Question[] = [
     "id": 7,
     "question": "When do you feel proud of yourself?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "keep at it",
@@ -369,7 +361,6 @@ export const questions: Question[] = [
     "id": 8,
     "question": "What makes you feel peaceful?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "calm down",
@@ -425,7 +416,6 @@ export const questions: Question[] = [
     "id": 9,
     "question": "What is something you do to take care of yourself?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "get up early",
@@ -481,7 +471,6 @@ export const questions: Question[] = [
     "id": 10,
     "question": "What helps you when you are stressed?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "open up",
@@ -537,7 +526,6 @@ export const questions: Question[] = [
     "id": 11,
     "question": "What color shows how you feel today?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "feeling blue",
@@ -593,7 +581,6 @@ export const questions: Question[] = [
     "id": 12,
     "question": "What sound helps you feel relaxed?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "white noise",
@@ -649,7 +636,6 @@ export const questions: Question[] = [
     "id": 13,
     "question": "What food makes you feel better?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "comfort food",
@@ -705,7 +691,6 @@ export const questions: Question[] = [
     "id": 14,
     "question": "What is a small thing that makes you feel good?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "simple pleasure",
@@ -761,7 +746,6 @@ export const questions: Question[] = [
     "id": 15,
     "question": "What do you do when you feel shy?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "break the ice",
@@ -817,7 +801,6 @@ export const questions: Question[] = [
     "id": 16,
     "question": "How do you show love to others?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "words of affirmation",
@@ -873,7 +856,6 @@ export const questions: Question[] = [
     "id": 17,
     "question": "What is one thing you do when you are angry?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "see red",
@@ -929,7 +911,6 @@ export const questions: Question[] = [
     "id": 18,
     "question": "When do you feel most like yourself?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "in my element",
@@ -985,7 +966,6 @@ export const questions: Question[] = [
     "id": 19,
     "question": "What helps you feel safe?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "safe haven",
@@ -1041,7 +1021,6 @@ export const questions: Question[] = [
     "id": 20,
     "question": "What makes you feel excited?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "buzz with energy",
@@ -1098,7 +1077,6 @@ export const questions: Question[] = [
     "id": 21,
     "question": "What is something you are learning about yourself?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "blind spot",
@@ -1142,7 +1120,6 @@ export const questions: Question[] = [
     "id": 22,
     "question": "What is something you want to get better at?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "hone my skills",
@@ -1186,7 +1163,6 @@ export const questions: Question[] = [
     "id": 23,
     "question": "What are you proud of this month?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "sense of accomplishment",
@@ -1230,7 +1206,6 @@ export const questions: Question[] = [
     "id": 24,
     "question": "What is a mistake that helped you grow?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "blessing in disguise",
@@ -1274,7 +1249,6 @@ export const questions: Question[] = [
     "id": 25,
     "question": "What is one good habit you want to start?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "ingrain",
@@ -1318,7 +1292,6 @@ export const questions: Question[] = [
     "id": 26,
     "question": "What is something new you want to try?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "venture into",
@@ -1356,7 +1329,6 @@ export const questions: Question[] = [
     "id": 27,
     "question": "What do you do when something is difficult?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "persevere",
@@ -1394,7 +1366,6 @@ export const questions: Question[] = [
     "id": 28,
     "question": "What do you wish you had more time for?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "leisure",
@@ -1432,7 +1403,6 @@ export const questions: Question[] = [
     "id": 29,
     "question": "What motivates you to keep going?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "intrinsic motivation",
@@ -1470,7 +1440,6 @@ export const questions: Question[] = [
     "id": 30,
     "question": "What is something you have done that surprised you?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "exceeded expectations",
@@ -1508,7 +1477,6 @@ export const questions: Question[] = [
     "id": 31,
     "question": "What is one goal you have for this year?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "set the bar high",
@@ -1558,7 +1526,6 @@ export const questions: Question[] = [
     "id": 32,
     "question": "What is a small win you had this week?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "pat on the back",
@@ -1608,7 +1575,6 @@ export const questions: Question[] = [
     "id": 33,
     "question": "What is something you stopped doing, and why?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "kick the habit",
@@ -1658,7 +1624,6 @@ export const questions: Question[] = [
     "id": 34,
     "question": "What is something you want to do more often?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "make time for",
@@ -1708,7 +1673,6 @@ export const questions: Question[] = [
     "id": 35,
     "question": "What is a skill you want to learn?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "learning curve",
@@ -1758,7 +1722,6 @@ export const questions: Question[] = [
     "id": 36,
     "question": "What helps you focus?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "get into the zone",
@@ -1808,7 +1771,6 @@ export const questions: Question[] = [
     "id": 37,
     "question": "What is one thing you have improved at recently?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "come a long way",
@@ -1858,7 +1820,6 @@ export const questions: Question[] = [
     "id": 38,
     "question": "What is something you were afraid of but did anyway?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "take the plunge",
@@ -1908,7 +1869,6 @@ export const questions: Question[] = [
     "id": 39,
     "question": "What advice would you give to your younger self?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "hindsight is 20/20",
@@ -1958,7 +1918,6 @@ export const questions: Question[] = [
     "id": 40,
     "question": "What is something you wish you believed sooner?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "imposter syndrome",
@@ -2008,7 +1967,6 @@ export const questions: Question[] = [
     "id": 41,
     "question": "What does a good friend do?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "thick and thin",
@@ -2058,7 +2016,6 @@ export const questions: Question[] = [
     "id": 42,
     "question": "What kind of person do you like working with?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "team player",
@@ -2108,7 +2065,6 @@ export const questions: Question[] = [
     "id": 43,
     "question": "What is something kind someone did for you?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "act of kindness",
@@ -2158,7 +2114,6 @@ export const questions: Question[] = [
     "id": 44,
     "question": "How do you show kindness to others?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "lend a hand",
@@ -2208,7 +2163,6 @@ export const questions: Question[] = [
     "id": 45,
     "question": "What makes a good team?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "camaraderie",
@@ -2258,7 +2212,6 @@ export const questions: Question[] = [
     "id": 46,
     "question": "What is something you like about your classmates?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "diverse backgrounds",
@@ -2314,7 +2267,6 @@ export const questions: Question[] = [
     "id": 47,
     "question": "What is something you can teach someone else?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "impart wisdom",
@@ -2370,7 +2322,6 @@ export const questions: Question[] = [
     "id": 48,
     "question": "How do you help someone who feels shy?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "break the ice",
@@ -2426,7 +2377,6 @@ export const questions: Question[] = [
     "id": 49,
     "question": "What do you like to share with others?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "sharing is caring",
@@ -2482,7 +2432,6 @@ export const questions: Question[] = [
     "id": 50,
     "question": "What do you wish people understood about you?",
     "category": "Growth",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "misconception",
@@ -2538,7 +2487,6 @@ export const questions: Question[] = [
     "id": 51,
     "question": "Who makes you feel safe?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "safe haven",
@@ -2594,7 +2542,6 @@ export const questions: Question[] = [
     "id": 52,
     "question": "How do you show respect to others?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "honor boundaries",
@@ -2650,7 +2597,6 @@ export const questions: Question[] = [
     "id": 53,
     "question": "What is a nice thing someone said to you recently?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "heartfelt compliment",
@@ -2706,7 +2652,6 @@ export const questions: Question[] = [
     "id": 54,
     "question": "What is something you do to make others feel welcome?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "hospitality",
@@ -2762,7 +2707,6 @@ export const questions: Question[] = [
     "id": 55,
     "question": "How do you feel when someone listens to you?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "felt heard",
@@ -2818,7 +2762,6 @@ export const questions: Question[] = [
     "id": 56,
     "question": "What does being part of a group mean to you?",
     "category": "Community",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "sense of belonging",
@@ -2874,7 +2817,6 @@ export const questions: Question[] = [
     "id": 57,
     "question": "How do you fix a problem with a friend?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "clear the air",
@@ -2930,7 +2872,6 @@ export const questions: Question[] = [
     "id": 58,
     "question": "What is one thing you love about your family?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "unconditional love",
@@ -2986,7 +2927,6 @@ export const questions: Question[] = [
     "id": 59,
     "question": "What do you enjoy doing with others?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "bonding experience",
@@ -3042,7 +2982,6 @@ export const questions: Question[] = [
     "id": 60,
     "question": "What makes someone easy to talk to?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "approachable",
@@ -3098,7 +3037,6 @@ export const questions: Question[] = [
     "id": 61,
     "question": "What is something that makes you different in a good way?",
     "category": "Identity",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "stand out from the crowd",
@@ -3154,7 +3092,6 @@ export const questions: Question[] = [
     "id": 62,
     "question": "What is your favorite part of your day?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "golden hour",
@@ -3210,7 +3147,6 @@ export const questions: Question[] = [
     "id": 63,
     "question": "What is your favorite thing about yourself?",
     "category": "Identity",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "resilience",
@@ -3266,7 +3202,6 @@ export const questions: Question[] = [
     "id": 64,
     "question": "What is something you love doing alone?",
     "category": "Identity",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "solitude",
@@ -3322,7 +3257,6 @@ export const questions: Question[] = [
     "id": 65,
     "question": "What is something you are always curious about?",
     "category": "Curiosity",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "rabbit hole",
@@ -3378,7 +3312,6 @@ export const questions: Question[] = [
     "id": 66,
     "question": "What makes you feel excited about the future?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "look forward to",
@@ -3434,7 +3367,6 @@ export const questions: Question[] = [
     "id": 67,
     "question": "What do you do when you feel bored?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "stave off boredom",
@@ -3490,7 +3422,6 @@ export const questions: Question[] = [
     "id": 68,
     "question": "What is your favorite way to relax?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "unwind",
@@ -3546,7 +3477,6 @@ export const questions: Question[] = [
     "id": 69,
     "question": "What do you like more: quiet or noise?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "peace and quiet",
@@ -3602,7 +3532,6 @@ export const questions: Question[] = [
     "id": 70,
     "question": "What is something fun you would like to do soon?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "let my hair down",
@@ -3658,7 +3587,6 @@ export const questions: Question[] = [
     "id": 71,
     "question": "What is one place where you feel happy?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "sanctuary",
@@ -3714,7 +3642,6 @@ export const questions: Question[] = [
     "id": 72,
     "question": "What is something you could talk about forever?",
     "category": "Curiosity",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "geek out",
@@ -3770,7 +3697,6 @@ export const questions: Question[] = [
     "id": 73,
     "question": "What is one thing you never get tired of?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "timeless classic",
@@ -3826,7 +3752,6 @@ export const questions: Question[] = [
     "id": 74,
     "question": "What is something silly that makes you laugh?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "crack me up",
@@ -3882,7 +3807,6 @@ export const questions: Question[] = [
     "id": 75,
     "question": "What is one thing you like about your name?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "named after",
@@ -3938,7 +3862,6 @@ export const questions: Question[] = [
     "id": 76,
     "question": "What is your favorite way to spend a Sunday?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "put off",
@@ -3987,7 +3910,6 @@ export const questions: Question[] = [
     "id": 77,
     "question": "What is something fun you did as a child?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "clean up",
@@ -4031,7 +3953,6 @@ export const questions: Question[] = [
     "id": 78,
     "question": "What is something you always forget?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "drop off",
@@ -4080,7 +4001,6 @@ export const questions: Question[] = [
     "id": 79,
     "question": "What is one thing that helps you sleep well?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "look after",
@@ -4124,7 +4044,6 @@ export const questions: Question[] = [
     "id": 80,
     "question": "What is something you would love to do every day?",
     "category": "Daily",
-    "depthLevel": 1,
     "vocabulary": [
       {
         "phrase": "wake up",
@@ -4168,7 +4087,6 @@ export const questions: Question[] = [
     "id": 81,
     "question": "What does being kind mean to you?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "make up",
@@ -4217,7 +4135,6 @@ export const questions: Question[] = [
     "id": 82,
     "question": "What does success mean to you?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "try out",
@@ -4266,7 +4183,6 @@ export const questions: Question[] = [
     "id": 83,
     "question": "What would you do with one free day?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "sleep in",
@@ -4322,7 +4238,6 @@ export const questions: Question[] = [
     "id": 84,
     "question": "What would you do if you had no fear?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "work on",
@@ -4371,7 +4286,6 @@ export const questions: Question[] = [
     "id": 85,
     "question": "If you could change one thing in the world, what would it be?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "look forward to",
@@ -4420,7 +4334,6 @@ export const questions: Question[] = [
     "id": 86,
     "question": "What do you want people to remember about you?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "look out for",
@@ -4469,7 +4382,6 @@ export const questions: Question[] = [
     "id": 87,
     "question": "What is something small that makes a big difference?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "shake it off",
@@ -4513,7 +4425,6 @@ export const questions: Question[] = [
     "id": 88,
     "question": "What is a dream you have for the future?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "keep at it",
@@ -4552,7 +4463,6 @@ export const questions: Question[] = [
     "id": 89,
     "question": "What is more important: being smart or being kind?",
     "category": "Relationships",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "hit it off",
@@ -4596,7 +4506,6 @@ export const questions: Question[] = [
     "id": 90,
     "question": "What does feeling safe mean to you?",
     "category": "Feelings",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "calm down",
@@ -4645,7 +4554,6 @@ export const questions: Question[] = [
     "id": 91,
     "question": "If you could live anywhere, where would you live?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "set out to",
@@ -4694,7 +4602,6 @@ export const questions: Question[] = [
     "id": 92,
     "question": "If you had a magic button, what would it do?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "take on",
@@ -4733,7 +4640,6 @@ export const questions: Question[] = [
     "id": 93,
     "question": "If you had one superpower, what would it be?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "reach for",
@@ -4782,7 +4688,6 @@ export const questions: Question[] = [
     "id": 94,
     "question": "What job would you like to try for one day?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "try out",
@@ -4826,7 +4731,6 @@ export const questions: Question[] = [
     "id": 95,
     "question": "What is something the world needs more of?",
     "category": "Values",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "look forward to",
@@ -4875,7 +4779,6 @@ export const questions: Question[] = [
     "id": 96,
     "question": "What would you invent to make life easier?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "set out to",
@@ -4919,7 +4822,6 @@ export const questions: Question[] = [
     "id": 97,
     "question": "If you could meet one famous person, who would it be?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "take on",
@@ -4975,7 +4877,6 @@ export const questions: Question[] = [
     "id": 98,
     "question": "What is something you would do if you had no phone for a week?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "run out of",
@@ -5019,7 +4920,6 @@ export const questions: Question[] = [
     "id": 99,
     "question": "If you could make one new school rule, what would it be?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "reach for",
@@ -5063,7 +4963,6 @@ export const questions: Question[] = [
     "id": 100,
     "question": "What do you think makes life beautiful?",
     "category": "Dreams",
-    "depthLevel": 3,
     "vocabulary": [
       {
         "phrase": "try out",
@@ -5112,7 +5011,6 @@ export const questions: Question[] = [
     "id": 101,
     "question": "Which of my strongest beliefs are formed on second-hand information vs. first-hand experience?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "second-hand information",
@@ -5168,7 +5066,6 @@ export const questions: Question[] = [
     "id": 102,
     "question": "If I could not compare myself to anyone else, how would I define a good life?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "internal compass",
@@ -5224,7 +5121,6 @@ export const questions: Question[] = [
     "id": 103,
     "question": "Whose views do I criticize that I would actually agree with if I lived in their shoes?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "walk a mile in someone's shoes",
@@ -5280,7 +5176,6 @@ export const questions: Question[] = [
     "id": 104,
     "question": "Who do I envy that is actually less happy than I am?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "grass is always greener",
@@ -5336,7 +5231,6 @@ export const questions: Question[] = [
     "id": 105,
     "question": "Looking back, am I any good at anticipating how I would feel and react to risks that actually occurred?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "hindsight is 20/20",
@@ -5392,7 +5286,6 @@ export const questions: Question[] = [
     "id": 106,
     "question": "Is my desire for more money based on the false belief that it will solve personal problems that have nothing to do with money?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "money can't buy happiness",
@@ -5442,7 +5335,6 @@ export const questions: Question[] = [
     "id": 107,
     "question": "How many of my principles are cultural fads?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "bandwagon effect",
@@ -5498,7 +5390,6 @@ export const questions: Question[] = [
     "id": 108,
     "question": "Whose silence do I mistake for agreement?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "tacit agreement",
@@ -5554,7 +5445,6 @@ export const questions: Question[] = [
     "id": 109,
     "question": "What kind of lifestyle would I live if no one other than my immediate family could see it?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "performative",
@@ -5610,7 +5500,6 @@ export const questions: Question[] = [
     "id": 110,
     "question": "What events nearly happened that would have fundamentally changed my life, for better or worse, had they occurred?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "sliding doors moment",
@@ -5666,7 +5555,6 @@ export const questions: Question[] = [
     "id": 111,
     "question": "What views do I claim to believe in that I know are wrong but I say them because I don’t want to be criticized by my employer or industry?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "toe the party line",
@@ -5722,7 +5610,6 @@ export const questions: Question[] = [
     "id": 112,
     "question": "How much of what I do is internal benchmark (makes me happy) vs. external benchmark (I think it changes what other people think of me)?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "intrinsic motivation",
@@ -5778,7 +5665,6 @@ export const questions: Question[] = [
     "id": 113,
     "question": "Am I thinking independently or going along with the tribal views of a group I want to be associated with?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "groupthink",
@@ -5834,7 +5720,6 @@ export const questions: Question[] = [
     "id": 114,
     "question": "Whose approval am I auditioning for?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "seek approval",
@@ -5890,7 +5775,6 @@ export const questions: Question[] = [
     "id": 115,
     "question": "Which of my principles would I abandon if they stopped earning me praise and recognition?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "integrity",
@@ -5946,7 +5830,6 @@ export const questions: Question[] = [
     "id": 116,
     "question": "If I could see myself talk, what would I cringe at the most?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "self-conscious",
@@ -6002,7 +5885,6 @@ export const questions: Question[] = [
     "id": 117,
     "question": "What question am I afraid to ask because I suspect I know the answer?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "elephant in the room",
@@ -6058,7 +5940,6 @@ export const questions: Question[] = [
     "id": 118,
     "question": "How much have things outside of my control contributed to things I take credit for?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "privilege",
@@ -6114,7 +5995,6 @@ export const questions: Question[] = [
     "id": 119,
     "question": "How do I know if I’m being patient (a skill) or stubborn (a flaw)?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "fine line",
@@ -6170,7 +6050,6 @@ export const questions: Question[] = [
     "id": 120,
     "question": "What crazy genius that I aspire to emulate is actually just crazy?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "eccentric",
@@ -6226,7 +6105,6 @@ export const questions: Question[] = [
     "id": 121,
     "question": "What strong belief do I hold that’s most likely to change?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "open-minded",
@@ -6282,7 +6160,6 @@ export const questions: Question[] = [
     "id": 122,
     "question": "Which future memory am I creating right now, and will I be proud to own it?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "nostalgia",
@@ -6338,7 +6215,6 @@ export const questions: Question[] = [
     "id": 123,
     "question": "Am I addicted to cheap dopamine?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "instant gratification",
@@ -6394,7 +6270,6 @@ export const questions: Question[] = [
     "id": 124,
     "question": "If I were on my deathbed tomorrow, what would I regret most?",
     "category": "Knowledge",
-    "depthLevel": 2,
     "vocabulary": [
       {
         "phrase": "mortality",
@@ -6444,2529 +6319,6 @@ export const questions: Question[] = [
       "What is on your **bucket list**?",
       "Do you need to **make amends**?",
       "Are you **at peace**?"
-    ]
-  }
-,
-  {
-    id: 201,
-    question: "What is your favorite sound in the morning?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "wake-up call", translation: "sveglia", type: "Noun", example: "The birds singing is my natural wake-up call." },
-      { phrase: "get going", translation: "mettersi in moto", type: "Phrasal Verb", example: "I need coffee to get going in the morning." },
-      { phrase: "morning person", translation: "mattiniero", type: "Noun Phrase", example: "Are you a morning person or a night owl?" },
-      { phrase: "start the day right", translation: "iniziare bene la giornata", type: "Phrase", example: "A good breakfast helps me start the day right." },
-      { phrase: "grogginess", translation: "intontimento", type: "Noun", example: "How do you shake off the morning grogginess?" }
-    ],
-    guidedQuestions: [
-      "Are you usually a **morning person**?",
-      "How do you **get going** when you feel extremely tired?",
-      "What helps you **start the day right**?"
-    ]
-  },
-  {
-    id: 202,
-    question: "What is the strangest food combination you secretly enjoy?",
-    category: "Food",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "acquired taste", translation: "gusto acquisito", type: "Noun Phrase", example: "Olives are an acquired taste for many people." },
-      { phrase: "guilty pleasure", translation: "piacere inconfessabile", type: "Noun Phrase", example: "Eating pizza with pineapple is my guilty pleasure." },
-      { phrase: "flavor profile", translation: "profilo di sapori", type: "Collocation", example: "Sweet and salty make a great flavor profile." },
-      { phrase: "gross out", translation: "fare schifo", type: "Phrasal Verb", example: "Does seeing someone eat ketchup with eggs gross you out?" },
-      { phrase: "culinary experiment", translation: "esperimento culinario", type: "Collocation", example: "What is your most successful culinary experiment?" }
-    ],
-    guidedQuestions: [
-      "Do you have a food that is an **acquired taste** for you?",
-      "What is your ultimate **guilty pleasure** snack?",
-      "Does mixing sweet and savory ever **gross you out**?"
-    ]
-  },
-  {
-    id: 203,
-    question: "If you could instantly learn any pointless skill, what would it be?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "party trick", translation: "trucchetto da festa", type: "Noun Phrase", example: "Juggling is my favorite party trick." },
-      { phrase: "knack for", translation: "inclinazione per", type: "Noun Phrase", example: "Does he have a knack for remembering random facts?" },
-      { phrase: "show off", translation: "mettersi in mostra", type: "Phrasal Verb", example: "I love to show off my ability to solve a Rubik's cube." },
-      { phrase: "useless talent", translation: "talento inutile", type: "Noun Phrase", example: "What is the most useless talent you possess?" },
-      { phrase: "pick up", translation: "imparare (rapidamente)", type: "Phrasal Verb", example: "Did you pick up that trick from a YouTube video?" }
-    ],
-    guidedQuestions: [
-      "What is your go-to **party trick**?",
-      "Do you have a **knack for** learning useless things quickly?",
-      "Would you like to **show off** a weird talent on live TV?"
-    ]
-  },
-  {
-    id: 204,
-    question: "What movie universe would be the absolute worst to live in?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "dystopian", translation: "distopico", type: "Adjective", example: "A dystopian future sounds terrifying." },
-      { phrase: "fend for oneself", translation: "cavarsela da soli", type: "Idiom", example: "In a zombie apocalypse, you must fend for yourself." },
-      { phrase: "plot twist", translation: "colpo di scena", type: "Noun Phrase", example: "I hate when a movie relies on a cheap plot twist." },
-      { phrase: "bleak", translation: "desolante", type: "Adjective", example: "The world of Mad Max is incredibly bleak." },
-      { phrase: "survival guide", translation: "guida di sopravvivenza", type: "Noun Phrase", example: "You would need a survival guide to make it there." }
-    ],
-    guidedQuestions: [
-      "Do you enjoy reading **dystopian** novels?",
-      "How well could you **fend for yourself** in the wilderness?",
-      "Why do you think **bleak** settings are so popular in movies?"
-    ]
-  },
-  {
-    id: 205,
-    question: "What is the most underrated household chore?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "odd job", translation: "lavoretto", type: "Noun Phrase", example: "I like doing odd jobs around the house on Sundays." },
-      { phrase: "mindless task", translation: "compito che non richiede di pensare", type: "Noun Phrase", example: "Folding laundry is a relaxing, mindless task." },
-      { phrase: "tidying up", translation: "mettere in ordine", type: "Phrasal Verb", example: "Is tidying up therapeutic for you?" },
-      { phrase: "get it over with", translation: "togliersi il pensiero", type: "Idiom", example: "I always do the dishes immediately to get it over with." },
-      { phrase: "sense of accomplishment", translation: "senso di realizzazione", type: "Noun Phrase", example: "A clean kitchen gives me a strong sense of accomplishment." }
-    ],
-    guidedQuestions: [
-      "What **mindless task** actually helps you relax?",
-      "Do you usually procrastinate cleaning or try to **get it over with**?",
-      "Does **tidying up** your physical space help clear your mind?"
-    ]
-  },
-  {
-    id: 206,
-    question: "What is a highly generic compliment you've received that you still secretly treasure?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "make my day", translation: "svoltarmi la giornata", type: "Idiom", example: "That small compliment really made my day." },
-      { phrase: "flattered", translation: "lusingato", type: "Adjective", example: "I was so flattered when they praised my work." },
-      { phrase: "boost someone's ego", translation: "pompare l'ego", type: "Idiom", example: "A generic compliment can sometimes boost someone's ego exactly when they need it." },
-      { phrase: "stick with you", translation: "rimanerti impresso", type: "Idiom", example: "Why do some offhand comments stick with you for years?" },
-      { phrase: "brush it off", translation: "non darci peso / ignorare", type: "Phrasal Verb", example: "I normally brush off compliments because I get shy." }
-    ],
-    guidedQuestions: [
-      "What compliment could instantly **make your day**?",
-      "Is it wrong if we sometimes want to **boost our ego**?",
-      "Why do some small remarks **stick with you** for decades?"
-    ]
-  },
-  {
-    id: 207,
-    question: "Have you ever kept a secret that wasn't yours, just to avoid drama?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "stir the pot", translation: "mettere zizzania", type: "Idiom", example: "I didn't tell him because I didn't want to stir the pot." },
-      { phrase: "turn a blind eye", translation: "chiudere un occhio", type: "Idiom", example: "Is it ever okay to turn a blind eye to someone else's mistake?" },
-      { phrase: "spill the beans", translation: "svuotare il sacco", type: "Idiom", example: "I accidentally spilled the beans about the surprise party." },
-      { phrase: "bystander", translation: "spettatore", type: "Noun", example: "Sometimes it is safer to remain a bystander." },
-      { phrase: "burden", translation: "fardello", type: "Noun", example: "Keeping that secret felt like a heavy burden." }
-    ],
-    guidedQuestions: [
-      "When is it justified to **turn a blind eye**?",
-      "Have you ever accidentally **spilled the beans** on something important?",
-      "Does staying quiet make you a responsible friend, or a cowardly **bystander**?"
-    ]
-  },
-  {
-    id: 208,
-    question: "What completely normal social interaction always feels intensely awkward to you?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "small talk", translation: "chiacchiere di circostanza", type: "Noun Phrase", example: "I hate making small talk in elevators." },
-      { phrase: "overthink", translation: "pensare troppo", type: "Verb", example: "Do you overthink every text message before sending it?" },
-      { phrase: "break eye contact", translation: "distogliere lo sguardo", type: "Collocation", example: "I never know when to break eye contact." },
-      { phrase: "second-guess", translation: "mettere in dubbio / ripensarci", type: "Verb", example: "I always second-guess myself after a job interview." },
-      { phrase: "social cue", translation: "segnale sociale", type: "Noun Phrase", example: "Are you good at reading social cues, or do you miss them?" }
-    ],
-    guidedQuestions: [
-      "Why is **small talk** so difficult for introverts?",
-      "Do you tend to **overthink** conversations after they happen?",
-      "What is the easiest **social cue** to misinterpret?"
-    ]
-  },
-  {
-    id: 209,
-    question: "How do you act when you intensely dislike someone but are forced to work with them?",
-    category: "Relationships",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "bite my tongue", translation: "mordersi la lingua", type: "Idiom", example: "I had to bite my tongue during the meeting to keep the peace." },
-      { phrase: "fake a smile", translation: "fingere un sorriso", type: "Collocation", example: "Can you easily fake a smile when you are annoyed?" },
-      { phrase: "keep it professional", translation: "mantenere un atteggiamento professionale", type: "Phrase", example: "No matter what, you must keep it professional." },
-      { phrase: "grin and bear it", translation: "stringere i denti e sopportare", type: "Idiom", example: "Sometimes you just have to grin and bear it." },
-      { phrase: "rub someone the wrong way", translation: "irritare qualcuno", type: "Idiom", example: "His arrogant tone really rubs me the wrong way." }
-    ],
-    guidedQuestions: [
-      "Have you ever had to **bite your tongue** to save your job?",
-      "Is it dishonest to **fake a smile**, or is it just polite?",
-      "What personality trait usually **rubs you the wrong way**?"
-    ]
-  },
-  {
-    id: 210,
-    question: "What is a trend you enthusiastically participated in, but now deeply regret?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "jump on the bandwagon", translation: "saltare sul carro del vincitore", type: "Idiom", example: "Everyone was doing it, so I decided to jump on the bandwagon." },
-      { phrase: "cringe", translation: "imbarazzarsi (per se stessi)", type: "Verb", example: "I cringe whenever I see my old high school photos." },
-      { phrase: "fad", translation: "moda passeggera", type: "Noun", example: "Do you think TikTok dances will just be a forgotten fad?" },
-      { phrase: "peer pressure", translation: "pressione dei pari", type: "Noun Phrase", example: "Did you follow the trend because you liked it, or because of peer pressure?" },
-      { phrase: "look back on", translation: "ripensare al passato", type: "Phrasal Verb", example: "When you look back on it, why did you do it?" }
-    ],
-    guidedQuestions: [
-      "Have you ever **jumped on the bandwagon** for something silly?",
-      "What makes old trends so **cringe-worthy** later on?",
-      "Is **peer pressure** stronger on teenagers or adults?"
-    ]
-  },
-  {
-    id: 211,
-    question: "Do you think people are generally more genuine in person or online?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "hide behind a screen", translation: "nascondersi dietro uno schermo", type: "Idiom", example: "It is easy to be brave when you hide behind a screen." },
-      { phrase: "true colors", translation: "veri colori (vera natura)", type: "Idiom", example: "Social media often reveals people's true colors." },
-      { phrase: "put up a front", translation: "creare una facciata", type: "Idiom", example: "Is he truly happy, or just putting up a front online?" },
-      { phrase: "sugar-coat", translation: "indorare la pillola", type: "Verb", example: "Don't sugar-coat it, tell me the absolute truth." },
-      { phrase: "keyboard warrior", translation: "leone da tastiera", type: "Noun Phrase", example: "He acts tough on Twitter, but he's just a keyboard warrior." }
-    ],
-    guidedQuestions: [
-      "Why is it so easy to **hide behind a screen**?",
-      "Have you ever discovered someone's **true colors** through their online behavior?",
-      "Why do people feel the need to **put up a front** on Instagram?"
-    ]
-  },
-  {
-    id: 212,
-    question: "When is the last time you changed a deeply held opinion?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "stubbornly hold onto", translation: "aggrapparsi ostinatamente a", type: "Phrase", example: "Why do we stubbornly hold onto ideas long after they are disproven?" },
-      { phrase: "see the light", translation: "vedere la luce (cambiare idea)", type: "Idiom", example: "It took years, but he finally saw the light." },
-      { phrase: "cognitive dissonance", translation: "dissonanza cognitiva", type: "Noun Phrase", example: "Admitting you are wrong often causes cognitive dissonance." },
-      { phrase: "play devil's advocate", translation: "fare l'avvocato del diavolo", type: "Idiom", example: "I'll play devil's advocate just to test your theory." },
-      { phrase: "broaden my horizons", translation: "allargare i miei orizzonti", type: "Idiom", example: "Traveling helped me completely broaden my horizons." }
-    ],
-    guidedQuestions: [
-      "Why is it so hard to stop **stubbornly holding onto** a wrong opinion?",
-      "Do you ever **play devil's advocate** just to make a conversation more interesting?",
-      "What has helped you **broaden your horizons** the most?"
-    ]
-  },
-  {
-    id: 213,
-    question: "What is the most beautiful thing about the city you grew up in?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "hometown pride", translation: "orgoglio per la propria città", type: "Noun Phrase", example: "No matter how flawed it is, I still have hometown pride." },
-      { phrase: "fond memories", translation: "bei ricordi", type: "Collocation", example: "I have so many fond memories of that old park." },
-      { phrase: "hidden gem", translation: "gemma nascosta", type: "Noun Phrase", example: "This tiny bakery is a true hidden gem." },
-      { phrase: "nostalgia hits hard", translation: "la nostalgia colpisce forte", type: "Phrase", example: "Whenever I visit my old school, nostalgia hits me hard." },
-      { phrase: "hustle and bustle", translation: "trambusto", type: "Idiom", example: "I love the hustle and bustle of downtown Rome." }
-    ],
-    guidedQuestions: [
-      "What is a **hidden gem** in your hometown?",
-      "Do you miss the **hustle and bustle** when you are in a quiet place?",
-      "When you think of your childhood, what **fond memories** come to mind?"
-    ]
-  },
-  {
-    id: 214,
-    question: "If you had to teach a class on one highly specific topic tomorrow, what would it be?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "niche", translation: "di nicchia", type: "Adjective", example: "I have a very niche interest in vintage typewriters." },
-      { phrase: "infodump", translation: "scaricare informazioni", type: "Verb", example: "I tend to infodump when someone asks about my favorite movie." },
-      { phrase: "master the basics", translation: "imparare le basi", type: "Phrase", example: "You cannot innovate until you master the basics." },
-      { phrase: "subject matter expert", translation: "esperto del settore", type: "Noun Phrase", example: "Are you a subject matter expert in anything?" },
-      { phrase: "wing it", translation: "improvvisare", type: "Idiom", example: "I didn't prepare a presentation, so I'll just wing it." }
-    ],
-    guidedQuestions: [
-      "What is a **niche** topic you know way too much about?",
-      "Would you prepare for a completely spontaneous speech, or just **wing it**?",
-      "Is it better to **master the basics** widely, or become an expert in one thing?"
-    ]
-  },
-  {
-    id: 215,
-    question: "Do you believe 'the journey is more important than the destination'?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "instant gratification", translation: "gratificazione istantanea", type: "Noun Phrase", example: "Social media trains us to seek instant gratification." },
-      { phrase: "burnout", translation: "esaurimento", type: "Noun", example: "Focusing only on the goal leads to serious burnout." },
-      { phrase: "embrace the grind", translation: "accettare la fatica", type: "Phrase", example: "If you want to be an athlete, you must embrace the grind." },
-      { phrase: "tunnel vision", translation: "visione a tunnel (fissarsi)", type: "Noun Phrase", example: "He had such tunnel vision on his career that he lost his friends." },
-      { phrase: "delayed reward", translation: "ricompensa ritardata", type: "Noun Phrase", example: "Are you capable of waiting for a delayed reward?" }
-    ],
-    guidedQuestions: [
-      "Is social media ruining our ability to wait for a **delayed reward**?",
-      "Have you ever experienced **burnout** from focusing too hard on a goal?",
-      "How do you avoid getting **tunnel vision** in your career?"
-    ]
-  },
-  {
-    id: 220,
-    question: "What is your most useless, but highly impressive skill?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "party trick", translation: "trucco da festa", type: "Noun Phrase", example: "Being able to recite pi to 100 digits is a neat party trick." },
-      { phrase: "show off", translation: "mettersi in mostra", type: "Phrasal Verb", example: "He loves to show off his new language skills." },
-      { phrase: "hidden talent", translation: "talento nascosto", type: "Noun Phrase", example: "Does anyone in your family have a funny hidden talent?" },
-      { phrase: "useless", translation: "inutile", type: "Adjective", example: "It is a completely useless skill, but I love doing it." },
-      { phrase: "knack for", translation: "inclinazione per", type: "Noun Phrase", example: "She has a real knack for remembering random facts." }
-    ],
-    guidedQuestions: [
-      "What is your favorite **party trick**?",
-      "Do you think having a **hidden talent** makes someone more interesting?",
-      "Who do you know that loves to **show off**?"
-    ]
-  },
-  {
-    id: 221,
-    question: "If you had to be famous for one highly embarrassing thing, what would you choose?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "go viral", translation: "diventare virale", type: "Verb Phrase", example: "The video of him tripping over the rug went viral." },
-      { phrase: "laugh at yourself", translation: "ridere di se stessi", type: "Phrase", example: "You need to learn how to laugh at yourself in life." },
-      { phrase: "mortifying", translation: "mortificante", type: "Adjective", example: "It was a mortifying experience to spill coffee on the boss." },
-      { phrase: "claim to fame", translation: "motivo di celebrità", type: "Noun Phrase", example: "His only claim to fame is eating 50 hot dogs in ten minutes." },
-      { phrase: "own it", translation: "assumersene la responsabilità / farsi scivolare le critiche addosso", type: "Idiom", example: "When you make an embarrassing mistake, just own it." }
-    ],
-    guidedQuestions: [
-      "Have you ever seen something incredibly **mortifying** go viral?",
-      "Is it easy for you to **laugh at yourself**?",
-      "What is your strangest **claim to fame**?"
-    ]
-  },
-  {
-    id: 222,
-    question: "What is a controversial opinion you hold about cooking or food?",
-    category: "Food",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "overrated", translation: "sopravvalutato", type: "Adjective", example: "I think truffle oil is highly overrated." },
-      { phrase: "dealbreaker", translation: "fattore decisivo (in negativo)", type: "Noun", example: "For me, having raisins in bread is a dealbreaker." },
-      { phrase: "culinary sin", translation: "peccato culinario", type: "Noun Phrase", example: "Putting ketchup on pasta is considered a culinary sin in Italy." },
-      { phrase: "acquired taste", translation: "gusto acquisito", type: "Noun Phrase", example: "Black licorice is definitely an acquired taste." },
-      { phrase: "picky eater", translation: "schizzinoso (col cibo)", type: "Noun Phrase", example: "Are you an adventurous eater or a picky eater?" }
-    ],
-    guidedQuestions: [
-      "What popular food is completely **overrated** in your opinion?",
-      "Is making a traditional recipe incorrectly a **culinary sin**?",
-      "Were you a **picky eater** as a child?"
-    ]
-  },
-  {
-    id: 223,
-    question: "When was the last time you felt truly proud of a friend?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "root for", translation: "fare il tifo per", type: "Phrasal Verb", example: "We were all rooting for her to get the promotion." },
-      { phrase: "milestone", translation: "traguardo importante", type: "Noun", example: "Graduating from college is a huge milestone." },
-      { phrase: "overcome adversity", translation: "superare le avversità", type: "Collocation", example: "Watching him overcome adversity was incredibly inspiring." },
-      { phrase: "beam with pride", translation: "raggiungere dall'orgoglio", type: "Idiom", example: "Her parents were beaming with pride at the wedding." },
-      { phrase: "support system", translation: "rete di supporto", type: "Noun Phrase", example: "Having a strong support system makes tough times easier." }
-    ],
-    guidedQuestions: [
-      "Who are you always **rooting for** in life?",
-      "When someone hits a major **milestone**, how do you celebrate them?",
-      "Why is a reliable **support system** so important?"
-    ]
-  },
-  {
-    id: 224,
-    question: "What is the most emotionally difficult lesson you had to learn in your 20s?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "hard truth", translation: "dura verità", type: "Noun Phrase", example: "The hard truth is that you cannot please everyone." },
-      { phrase: "let go of", translation: "lasciar andare", type: "Phrasal Verb", example: "I had to let go of toxic relationships to find peace." },
-      { phrase: "trial by fire", translation: "prova del fuoco (imparare in situazioni difficili)", type: "Idiom", example: "My first year running a business was a total trial by fire." },
-      { phrase: "silver lining", translation: "lato positivo", type: "Idiom", example: "Even in a painful breakup, there is usually a silver lining." },
-      { phrase: "hindsight is 20/20", translation: "col senno di poi è tutto chiaro", type: "Idiom", example: "I should not have trusted him, but hindsight is 20/20." }
-    ],
-    guidedQuestions: [
-      "What **hard truth** took you years to finally accept?",
-      "Is it true that **hindsight is 20/20**, or do we still repeat mistakes?",
-      "Have you ever struggled to **let go of** a dream?"
-    ]
-  },
-  {
-    id: 225,
-    question: "If you could only keep three memories before losing the rest of your mind, what would they be?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "cherish", translation: "custodire gelosamente", type: "Verb", example: "I cherish the summers I spent at my grandparents' house." },
-      { phrase: "fade away", translation: "svanire / sbiadire", type: "Phrasal Verb", example: "Over time, even the most important memories fade away." },
-      { phrase: "core memory", translation: "ricordo fondamentale", type: "Noun Phrase", example: "That family trip to the lake is a core memory for me." },
-      { phrase: "flashback", translation: "ritorno di fiamma / flashback", type: "Noun", example: "The smell of that perfume gave me a sudden flashback." },
-      { phrase: "hold onto", translation: "aggrapparsi a", type: "Phrasal Verb", example: "Why do we hold onto memories of people who hurt us?" }
-    ],
-    guidedQuestions: [
-      "What is one **core memory** from your childhood?",
-      "Why do some painful memories never **fade away**?",
-      "What do you **cherish** most about your current life?"
-    ]
-  },
-  {
-    id: 226,
-    question: "Do you think suffering is absolutely necessary to create great art or achieve wisdom?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "romanticize", translation: "romanticizzare", type: "Verb", example: "Society tends to romanticize the 'starving artist' trope." },
-      { phrase: "catalyst", translation: "catalizzatore", type: "Noun", example: "Pain is often a powerful catalyst for personal growth." },
-      { phrase: "inner turmoil", translation: "tormento interiore", type: "Noun Phrase", example: "His paintings perfectly capture his deep inner turmoil." },
-      { phrase: "school of hard knocks", translation: "l'università della strada / la dura scuola della vita", type: "Idiom", example: "She didn't get a degree; she learned from the school of hard knocks." },
-      { phrase: "profound", translation: "profondo", type: "Adjective", example: "Only through loss did he write something truly profound." }
-    ],
-    guidedQuestions: [
-      "Do we culturally **romanticize** pain too much?",
-      "Can pure happiness ever be a **catalyst** for great art?",
-      "Why is **inner turmoil** so compelling in movies and books?"
-    ]
-  },
-  {
-    id: 227,
-    question: "Do you think the universe is chaotic and random, or is there a hidden order?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "blind chance", translation: "puro caso", type: "Noun Phrase", example: "Do you believe meeting your partner was destiny or blind chance?" },
-      { phrase: "grand design", translation: "disegno superiore", type: "Noun Phrase", example: "Some argue that the complexity of nature points to a grand design." },
-      { phrase: "ripple effect", translation: "effetto a catena", type: "Noun Phrase", example: "One small decision can create a massive ripple effect in your life." },
-      { phrase: "meaningless", translation: "privo di senso", type: "Adjective", example: "If everything is meaningless, how do you find purpose?" },
-      { phrase: "interconnected", translation: "interconnesso", type: "Adjective", example: "Eastern philosophies often view everything in the universe as interconnected." }
-    ],
-    guidedQuestions: [
-      "Do you think your life is guided by a **grand design** or **blind chance**?",
-      "How do small choices create a **ripple effect** in your career?",
-      "Does the idea of a chaotic, **meaningless** universe scare you?"
-    ]
-  },
-  {
-    id: 228,
-    question: "What is the most 'out of character' thing you've ever done?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "act on impulse", translation: "agire d'impulso", type: "Phrase", example: "I rarely act on impulse, but buying that ticket was spontaneous." },
-      { phrase: "step out of my comfort zone", translation: "uscire dalla mia zona di comfort", type: "Idiom", example: "Taking a dance class was a big step out of my comfort zone." },
-      { phrase: "uncharacteristic", translation: "insolito (per la persona)", type: "Adjective", example: "His sudden angry outburst was highly uncharacteristic." },
-      { phrase: "let your hair down", translation: "lasciarsi andare", type: "Idiom", example: "At the Christmas party, she finally let her hair down." },
-      { phrase: "spur of the moment", translation: "succo del momento / impulso del momento", type: "Idiom", example: "It was a spur of the moment decision to move to Paris." }
-    ],
-    guidedQuestions: [
-      "Have you ever made a major decision on the **spur of the moment**?",
-      "Why is it healthy to **step out of your comfort zone** occasionally?",
-      "What is something completely **uncharacteristic** of you?"
-    ]
-  },
-  {
-    id: 229,
-    question: "If you could see statistics hovering over people's heads, what stat would you want to see?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "hidden agenda", translation: "secondo fine", type: "Noun Phrase", example: "I wish I could see who has a hidden agenda in business meetings." },
-      { phrase: "break the ice", translation: "rompere il ghiaccio", type: "Idiom", example: "Knowing someone's favorite hobby would make it easy to break the ice." },
-      { phrase: "compatibility", translation: "compatibilità", type: "Noun", example: "Imagine seeing a compatibility score above everyone you date." },
-      { phrase: "vibe check", translation: "controllo dell'energia / atmosfera", type: "Slang", example: "Seeing their 'kindness score' would be the ultimate vibe check." },
-      { phrase: "intrusive", translation: "invadente", type: "Adjective", example: "Knowing everyone's secrets would feel far too intrusive." }
-    ],
-    guidedQuestions: [
-      "Would seeing a **compatibility** score ruin the magic of dating?",
-      "How do you usually figure out if someone has a **hidden agenda**?",
-      "Would knowing everyone's biggest fear be helpful or **intrusive**?"
-    ]
-  },
-  {
-    id: 230,
-    question: "What is the most beautiful sound you have ever heard in nature?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "soothing", translation: "rilassante / calmante", type: "Adjective", example: "The sound of rain against the window is incredibly soothing." },
-      { phrase: "deafening silence", translation: "silenzio assordante", type: "Oxymoron", example: "In the middle of the desert, the deafening silence is magical." },
-      { phrase: "rustling leaves", translation: "foglie che frusciano", type: "Collocation", example: "I love hiking and listening to the wind and rustling leaves." },
-      { phrase: "in awe", translation: "in soggezione / incantato", type: "Idiom", example: "Standing next to the waterfall left me completely in awe." },
-      { phrase: "unwind", translation: "rilassarsi", type: "Verb", example: "Nature sounds are the best way to unwind after a stressful week." }
-    ],
-    guidedQuestions: [
-      "Do you find the sound of a thunderstorm frightening or **soothing**?",
-      "When was the last time a landscape left you **in awe**?",
-      "Why do most people use nature sounds to **unwind**?"
-    ]
-  },
-  {
-    id: 231,
-    question: "Which of your current habits would your childhood self be most surprised by?",
-    category: "Personal",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "old habits die hard", translation: "le vecchie abitudini sono dure a morire", type: "Idiom", example: "I still bite my nails when I get nervous; old habits die hard." },
-      { phrase: "transform", translation: "trasformare", type: "Verb", example: "Moving abroad completely transformed my daily routine." },
-      { phrase: "acquire a taste", translation: "acquisire un gusto per qualcosa", type: "Phrase", example: "I never thought I would acquire a taste for black coffee." },
-      { phrase: "outgrow", translation: "superare crescendo", type: "Verb", example: "Did you outgrow your love for video games?" },
-      { phrase: "second nature", translation: "seconda natura (istinto)", type: "Idiom", example: "Waking up at 5am has become second nature to me." }
-    ],
-    guidedQuestions: [
-      "What is something you used to hate, but now it is **second nature** to do?",
-      "Did you **outgrow** your childhood friends or stay close?",
-      "Why is true that **old habits die hard**?"
-    ]
-  },
-  {
-    id: 232,
-    question: "What is the one phrase you hear people say that instantly annoys you?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "pet peeve", translation: "fastidio personale", type: "Noun Phrase", example: "People chewing loudly is my biggest pet peeve." },
-      { phrase: "buzzword", translation: "parola d'ordine (moda)", type: "Noun", example: "Corporate emails are always full of meaningless buzzwords." },
-      { phrase: "grate on my nerves", translation: "urtare i nervi", type: "Idiom", example: "Hearing the phrase 'it is what it is' really grates on my nerves." },
-      { phrase: "cliché", translation: "cliché / luogo comune", type: "Noun", example: "I hate romantic movies that rely on every cliché in the book." },
-      { phrase: "roll my eyes", translation: "alzare gli occhi al cielo", type: "Idiom", example: "I always roll my eyes when influencers say 'link in bio'." }
-    ],
-    guidedQuestions: [
-      "What corporate **buzzword** do you hear way too often?",
-      "What is your biggest conversational **pet peeve**?",
-      "Does the phrase 'everything happens for a reason' comfort you or make you **roll your eyes**?"
-    ]
-  },
-  {
-    id: 233,
-    question: "If you were forced to give up music or movies for the rest of your life, which would you sacrifice?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "tough call", translation: "scelta difficile", type: "Idiom", example: "Deciding between pizza and sushi is always a tough call." },
-      { phrase: "soundtrack to your life", translation: "colonna sonora della propria vita", type: "Idiom", example: "Music acts as the emotional soundtrack to your life." },
-      { phrase: "escapism", translation: "escapismo / evasione", type: "Noun", example: "Watching fantasy movies is my favorite form of escapism." },
-      { phrase: "resonates with", translation: "risuona con", type: "Phrasal Verb", example: "Which song deeply resonates with your current mood?" },
-      { phrase: "make a sacrifice", translation: "fare un sacrificio", type: "Phrase", example: "Sometimes you must make a sacrifice to achieve big goals." }
-    ],
-    guidedQuestions: [
-      "Why do specific songs suddenly become the **soundtrack to your life**?",
-      "Is cinema the ultimate form of **escapism**?",
-      "What is a **tough call** you recently had to make?"
-    ]
-  },
-  {
-    id: 234,
-    question: "What is something deeply unethical that humanity accepts as totally normal?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "turn a blind eye", translation: "chiudere un occhio", type: "Idiom", example: "We turn a blind eye to the reality of factory farming." },
-      { phrase: "status quo", translation: "lo stato delle cose / lo status quo", type: "Noun", example: "People are terrified of challenging the terrifying status quo." },
-      { phrase: "normalized", translation: "normalizzato", type: "Adjective", example: "Working 60 hours a week has been completely normalized." },
-      { phrase: "cognitive dissonance", translation: "dissonanza cognitiva", type: "Noun Phrase", example: "Buying cheap clothes from sweatshops requires immense cognitive dissonance." },
-      { phrase: "moral compass", translation: "bussola morale", type: "Noun Phrase", example: "Does a high salary often compromise a person's moral compass?" }
-    ],
-    guidedQuestions: [
-      "Why is extreme wealth inequality **normalized** in modern society?",
-      "Do you think humanity's **moral compass** is improving or decaying?",
-      "Why do we **turn a blind eye** to global suffering?"
-    ]
-  },
-  {
-    id: 250,
-    question: "Do you think true altruism exists, or is every good deed ultimately selfish?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "altruism", translation: "altruismo", type: "Noun", example: "True altruism means helping others with zero expectation of reward." },
-      { phrase: "ulterior motive", translation: "secondo fine / scopo nascosto", type: "Noun Phrase", example: "I always wonder if philanthropists have an ulterior motive." },
-      { phrase: "inherently", translation: "intrinsecamente", type: "Adverb", example: "Are humans inherently selfish or inherently good?" },
-      { phrase: "self-serving", translation: "opportunistico / egoistico", type: "Adjective", example: "Even charity can be a self-serving act if it just makes you feel good." },
-      { phrase: "cynical", translation: "cinico", type: "Adjective", example: "It is a very cynical worldview to believe no one is truly kind." }
-    ],
-    guidedQuestions: [
-      "Is it possible to act without an **ulterior motive**?",
-      "Why is the debate about **altruism** so controversial?",
-      "Are we **inherently** driven by survival or kindness?"
-    ]
-  },
-  {
-    id: 251,
-    question: "What is the most beautiful lie you've ever been told?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "white lie", translation: "bugia a fin di bene", type: "Noun Phrase", example: "Sometimes a white lie is necessary to protect someone's feelings." },
-      { phrase: "fabricate", translation: "fabbricare / inventare", type: "Verb", example: "Did they fabricate the story to make you feel better?" },
-      { phrase: "blissful ignorance", translation: "beata ignoranza", type: "Noun Phrase", example: "I prefer blissful ignorance over a painful truth." },
-      { phrase: "sugar-coat", translation: "indorare la pillola", type: "Verb", example: "Stop trying to sugar-coat the reality of the situation." },
-      { phrase: "harsh reality", translation: "dura realtà", type: "Noun Phrase", example: "Do you prefer a beautiful lie or the harsh reality?" }
-    ],
-    guidedQuestions: [
-      "When is a **white lie** morally completely justified?",
-      "Have you ever chosen **blissful ignorance** over the truth?",
-      "What happens when you discover someone tried to **sugar-coat** a tragedy?"
-    ]
-  },
-  {
-    id: 252,
-    question: "If you had access to a machine that could accurately predict your exact time and cause of death, would you use it?",
-    category: "Existential",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "inevitability", translation: "inevitabilità", type: "Noun", example: "The inevitability of death is humanity's greatest fear." },
-      { phrase: "ignorance is bliss", translation: "l'ignoranza è una benedizione", type: "Idiom", example: "When it comes to the future, sometimes ignorance is bliss." },
-      { phrase: "foreknowledge", translation: "prescienza", type: "Noun", example: "Would foreknowledge of your death change how you live today?" },
-      { phrase: "impending doom", translation: "destino incombente", type: "Noun Phrase", example: "Knowing the exact date would leave me with a sense of impending doom." },
-      { phrase: "carpe diem", translation: "cogli l'attimo", type: "Phrase", example: "Would you finally embrace 'carpe diem' if you knew your time was limited?" }
-    ],
-    guidedQuestions: [
-      "Does **foreknowledge** ruin the surprise of living?",
-      "Why do some people believe that **ignorance is bliss**?",
-      "Would a deadline give you a sense of purpose or **impending doom**?"
-    ]
-  },
-  {
-    id: 253,
-    question: "What do you think is the biggest flaw in the modern education system?",
-    category: "Philosophy",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "one-size-fits-all", translation: "standardizzato / valido per tutti", type: "Adjective Phrase", example: "A one-size-fits-all approach to learning rarely works." },
-      { phrase: "stifle creativity", translation: "soffocare la creatività", type: "Collocation", example: "Do standardized tests actually stifle creativity in children?" },
-      { phrase: "rote memorization", translation: "apprendimento mnemonico", type: "Noun Phrase", example: "Rote memorization doesn't teach you how to think." },
-      { phrase: "conformity", translation: "conformismo", type: "Noun", example: "Schools often reward conformity over original thought." },
-      { phrase: "obsolete", translation: "obsoleto", type: "Adjective", example: "Many of the skills taught in high school are entirely obsolete." }
-    ],
-    guidedQuestions: [
-      "Does a **one-size-fits-all** classroom leave gifted students behind?",
-      "How relying heavily on **rote memorization** creates poor problem solvers?",
-      "What is the most **obsolete** subject taught in modern schools?"
-    ]
-  },
-  {
-    id: 254,
-    question: "If you could instantly completely erase one emotion from human existence, which would it be?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "eradicate", translation: "sradicare", type: "Verb", example: "If we could eradicate jealousy, would relationships survive?" },
-      { phrase: "double-edged sword", translation: "arma a doppio taglio", type: "Idiom", example: "Fear is a double-edged sword; it protects us but also traps us." },
-      { phrase: "necessary evil", translation: "male necessario", type: "Noun Phrase", example: "Do you consider sadness a necessary evil to appreciate joy?" },
-      { phrase: "apathy", translation: "apatia", type: "Noun", example: "Without anger at injustice, we might just fall into total apathy." },
-      { phrase: "human condition", translation: "condizione umana", type: "Noun Phrase", example: "Pain is a fundamental part of the human condition." }
-    ],
-    guidedQuestions: [
-      "Is fear a **necessary evil** for keeping humanity alive?",
-      "Why is anger a **double-edged sword**?",
-      "Would eliminating sadness reduce the richness of the **human condition**?"
-    ]
-  },
-  {
-    id: 255,
-    question: "Do you believe that people are capable of profound, fundamental change?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "set in their ways", translation: "fossilizzato nelle proprie abitudini", type: "Idiom", example: "My grandfather is entirely set in his ways." },
-      { phrase: "epiphany", translation: "epifania / illuminazione", type: "Noun", example: "It took a massive epiphany for him to quit smoking." },
-      { phrase: "turn over a new leaf", translation: "voltare pagina (cambiare in meglio)", type: "Idiom", example: "She promised to turn over a new leaf this year." },
-      { phrase: "ingrained", translation: "radicato", type: "Adjective", example: "Those toxic behaviors are deeply ingrained in his personality." },
-      { phrase: "catalyst for change", translation: "catalizzatore del cambiamento", type: "Collocation", example: "Sometimes a tragedy is the only real catalyst for change." }
-    ],
-    guidedQuestions: [
-      "Are humans too **set in their ways** to change after age 30?",
-      "Have you ever seen someone totally **turn over a new leaf**?",
-      "What is the most common **catalyst for change** in a person's life?"
-    ]
-  },
-  {
-    id: 256,
-    question: "What is a memory you have that you aren't sure is actually real?",
-    category: "Dreams",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "false memory", translation: "falso ricordo", type: "Noun Phrase", example: "The brain can easily create a detailed false memory." },
-      { phrase: "blur the lines", translation: "sfumare i confini", type: "Phrase", example: "Over time, we blur the lines between reality and dreams." },
-      { phrase: "vividly", translation: "vividamente", type: "Adverb", example: "I vividly remember a dog we never even owned." },
-      { phrase: "figment of my imagination", translation: "frutto della mia immaginazione", type: "Idiom", example: "Was that conversation real, or just a figment of my imagination?" },
-      { phrase: "distort", translation: "distorcere", type: "Verb", example: "Every time you recall a memory, you slightly distort it." }
-    ],
-    guidedQuestions: [
-      "Do you have a **vividly** clear memory from a very young age?",
-      "Why does the brain **distort** the past to protect us?",
-      "Has a dream ever **blurred the lines** between sleep and reality for you?"
-    ]
-  },
-  {
-    id: 257,
-    question: "If you could spend one hour speaking with anyone who is dead, who would you choose and what would you ask?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "closure", translation: "chiusura (psicologica)", type: "Noun", example: "Many people want to talk to deceased relatives just for closure." },
-      { phrase: "pick someone's brain", translation: "chiedere consiglio a qualcuno (estrarre idee)", type: "Idiom", example: "I would love to pick Leonardo da Vinci's brain." },
-      { phrase: "beyond the grave", translation: "dall'oltretomba", type: "Phrase", example: "What advice would they give from beyond the grave?" },
-      { phrase: "leave unsaid", translation: "lasciare non detto", type: "Phrase", example: "There is always something you leave unsaid when someone dies." },
-      { phrase: "profound insight", translation: "intuizione profonda", type: "Collocation", example: "Seeking profound insight from historical figures is a common fantasy." }
-    ],
-    guidedQuestions: [
-      "Is seeking **closure** the main reason we miss the dead?",
-      "Whose brain would you love to **pick** about history?",
-      "What is the hardest thing to **leave unsaid**?"
-    ]
-  },
-  {
-    id: 258,
-    question: "When did you first realize that your parents are just ordinary people making it up as they go?",
-    category: "Family",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "put on a pedestal", translation: "mettere su un piedistallo", type: "Idiom", example: "As children, we put our parents on a pedestal." },
-      { phrase: "shatter the illusion", translation: "infrangere l'illusione", type: "Phrase", example: "Seeing my father cry for the first time shattered the illusion." },
-      { phrase: "flawed", translation: "imperfetto / difettoso", type: "Adjective", example: "It is scary to realize your heroes are deeply flawed." },
-      { phrase: "wing it", translation: "improvvisare", type: "Idiom", example: "Most adults are just winging it, hoping for the best." },
-      { phrase: "coming of age", translation: "raggiungimento della maturità", type: "Noun Phrase", example: "Realizing your parents are human is a crucial coming of age moment." }
-    ],
-    guidedQuestions: [
-      "Why do we naturally **put our parents on a pedestal**?",
-      "What was the moment that **shattered the illusion** for you?",
-      "Is it comforting or terrifying to know all adults are just **winging it**?"
-    ]
-  },
-  {
-    id: 259,
-    question: "What is something that society treats as a luxury, but you believe should be a fundamental human right?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "commodify", translation: "mercificare", type: "Verb", example: "We shouldn't commodify basic needs like water and shelter." },
-      { phrase: "disparity", translation: "disparità", type: "Noun", example: "The disparity between the rich and the poor is growing." },
-      { phrase: "basic necessity", translation: "necessità di base", type: "Noun Phrase", example: "Internet access is now a basic necessity, not a luxury." },
-      { phrase: "privilege", translation: "privilegio", type: "Noun", example: "Having access to mental healthcare is currently a massive privilege." },
-      { phrase: "level the playing field", translation: "livellare il campo di gioco (dare pari opportunità)", type: "Idiom", example: "Universal education helps level the playing field." }
-    ],
-    guidedQuestions: [
-      "Should access to fast internet be a **basic necessity**?",
-      "How does free healthcare **level the playing field**?",
-      "Is it dangerous to **commodify** human attention on social media?"
-    ]
-  },
-  {
-    id: 260,
-    question: "What is a belief you held 5 years ago that you completely disagree with today?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "change my tune", translation: "cambiare musica / opinione", type: "Idiom", example: "After seeing the evidence, I had to completely change my tune." },
-      { phrase: "outdated", translation: "datato / obsoleto", type: "Adjective", example: "That is a highly outdated way of looking at gender roles." },
-      { phrase: "paradigm shift", translation: "cambiamento di paradigma", type: "Noun Phrase", example: "Moving across the world caused a paradigm shift in my thinking." },
-      { phrase: "double down", translation: "raddoppiare (ostinarsi)", type: "Phrasal Verb", example: "When confronted with facts, some people just double down on their errors." },
-      { phrase: "humbling experience", translation: "esperienza che rende umili", type: "Collocation", example: "Realizing you were wrong for years is a deeply humbling experience." }
-    ],
-    guidedQuestions: [
-      "What evidence forced you to **change your tune**?",
-      "Why do people **double down** when they know they are wrong?",
-      "Has therapy ever caused a **paradigm shift** in your life?"
-    ]
-  },
-  {
-    id: 261,
-    question: "Do you think humanity will ultimately destroy itself or save itself?",
-    category: "Existential",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "tipping point", translation: "punto di non ritorno", type: "Noun Phrase", example: "Have we already passed the climate tipping point?" },
-      { phrase: "self-destruction", translation: "autodistruzione", type: "Noun", example: "Our greed is driving us toward total self-destruction." },
-      { phrase: "resilience", translation: "resilienza", type: "Noun", example: "Human resilience has survived ice ages and plagues." },
-      { phrase: "hubris", translation: "arroganza / tracotanza", type: "Noun", example: "Our technological hubris might be our downfall." },
-      { phrase: "doom and gloom", translation: "pessimismo e catastrofismo", type: "Idiom", example: "I get tired of hearing constantly about doom and gloom in the news." }
-    ],
-    guidedQuestions: [
-      "Are we approaching a dangerous **tipping point** in history?",
-      "Is **hubris** humanity's worst flaw?",
-      "Can human **resilience** overcome our tendency for war?"
-    ]
-  },
-  {
-    id: 262,
-    question: "If you could measure the total impact of your life in one specific metric, what would you want that metric to be?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "leave a legacy", translation: "lasciare un'eredità", type: "Idiom", example: "Everyone wants to leave a legacy, but very few do." },
-      { phrase: "quantify", translation: "quantificare", type: "Verb", example: "You cannot quantify love or human connection." },
-      { phrase: "ripple effect", translation: "effetto a catena", type: "Noun Phrase", example: "The ripple effect of one good teacher can span generations." },
-      { phrase: "benchmark", translation: "parametro di riferimento", type: "Noun", example: "Wealth is a terrible benchmark for human value." },
-      { phrase: "net positive", translation: "saldo positivo", type: "Noun Phrase", example: "Was my existence a net positive for the planet?" }
-    ],
-    guidedQuestions: [
-      "Is it possible to accurately **quantify** happiness?",
-      "What is the ultimate **benchmark** of a successful life?",
-      "Do you think your life will ultimately be a **net positive** to society?"
-    ]
-  },
-  {
-    id: 263,
-    question: "Do you think true freedom is having unlimited choices, or having no choices to make?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "paradox of choice", translation: "il paradosso della scelta", type: "Noun Phrase", example: "The paradox of choice means more options make us incredibly unhappy." },
-      { phrase: "liberating", translation: "liberatorio", type: "Adjective", example: "Having your schedule strictly managed can actually be very liberating." },
-      { phrase: "boundless", translation: "senza limiti", type: "Adjective", example: "Boundless freedom often leads to heavy anxiety." },
-      { phrase: "burden of responsibility", translation: "peso della responsabilità", type: "Collocation", example: "With total freedom comes the crushing burden of responsibility." },
-      { phrase: "paralyzed", translation: "paralizzato", type: "Adjective", example: "I am paralyzed by trying to pick a movie on Netflix." }
-    ],
-    guidedQuestions: [
-      "Have you ever felt **paralyzed** by the **paradox of choice**?",
-      "Can strict routines actually be **liberating**?",
-      "Is **boundless** freedom mostly an illusion?"
-    ]
-  },
-  {
-    id: 264,
-    question: "What is the hardest part about getting older that nobody warns you about?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "take a toll", translation: "lasciare il segno / pesare", type: "Phrase", example: "Years of stress will rapidly take a toll on your body." },
-      { phrase: "drift apart", translation: "allontanarsi", type: "Phrasal Verb", example: "It is incredibly painful to watch close friends slowly drift apart." },
-      { phrase: "blink of an eye", translation: "un batter d'occhio", type: "Idiom", example: "Your twenties are gone in the blink of an eye." },
-      { phrase: "mortality", translation: "mortalità", type: "Noun", example: "Facing your fading mortality changes everything." },
-      { phrase: "trade-off", translation: "compromesso", type: "Noun", example: "Aging is a trade-off: you lose energy, but gain wisdom." }
-    ],
-    guidedQuestions: [
-      "Why do childhood friends naturally **drift apart** over time?",
-      "Does understanding your **mortality** make life richer?",
-      "What is the biggest **trade-off** between being young and old?"
-    ]
-  },
-  {
-    id: 270,
-    question: "What is a seemingly simple word that you always spell wrong?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "mind blank", translation: "vuoto di memoria", type: "Noun Phrase", example: "I had a total mind blank on how to spell 'restaurant'." },
-      { phrase: "second-guess", translation: "mettere in dubbio", type: "Verb", example: "I always second-guess myself when writing emails." },
-      { phrase: "rely heavily on", translation: "fare grande affidamento su", type: "Phrase", example: "We rely heavily on autocorrect nowadays." },
-      { phrase: "slip up", translation: "scivolone / errore", type: "Noun/Verb", example: "It was just a minor slip up in the text message." },
-      { phrase: "pet peeve", translation: "cosa fastidiosa", type: "Noun Phrase", example: "Bad grammar is my biggest pet peeve." }
-    ],
-    guidedQuestions: [
-      "Have you ever had a sudden **mind blank** during a presentation?",
-      "Do people **rely heavily on** AI for writing too much?",
-      "What spelling mistake is a major **pet peeve** for you?"
-    ]
-  },
-  {
-    id: 271,
-    question: "What is the most beautiful piece of architecture you've ever seen?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "breathtaking", translation: "mozzafiato", type: "Adjective", example: "The ceiling of the cathedral was simply breathtaking." },
-      { phrase: "stand the test of time", translation: "resistere alla prova del tempo", type: "Idiom", example: "Roman aqueducts certainly stand the test of time." },
-      { phrase: "intricate details", translation: "dettagli complessi", type: "Collocation", example: "I was amazed by the intricate details of the wood carvings." },
-      { phrase: "in awe", translation: "incantato / in soggezione", type: "Idiom", example: "Standing inside the Colosseum left me in awe." },
-      { phrase: "monstrosity", translation: "mostruosità", type: "Noun", example: "Some people think modern skyscrapers are a visual monstrosity." }
-    ],
-    guidedQuestions: [
-      "Does classical architecture **stand the test of time** better than modern designs?",
-      "What famous building left you entirely **in awe**?",
-      "Do you consider brutalist concrete buildings a masterpiece or a **monstrosity**?"
-    ]
-  },
-  {
-    id: 272,
-    question: "If you had to master one instrument instantly, which one would fit your personality best?",
-    category: "Dreams",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "struck a chord", translation: "toccare le corde del cuore (fig)", type: "Idiom", example: "The sad melody completely struck a chord with me." },
-      { phrase: "steep learning curve", translation: "curva di apprendimento ripida", type: "Noun Phrase", example: "The violin has a notoriously steep learning curve." },
-      { phrase: "in tune with", translation: "in sintonia con", type: "Idiom", example: "Are you in tune with your artistic side?" },
-      { phrase: "virtuoso", translation: "virtuoso", type: "Noun", example: "It takes decades to become a true piano virtuoso." },
-      { phrase: "jam out", translation: "suonare liberamente / fare jam session", type: "Phrasal Verb", example: "It would be fun to just jam out with a band on weekends." }
-    ],
-    guidedQuestions: [
-      "Why does a specific instrument have such a **steep learning curve**?",
-      "What type of music generally **strikes a chord** with you?",
-      "Are you highly **in tune with** your emotions when listening to sad songs?"
-    ]
-  },
-  {
-    id: 273,
-    question: "What is an assumption people always make about you that is completely wrong?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "judge a book by its cover", translation: "giudicare dalle apparenze", type: "Idiom", example: "People judge a book by its cover, assuming I am arrogant because I'm quiet." },
-      { phrase: "misread", translation: "fraintendere / leggere male", type: "Verb", example: "They completely misread my intentions." },
-      { phrase: "vibe", translation: "vibrazione / energia", type: "Noun", example: "I apparently give off a highly intimidating vibe." },
-      { phrase: "first impression", translation: "prima impressione", type: "Noun Phrase", example: "My first impression of him was totally off the mark." },
-      { phrase: "deep down", translation: "in fondo", type: "Phrase", example: "Deep down, I am actually incredibly sensitive." }
-    ],
-    guidedQuestions: [
-      "Do you think it's impossible not to **judge a book by its cover**?",
-      "Why do people often **misread** your tone in text messages?",
-      "What **vibe** do you think you give off to strangers?"
-    ]
-  },
-  {
-    id: 274,
-    question: "Do you think we are living in the 'good old days' right now?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "nostalgia", translation: "nostalgia", type: "Noun", example: "Nostalgia makes us remember the past as better than it actually was." },
-      { phrase: "take for granted", translation: "dare per scontato", type: "Phrase", example: "We take the internet for granted until it breaks." },
-      { phrase: "rose-tinted glasses", translation: "lenti rosa (vedere il mondo in modo idealizzato)", type: "Idiom", example: "Looking back at the 90s with rose-tinted glasses ignores the real problems." },
-      { phrase: "fleeting", translation: "fugace", type: "Adjective", example: "Happiness is a very fleeting emotion." },
-      { phrase: "ignorance is bliss", translation: "l'ignoranza è una benedizione", type: "Idiom", example: "We were happy as kids mainly because ignorance is bliss." }
-    ],
-    guidedQuestions: [
-      "Is **nostalgia** a dangerous emotion?",
-      "What technology do we currently **take for granted**?",
-      "Why do generations always view their childhood through **rose-tinted glasses**?"
-    ]
-  },
-  {
-    id: 275,
-    question: "What is an unconventional feature you would build into your dream house?",
-    category: "Dreams",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "spare no expense", translation: "non badare a spese", type: "Phrase", example: "If I built a house, I would spare no expense on the kitchen." },
-      { phrase: "novelty", translation: "novità / stravaganza", type: "Noun", example: "A slide instead of stairs is a fun novelty." },
-      { phrase: "game-changer", translation: "punto di svolta", type: "Noun Phrase", example: "Having heated floors in the winter is considered a game-changer." },
-      { phrase: "cozy nook", translation: "angolino accogliente", type: "Noun Phrase", example: "I want a cozy reading nook built into the wall." },
-      { phrase: "over-the-top", translation: "esagerato", type: "Adjective", example: "An indoor waterfall might be a little over-the-top." }
-    ],
-    guidedQuestions: [
-      "If you could **spare no expense**, what is the first room you would design?",
-      "What modern home appliance is a total **game-changer**?",
-      "Would you prefer an **over-the-top** mansion or a small cabin?"
-    ]
-  },
-  {
-    id: 276,
-    question: "What is the biggest risk you've actively decided NOT to take?",
-    category: "Deep",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "play it safe", translation: "non rischiare / andare sul sicuro", type: "Idiom", example: "Instead of moving to New York, I chose to play it safe." },
-      { phrase: "what-if", translation: "il 'cosa succederebbe se'", type: "Noun", example: "Do you constantly live with the 'what-if' of that decision?" },
-      { phrase: "leap of faith", translation: "salto nel buio / atto di fede", type: "Noun Phrase", example: "Quitting my job was a massive leap of faith." },
-      { phrase: "weigh the pros and cons", translation: "soppesare i pro e i contro", type: "Phrase", example: "You must carefully weigh the pros and cons before buying a house." },
-      { phrase: "dodged a bullet", translation: "schivato un proiettile", type: "Idiom", example: "Looking back at that toxic startup, I really dodged a bullet." }
-    ],
-    guidedQuestions: [
-      "Is it better to **play it safe** or take wild risks in your 20s?",
-      "Have you ever taken a massive **leap of faith** that actually worked?",
-      "When evaluating a job offer, how do you **weigh the pros and cons**?"
-    ]
-  },
-  {
-    id: 277,
-    question: "What is something that strongly gives you a sense of purpose?",
-    category: "Wisdom",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "anchor", translation: "àncora (fig.)", type: "Noun", example: "My family acts as an anchor when I feel lost." },
-      { phrase: "driving force", translation: "forza motrice", type: "Noun Phrase", example: "Curiosity is the main driving force behind my career." },
-      { phrase: "give back", translation: "restituire (alla comunità)", type: "Phrasal Verb", example: "I want to gain wealth so I can eventually give back." },
-      { phrase: "inner compass", translation: "bussola interiore", type: "Noun Phrase", example: "When society is chaotic, you have to follow your inner compass." },
-      { phrase: "larger than life", translation: "più grande della vita", type: "Idiom", example: "To feel fulfilled, do we need to be part of something larger than life?" }
-    ],
-    guidedQuestions: [
-      "What is your primary **driving force** to wake up in the morning?",
-      "How do you plan to **give back** to your local community?",
-      "Is it possible to live without an **inner compass**?"
-    ]
-  },
-  {
-    id: 278,
-    question: "What is an incredibly difficult task that you actually genuinely enjoy doing?",
-    category: "Personal",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "flow state", translation: "stato di flusso", type: "Noun Phrase", example: "When I am painting, I enter a deep flow state." },
-      { phrase: "get lost in", translation: "perdersi in", type: "Phrasal Verb", example: "I can easily get lost in organizing scattered data." },
-      { phrase: "labor of love", translation: "lavoro fatto con amore", type: "Noun Phrase", example: "Restoring that old car was a total labor of love." },
-      { phrase: "daunting", translation: "scoraggiante", type: "Adjective", example: "Writing a novel seemed daunting, but I loved it." },
-      { phrase: "rewarding", translation: "gratificante", type: "Adjective", example: "Nothing is more rewarding than a hard-earned victory." }
-    ],
-    guidedQuestions: [
-      "What activity reliably puts you into a deep **flow state**?",
-      "Have you ever completed a project that was pure **labor of love**?",
-      "Why do some **daunting** tasks ultimately feel so **rewarding**?"
-    ]
-  },
-  {
-    id: 279,
-    question: "If humans stopped needing to sleep, what would you do with your extra 8 hours?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "hustle culture", translation: "cultura del lavoro incessante", type: "Noun Phrase", example: "Hustle culture would completely ruin the extra time." },
-      { phrase: "night owl", translation: "nottambulo", type: "Noun Phrase", example: "As a night owl, I would love the quiet hours of 3 AM." },
-      { phrase: "monopolize", translation: "monopolizzare", type: "Verb", example: "Our employers would just monopolize the extra hours." },
-      { phrase: "pass the time", translation: "far passare il tempo", type: "Phrase", example: "We would probably just invent more scrolling apps to pass the time." },
-      { phrase: "burn the midnight oil", translation: "lavorare fino a tardi", type: "Idiom", example: "Without sleep, everyone would burn the midnight oil forever." }
-    ],
-    guidedQuestions: [
-      "Would **hustle culture** force us to work 16 hour days?",
-      "Do you think the quiet peace of the **night owl** hours would be ruined?",
-      "Is it unhealthy to constantly **burn the midnight oil**?"
-    ]
-  }
-,
-  {
-    id: 201,
-    question: "What is your favorite sound in the morning?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "wake-up call", translation: "sveglia", type: "Noun", example: "The birds singing is my natural wake-up call." },
-      { phrase: "get going", translation: "mettersi in moto", type: "Phrasal Verb", example: "I need coffee to get going in the morning." },
-      { phrase: "morning person", translation: "mattiniero", type: "Noun Phrase", example: "Are you a morning person or a night owl?" },
-      { phrase: "start the day right", translation: "iniziare bene la giornata", type: "Phrase", example: "A good breakfast helps me start the day right." },
-      { phrase: "grogginess", translation: "intontimento", type: "Noun", example: "How do you shake off the morning grogginess?" }
-    ],
-    guidedQuestions: [
-      "Are you usually a **morning person**?",
-      "How do you **get going** when you feel extremely tired?",
-      "What helps you **start the day right**?"
-    ]
-  },
-  {
-    id: 202,
-    question: "What is the strangest food combination you secretly enjoy?",
-    category: "Food",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "acquired taste", translation: "gusto acquisito", type: "Noun Phrase", example: "Olives are an acquired taste for many people." },
-      { phrase: "guilty pleasure", translation: "piacere inconfessabile", type: "Noun Phrase", example: "Eating pizza with pineapple is my guilty pleasure." },
-      { phrase: "flavor profile", translation: "profilo di sapori", type: "Collocation", example: "Sweet and salty make a great flavor profile." },
-      { phrase: "gross out", translation: "fare schifo", type: "Phrasal Verb", example: "Does seeing someone eat ketchup with eggs gross you out?" },
-      { phrase: "culinary experiment", translation: "esperimento culinario", type: "Collocation", example: "What is your most successful culinary experiment?" }
-    ],
-    guidedQuestions: [
-      "Do you have a food that is an **acquired taste** for you?",
-      "What is your ultimate **guilty pleasure** snack?",
-      "Does mixing sweet and savory ever **gross you out**?"
-    ]
-  },
-  {
-    id: 203,
-    question: "If you could instantly learn any pointless skill, what would it be?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "party trick", translation: "trucchetto da festa", type: "Noun Phrase", example: "Juggling is my favorite party trick." },
-      { phrase: "knack for", translation: "inclinazione per", type: "Noun Phrase", example: "Does he have a knack for remembering random facts?" },
-      { phrase: "show off", translation: "mettersi in mostra", type: "Phrasal Verb", example: "I love to show off my ability to solve a Rubik's cube." },
-      { phrase: "useless talent", translation: "talento inutile", type: "Noun Phrase", example: "What is the most useless talent you possess?" },
-      { phrase: "pick up", translation: "imparare (rapidamente)", type: "Phrasal Verb", example: "Did you pick up that trick from a YouTube video?" }
-    ],
-    guidedQuestions: [
-      "What is your go-to **party trick**?",
-      "Do you have a **knack for** learning useless things quickly?",
-      "Would you like to **show off** a weird talent on live TV?"
-    ]
-  },
-  {
-    id: 204,
-    question: "What movie universe would be the absolute worst to live in?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "dystopian", translation: "distopico", type: "Adjective", example: "A dystopian future sounds terrifying." },
-      { phrase: "fend for oneself", translation: "cavarsela da soli", type: "Idiom", example: "In a zombie apocalypse, you must fend for yourself." },
-      { phrase: "plot twist", translation: "colpo di scena", type: "Noun Phrase", example: "I hate when a movie relies on a cheap plot twist." },
-      { phrase: "bleak", translation: "desolante", type: "Adjective", example: "The world of Mad Max is incredibly bleak." },
-      { phrase: "survival guide", translation: "guida di sopravvivenza", type: "Noun Phrase", example: "You would need a survival guide to make it there." }
-    ],
-    guidedQuestions: [
-      "Do you enjoy reading **dystopian** novels?",
-      "How well could you **fend for yourself** in the wilderness?",
-      "Why do you think **bleak** settings are so popular in movies?"
-    ]
-  },
-  {
-    id: 205,
-    question: "What is the most underrated household chore?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "odd job", translation: "lavoretto", type: "Noun Phrase", example: "I like doing odd jobs around the house on Sundays." },
-      { phrase: "mindless task", translation: "compito che non richiede di pensare", type: "Noun Phrase", example: "Folding laundry is a relaxing, mindless task." },
-      { phrase: "tidying up", translation: "mettere in ordine", type: "Phrasal Verb", example: "Is tidying up therapeutic for you?" },
-      { phrase: "get it over with", translation: "togliersi il pensiero", type: "Idiom", example: "I always do the dishes immediately to get it over with." },
-      { phrase: "sense of accomplishment", translation: "senso di realizzazione", type: "Noun Phrase", example: "A clean kitchen gives me a strong sense of accomplishment." }
-    ],
-    guidedQuestions: [
-      "What **mindless task** actually helps you relax?",
-      "Do you usually procrastinate cleaning or try to **get it over with**?",
-      "Does **tidying up** your physical space help clear your mind?"
-    ]
-  },
-  {
-    id: 206,
-    question: "What is a highly generic compliment you've received that you still secretly treasure?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "make my day", translation: "svoltarmi la giornata", type: "Idiom", example: "That small compliment really made my day." },
-      { phrase: "flattered", translation: "lusingato", type: "Adjective", example: "I was so flattered when they praised my work." },
-      { phrase: "boost someone's ego", translation: "pompare l'ego", type: "Idiom", example: "A generic compliment can sometimes boost someone's ego exactly when they need it." },
-      { phrase: "stick with you", translation: "rimanerti impresso", type: "Idiom", example: "Why do some offhand comments stick with you for years?" },
-      { phrase: "brush it off", translation: "non darci peso / ignorare", type: "Phrasal Verb", example: "I normally brush off compliments because I get shy." }
-    ],
-    guidedQuestions: [
-      "What compliment could instantly **make your day**?",
-      "Is it wrong if we sometimes want to **boost our ego**?",
-      "Why do some small remarks **stick with you** for decades?"
-    ]
-  },
-  {
-    id: 207,
-    question: "Have you ever kept a secret that wasn't yours, just to avoid drama?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "stir the pot", translation: "mettere zizzania", type: "Idiom", example: "I didn't tell him because I didn't want to stir the pot." },
-      { phrase: "turn a blind eye", translation: "chiudere un occhio", type: "Idiom", example: "Is it ever okay to turn a blind eye to someone else's mistake?" },
-      { phrase: "spill the beans", translation: "svuotare il sacco", type: "Idiom", example: "I accidentally spilled the beans about the surprise party." },
-      { phrase: "bystander", translation: "spettatore", type: "Noun", example: "Sometimes it is safer to remain a bystander." },
-      { phrase: "burden", translation: "fardello", type: "Noun", example: "Keeping that secret felt like a heavy burden." }
-    ],
-    guidedQuestions: [
-      "When is it justified to **turn a blind eye**?",
-      "Have you ever accidentally **spilled the beans** on something important?",
-      "Does staying quiet make you a responsible friend, or a cowardly **bystander**?"
-    ]
-  },
-  {
-    id: 208,
-    question: "What completely normal social interaction always feels intensely awkward to you?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "small talk", translation: "chiacchiere di circostanza", type: "Noun Phrase", example: "I hate making small talk in elevators." },
-      { phrase: "overthink", translation: "pensare troppo", type: "Verb", example: "Do you overthink every text message before sending it?" },
-      { phrase: "break eye contact", translation: "distogliere lo sguardo", type: "Collocation", example: "I never know when to break eye contact." },
-      { phrase: "second-guess", translation: "mettere in dubbio / ripensarci", type: "Verb", example: "I always second-guess myself after a job interview." },
-      { phrase: "social cue", translation: "segnale sociale", type: "Noun Phrase", example: "Are you good at reading social cues, or do you miss them?" }
-    ],
-    guidedQuestions: [
-      "Why is **small talk** so difficult for introverts?",
-      "Do you tend to **overthink** conversations after they happen?",
-      "What is the easiest **social cue** to misinterpret?"
-    ]
-  },
-  {
-    id: 209,
-    question: "How do you act when you intensely dislike someone but are forced to work with them?",
-    category: "Relationships",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "bite my tongue", translation: "mordersi la lingua", type: "Idiom", example: "I had to bite my tongue during the meeting to keep the peace." },
-      { phrase: "fake a smile", translation: "fingere un sorriso", type: "Collocation", example: "Can you easily fake a smile when you are annoyed?" },
-      { phrase: "keep it professional", translation: "mantenere un atteggiamento professionale", type: "Phrase", example: "No matter what, you must keep it professional." },
-      { phrase: "grin and bear it", translation: "stringere i denti e sopportare", type: "Idiom", example: "Sometimes you just have to grin and bear it." },
-      { phrase: "rub someone the wrong way", translation: "irritare qualcuno", type: "Idiom", example: "His arrogant tone really rubs me the wrong way." }
-    ],
-    guidedQuestions: [
-      "Have you ever had to **bite your tongue** to save your job?",
-      "Is it dishonest to **fake a smile**, or is it just polite?",
-      "What personality trait usually **rubs you the wrong way**?"
-    ]
-  },
-  {
-    id: 210,
-    question: "What is a trend you enthusiastically participated in, but now deeply regret?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "jump on the bandwagon", translation: "saltare sul carro del vincitore", type: "Idiom", example: "Everyone was doing it, so I decided to jump on the bandwagon." },
-      { phrase: "cringe", translation: "imbarazzarsi (per se stessi)", type: "Verb", example: "I cringe whenever I see my old high school photos." },
-      { phrase: "fad", translation: "moda passeggera", type: "Noun", example: "Do you think TikTok dances will just be a forgotten fad?" },
-      { phrase: "peer pressure", translation: "pressione dei pari", type: "Noun Phrase", example: "Did you follow the trend because you liked it, or because of peer pressure?" },
-      { phrase: "look back on", translation: "ripensare al passato", type: "Phrasal Verb", example: "When you look back on it, why did you do it?" }
-    ],
-    guidedQuestions: [
-      "Have you ever **jumped on the bandwagon** for something silly?",
-      "What makes old trends so **cringe-worthy** later on?",
-      "Is **peer pressure** stronger on teenagers or adults?"
-    ]
-  },
-  {
-    id: 211,
-    question: "Do you think people are generally more genuine in person or online?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "hide behind a screen", translation: "nascondersi dietro uno schermo", type: "Idiom", example: "It is easy to be brave when you hide behind a screen." },
-      { phrase: "true colors", translation: "veri colori (vera natura)", type: "Idiom", example: "Social media often reveals people's true colors." },
-      { phrase: "put up a front", translation: "creare una facciata", type: "Idiom", example: "Is he truly happy, or just putting up a front online?" },
-      { phrase: "sugar-coat", translation: "indorare la pillola", type: "Verb", example: "Don't sugar-coat it, tell me the absolute truth." },
-      { phrase: "keyboard warrior", translation: "leone da tastiera", type: "Noun Phrase", example: "He acts tough on Twitter, but he's just a keyboard warrior." }
-    ],
-    guidedQuestions: [
-      "Why is it so easy to **hide behind a screen**?",
-      "Have you ever discovered someone's **true colors** through their online behavior?",
-      "Why do people feel the need to **put up a front** on Instagram?"
-    ]
-  },
-  {
-    id: 212,
-    question: "When is the last time you changed a deeply held opinion?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "stubbornly hold onto", translation: "aggrapparsi ostinatamente a", type: "Phrase", example: "Why do we stubbornly hold onto ideas long after they are disproven?" },
-      { phrase: "see the light", translation: "vedere la luce (cambiare idea)", type: "Idiom", example: "It took years, but he finally saw the light." },
-      { phrase: "cognitive dissonance", translation: "dissonanza cognitiva", type: "Noun Phrase", example: "Admitting you are wrong often causes cognitive dissonance." },
-      { phrase: "play devil's advocate", translation: "fare l'avvocato del diavolo", type: "Idiom", example: "I'll play devil's advocate just to test your theory." },
-      { phrase: "broaden my horizons", translation: "allargare i miei orizzonti", type: "Idiom", example: "Traveling helped me completely broaden my horizons." }
-    ],
-    guidedQuestions: [
-      "Why is it so hard to stop **stubbornly holding onto** a wrong opinion?",
-      "Do you ever **play devil's advocate** just to make a conversation more interesting?",
-      "What has helped you **broaden your horizons** the most?"
-    ]
-  },
-  {
-    id: 213,
-    question: "What is the most beautiful thing about the city you grew up in?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "hometown pride", translation: "orgoglio per la propria città", type: "Noun Phrase", example: "No matter how flawed it is, I still have hometown pride." },
-      { phrase: "fond memories", translation: "bei ricordi", type: "Collocation", example: "I have so many fond memories of that old park." },
-      { phrase: "hidden gem", translation: "gemma nascosta", type: "Noun Phrase", example: "This tiny bakery is a true hidden gem." },
-      { phrase: "nostalgia hits hard", translation: "la nostalgia colpisce forte", type: "Phrase", example: "Whenever I visit my old school, nostalgia hits me hard." },
-      { phrase: "hustle and bustle", translation: "trambusto", type: "Idiom", example: "I love the hustle and bustle of downtown Rome." }
-    ],
-    guidedQuestions: [
-      "What is a **hidden gem** in your hometown?",
-      "Do you miss the **hustle and bustle** when you are in a quiet place?",
-      "When you think of your childhood, what **fond memories** come to mind?"
-    ]
-  },
-  {
-    id: 214,
-    question: "If you had to teach a class on one highly specific topic tomorrow, what would it be?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "niche", translation: "di nicchia", type: "Adjective", example: "I have a very niche interest in vintage typewriters." },
-      { phrase: "infodump", translation: "scaricare informazioni", type: "Verb", example: "I tend to infodump when someone asks about my favorite movie." },
-      { phrase: "master the basics", translation: "imparare le basi", type: "Phrase", example: "You cannot innovate until you master the basics." },
-      { phrase: "subject matter expert", translation: "esperto del settore", type: "Noun Phrase", example: "Are you a subject matter expert in anything?" },
-      { phrase: "wing it", translation: "improvvisare", type: "Idiom", example: "I didn't prepare a presentation, so I'll just wing it." }
-    ],
-    guidedQuestions: [
-      "What is a **niche** topic you know way too much about?",
-      "Would you prepare for a completely spontaneous speech, or just **wing it**?",
-      "Is it better to **master the basics** widely, or become an expert in one thing?"
-    ]
-  },
-  {
-    id: 215,
-    question: "Do you believe 'the journey is more important than the destination'?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "instant gratification", translation: "gratificazione istantanea", type: "Noun Phrase", example: "Social media trains us to seek instant gratification." },
-      { phrase: "burnout", translation: "esaurimento", type: "Noun", example: "Focusing only on the goal leads to serious burnout." },
-      { phrase: "embrace the grind", translation: "accettare la fatica", type: "Phrase", example: "If you want to be an athlete, you must embrace the grind." },
-      { phrase: "tunnel vision", translation: "visione a tunnel (fissarsi)", type: "Noun Phrase", example: "He had such tunnel vision on his career that he lost his friends." },
-      { phrase: "delayed reward", translation: "ricompensa ritardata", type: "Noun Phrase", example: "Are you capable of waiting for a delayed reward?" }
-    ],
-    guidedQuestions: [
-      "Is social media ruining our ability to wait for a **delayed reward**?",
-      "Have you ever experienced **burnout** from focusing too hard on a goal?",
-      "How do you avoid getting **tunnel vision** in your career?"
-    ]
-  },
-  {
-    id: 220,
-    question: "What is your most useless, but highly impressive skill?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "party trick", translation: "trucco da festa", type: "Noun Phrase", example: "Being able to recite pi to 100 digits is a neat party trick." },
-      { phrase: "show off", translation: "mettersi in mostra", type: "Phrasal Verb", example: "He loves to show off his new language skills." },
-      { phrase: "hidden talent", translation: "talento nascosto", type: "Noun Phrase", example: "Does anyone in your family have a funny hidden talent?" },
-      { phrase: "useless", translation: "inutile", type: "Adjective", example: "It is a completely useless skill, but I love doing it." },
-      { phrase: "knack for", translation: "inclinazione per", type: "Noun Phrase", example: "She has a real knack for remembering random facts." }
-    ],
-    guidedQuestions: [
-      "What is your favorite **party trick**?",
-      "Do you think having a **hidden talent** makes someone more interesting?",
-      "Who do you know that loves to **show off**?"
-    ]
-  },
-  {
-    id: 221,
-    question: "If you had to be famous for one highly embarrassing thing, what would you choose?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "go viral", translation: "diventare virale", type: "Verb Phrase", example: "The video of him tripping over the rug went viral." },
-      { phrase: "laugh at yourself", translation: "ridere di se stessi", type: "Phrase", example: "You need to learn how to laugh at yourself in life." },
-      { phrase: "mortifying", translation: "mortificante", type: "Adjective", example: "It was a mortifying experience to spill coffee on the boss." },
-      { phrase: "claim to fame", translation: "motivo di celebrità", type: "Noun Phrase", example: "His only claim to fame is eating 50 hot dogs in ten minutes." },
-      { phrase: "own it", translation: "assumersene la responsabilità / farsi scivolare le critiche addosso", type: "Idiom", example: "When you make an embarrassing mistake, just own it." }
-    ],
-    guidedQuestions: [
-      "Have you ever seen something incredibly **mortifying** go viral?",
-      "Is it easy for you to **laugh at yourself**?",
-      "What is your strangest **claim to fame**?"
-    ]
-  },
-  {
-    id: 222,
-    question: "What is a controversial opinion you hold about cooking or food?",
-    category: "Food",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "overrated", translation: "sopravvalutato", type: "Adjective", example: "I think truffle oil is highly overrated." },
-      { phrase: "dealbreaker", translation: "fattore decisivo (in negativo)", type: "Noun", example: "For me, having raisins in bread is a dealbreaker." },
-      { phrase: "culinary sin", translation: "peccato culinario", type: "Noun Phrase", example: "Putting ketchup on pasta is considered a culinary sin in Italy." },
-      { phrase: "acquired taste", translation: "gusto acquisito", type: "Noun Phrase", example: "Black licorice is definitely an acquired taste." },
-      { phrase: "picky eater", translation: "schizzinoso (col cibo)", type: "Noun Phrase", example: "Are you an adventurous eater or a picky eater?" }
-    ],
-    guidedQuestions: [
-      "What popular food is completely **overrated** in your opinion?",
-      "Is making a traditional recipe incorrectly a **culinary sin**?",
-      "Were you a **picky eater** as a child?"
-    ]
-  },
-  {
-    id: 223,
-    question: "When was the last time you felt truly proud of a friend?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "root for", translation: "fare il tifo per", type: "Phrasal Verb", example: "We were all rooting for her to get the promotion." },
-      { phrase: "milestone", translation: "traguardo importante", type: "Noun", example: "Graduating from college is a huge milestone." },
-      { phrase: "overcome adversity", translation: "superare le avversità", type: "Collocation", example: "Watching him overcome adversity was incredibly inspiring." },
-      { phrase: "beam with pride", translation: "raggiungere dall'orgoglio", type: "Idiom", example: "Her parents were beaming with pride at the wedding." },
-      { phrase: "support system", translation: "rete di supporto", type: "Noun Phrase", example: "Having a strong support system makes tough times easier." }
-    ],
-    guidedQuestions: [
-      "Who are you always **rooting for** in life?",
-      "When someone hits a major **milestone**, how do you celebrate them?",
-      "Why is a reliable **support system** so important?"
-    ]
-  },
-  {
-    id: 224,
-    question: "What is the most emotionally difficult lesson you had to learn in your 20s?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "hard truth", translation: "dura verità", type: "Noun Phrase", example: "The hard truth is that you cannot please everyone." },
-      { phrase: "let go of", translation: "lasciar andare", type: "Phrasal Verb", example: "I had to let go of toxic relationships to find peace." },
-      { phrase: "trial by fire", translation: "prova del fuoco (imparare in situazioni difficili)", type: "Idiom", example: "My first year running a business was a total trial by fire." },
-      { phrase: "silver lining", translation: "lato positivo", type: "Idiom", example: "Even in a painful breakup, there is usually a silver lining." },
-      { phrase: "hindsight is 20/20", translation: "col senno di poi è tutto chiaro", type: "Idiom", example: "I should not have trusted him, but hindsight is 20/20." }
-    ],
-    guidedQuestions: [
-      "What **hard truth** took you years to finally accept?",
-      "Is it true that **hindsight is 20/20**, or do we still repeat mistakes?",
-      "Have you ever struggled to **let go of** a dream?"
-    ]
-  },
-  {
-    id: 225,
-    question: "If you could only keep three memories before losing the rest of your mind, what would they be?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "cherish", translation: "custodire gelosamente", type: "Verb", example: "I cherish the summers I spent at my grandparents' house." },
-      { phrase: "fade away", translation: "svanire / sbiadire", type: "Phrasal Verb", example: "Over time, even the most important memories fade away." },
-      { phrase: "core memory", translation: "ricordo fondamentale", type: "Noun Phrase", example: "That family trip to the lake is a core memory for me." },
-      { phrase: "flashback", translation: "ritorno di fiamma / flashback", type: "Noun", example: "The smell of that perfume gave me a sudden flashback." },
-      { phrase: "hold onto", translation: "aggrapparsi a", type: "Phrasal Verb", example: "Why do we hold onto memories of people who hurt us?" }
-    ],
-    guidedQuestions: [
-      "What is one **core memory** from your childhood?",
-      "Why do some painful memories never **fade away**?",
-      "What do you **cherish** most about your current life?"
-    ]
-  },
-  {
-    id: 226,
-    question: "Do you think suffering is absolutely necessary to create great art or achieve wisdom?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "romanticize", translation: "romanticizzare", type: "Verb", example: "Society tends to romanticize the 'starving artist' trope." },
-      { phrase: "catalyst", translation: "catalizzatore", type: "Noun", example: "Pain is often a powerful catalyst for personal growth." },
-      { phrase: "inner turmoil", translation: "tormento interiore", type: "Noun Phrase", example: "His paintings perfectly capture his deep inner turmoil." },
-      { phrase: "school of hard knocks", translation: "l'università della strada / la dura scuola della vita", type: "Idiom", example: "She didn't get a degree; she learned from the school of hard knocks." },
-      { phrase: "profound", translation: "profondo", type: "Adjective", example: "Only through loss did he write something truly profound." }
-    ],
-    guidedQuestions: [
-      "Do we culturally **romanticize** pain too much?",
-      "Can pure happiness ever be a **catalyst** for great art?",
-      "Why is **inner turmoil** so compelling in movies and books?"
-    ]
-  },
-  {
-    id: 227,
-    question: "Do you think the universe is chaotic and random, or is there a hidden order?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "blind chance", translation: "puro caso", type: "Noun Phrase", example: "Do you believe meeting your partner was destiny or blind chance?" },
-      { phrase: "grand design", translation: "disegno superiore", type: "Noun Phrase", example: "Some argue that the complexity of nature points to a grand design." },
-      { phrase: "ripple effect", translation: "effetto a catena", type: "Noun Phrase", example: "One small decision can create a massive ripple effect in your life." },
-      { phrase: "meaningless", translation: "privo di senso", type: "Adjective", example: "If everything is meaningless, how do you find purpose?" },
-      { phrase: "interconnected", translation: "interconnesso", type: "Adjective", example: "Eastern philosophies often view everything in the universe as interconnected." }
-    ],
-    guidedQuestions: [
-      "Do you think your life is guided by a **grand design** or **blind chance**?",
-      "How do small choices create a **ripple effect** in your career?",
-      "Does the idea of a chaotic, **meaningless** universe scare you?"
-    ]
-  },
-  {
-    id: 228,
-    question: "What is the most 'out of character' thing you've ever done?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "act on impulse", translation: "agire d'impulso", type: "Phrase", example: "I rarely act on impulse, but buying that ticket was spontaneous." },
-      { phrase: "step out of my comfort zone", translation: "uscire dalla mia zona di comfort", type: "Idiom", example: "Taking a dance class was a big step out of my comfort zone." },
-      { phrase: "uncharacteristic", translation: "insolito (per la persona)", type: "Adjective", example: "His sudden angry outburst was highly uncharacteristic." },
-      { phrase: "let your hair down", translation: "lasciarsi andare", type: "Idiom", example: "At the Christmas party, she finally let her hair down." },
-      { phrase: "spur of the moment", translation: "succo del momento / impulso del momento", type: "Idiom", example: "It was a spur of the moment decision to move to Paris." }
-    ],
-    guidedQuestions: [
-      "Have you ever made a major decision on the **spur of the moment**?",
-      "Why is it healthy to **step out of your comfort zone** occasionally?",
-      "What is something completely **uncharacteristic** of you?"
-    ]
-  },
-  {
-    id: 229,
-    question: "If you could see statistics hovering over people's heads, what stat would you want to see?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "hidden agenda", translation: "secondo fine", type: "Noun Phrase", example: "I wish I could see who has a hidden agenda in business meetings." },
-      { phrase: "break the ice", translation: "rompere il ghiaccio", type: "Idiom", example: "Knowing someone's favorite hobby would make it easy to break the ice." },
-      { phrase: "compatibility", translation: "compatibilità", type: "Noun", example: "Imagine seeing a compatibility score above everyone you date." },
-      { phrase: "vibe check", translation: "controllo dell'energia / atmosfera", type: "Slang", example: "Seeing their 'kindness score' would be the ultimate vibe check." },
-      { phrase: "intrusive", translation: "invadente", type: "Adjective", example: "Knowing everyone's secrets would feel far too intrusive." }
-    ],
-    guidedQuestions: [
-      "Would seeing a **compatibility** score ruin the magic of dating?",
-      "How do you usually figure out if someone has a **hidden agenda**?",
-      "Would knowing everyone's biggest fear be helpful or **intrusive**?"
-    ]
-  },
-  {
-    id: 230,
-    question: "What is the most beautiful sound you have ever heard in nature?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "soothing", translation: "rilassante / calmante", type: "Adjective", example: "The sound of rain against the window is incredibly soothing." },
-      { phrase: "deafening silence", translation: "silenzio assordante", type: "Oxymoron", example: "In the middle of the desert, the deafening silence is magical." },
-      { phrase: "rustling leaves", translation: "foglie che frusciano", type: "Collocation", example: "I love hiking and listening to the wind and rustling leaves." },
-      { phrase: "in awe", translation: "in soggezione / incantato", type: "Idiom", example: "Standing next to the waterfall left me completely in awe." },
-      { phrase: "unwind", translation: "rilassarsi", type: "Verb", example: "Nature sounds are the best way to unwind after a stressful week." }
-    ],
-    guidedQuestions: [
-      "Do you find the sound of a thunderstorm frightening or **soothing**?",
-      "When was the last time a landscape left you **in awe**?",
-      "Why do most people use nature sounds to **unwind**?"
-    ]
-  },
-  {
-    id: 231,
-    question: "Which of your current habits would your childhood self be most surprised by?",
-    category: "Personal",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "old habits die hard", translation: "le vecchie abitudini sono dure a morire", type: "Idiom", example: "I still bite my nails when I get nervous; old habits die hard." },
-      { phrase: "transform", translation: "trasformare", type: "Verb", example: "Moving abroad completely transformed my daily routine." },
-      { phrase: "acquire a taste", translation: "acquisire un gusto per qualcosa", type: "Phrase", example: "I never thought I would acquire a taste for black coffee." },
-      { phrase: "outgrow", translation: "superare crescendo", type: "Verb", example: "Did you outgrow your love for video games?" },
-      { phrase: "second nature", translation: "seconda natura (istinto)", type: "Idiom", example: "Waking up at 5am has become second nature to me." }
-    ],
-    guidedQuestions: [
-      "What is something you used to hate, but now it is **second nature** to do?",
-      "Did you **outgrow** your childhood friends or stay close?",
-      "Why is true that **old habits die hard**?"
-    ]
-  },
-  {
-    id: 232,
-    question: "What is the one phrase you hear people say that instantly annoys you?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "pet peeve", translation: "fastidio personale", type: "Noun Phrase", example: "People chewing loudly is my biggest pet peeve." },
-      { phrase: "buzzword", translation: "parola d'ordine (moda)", type: "Noun", example: "Corporate emails are always full of meaningless buzzwords." },
-      { phrase: "grate on my nerves", translation: "urtare i nervi", type: "Idiom", example: "Hearing the phrase 'it is what it is' really grates on my nerves." },
-      { phrase: "cliché", translation: "cliché / luogo comune", type: "Noun", example: "I hate romantic movies that rely on every cliché in the book." },
-      { phrase: "roll my eyes", translation: "alzare gli occhi al cielo", type: "Idiom", example: "I always roll my eyes when influencers say 'link in bio'." }
-    ],
-    guidedQuestions: [
-      "What corporate **buzzword** do you hear way too often?",
-      "What is your biggest conversational **pet peeve**?",
-      "Does the phrase 'everything happens for a reason' comfort you or make you **roll your eyes**?"
-    ]
-  },
-  {
-    id: 233,
-    question: "If you were forced to give up music or movies for the rest of your life, which would you sacrifice?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "tough call", translation: "scelta difficile", type: "Idiom", example: "Deciding between pizza and sushi is always a tough call." },
-      { phrase: "soundtrack to your life", translation: "colonna sonora della propria vita", type: "Idiom", example: "Music acts as the emotional soundtrack to your life." },
-      { phrase: "escapism", translation: "escapismo / evasione", type: "Noun", example: "Watching fantasy movies is my favorite form of escapism." },
-      { phrase: "resonates with", translation: "risuona con", type: "Phrasal Verb", example: "Which song deeply resonates with your current mood?" },
-      { phrase: "make a sacrifice", translation: "fare un sacrificio", type: "Phrase", example: "Sometimes you must make a sacrifice to achieve big goals." }
-    ],
-    guidedQuestions: [
-      "Why do specific songs suddenly become the **soundtrack to your life**?",
-      "Is cinema the ultimate form of **escapism**?",
-      "What is a **tough call** you recently had to make?"
-    ]
-  },
-  {
-    id: 234,
-    question: "What is something deeply unethical that humanity accepts as totally normal?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "turn a blind eye", translation: "chiudere un occhio", type: "Idiom", example: "We turn a blind eye to the reality of factory farming." },
-      { phrase: "status quo", translation: "lo stato delle cose / lo status quo", type: "Noun", example: "People are terrified of challenging the terrifying status quo." },
-      { phrase: "normalized", translation: "normalizzato", type: "Adjective", example: "Working 60 hours a week has been completely normalized." },
-      { phrase: "cognitive dissonance", translation: "dissonanza cognitiva", type: "Noun Phrase", example: "Buying cheap clothes from sweatshops requires immense cognitive dissonance." },
-      { phrase: "moral compass", translation: "bussola morale", type: "Noun Phrase", example: "Does a high salary often compromise a person's moral compass?" }
-    ],
-    guidedQuestions: [
-      "Why is extreme wealth inequality **normalized** in modern society?",
-      "Do you think humanity's **moral compass** is improving or decaying?",
-      "Why do we **turn a blind eye** to global suffering?"
-    ]
-  },
-  {
-    id: 250,
-    question: "Do you think true altruism exists, or is every good deed ultimately selfish?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "altruism", translation: "altruismo", type: "Noun", example: "True altruism means helping others with zero expectation of reward." },
-      { phrase: "ulterior motive", translation: "secondo fine / scopo nascosto", type: "Noun Phrase", example: "I always wonder if philanthropists have an ulterior motive." },
-      { phrase: "inherently", translation: "intrinsecamente", type: "Adverb", example: "Are humans inherently selfish or inherently good?" },
-      { phrase: "self-serving", translation: "opportunistico / egoistico", type: "Adjective", example: "Even charity can be a self-serving act if it just makes you feel good." },
-      { phrase: "cynical", translation: "cinico", type: "Adjective", example: "It is a very cynical worldview to believe no one is truly kind." }
-    ],
-    guidedQuestions: [
-      "Is it possible to act without an **ulterior motive**?",
-      "Why is the debate about **altruism** so controversial?",
-      "Are we **inherently** driven by survival or kindness?"
-    ]
-  },
-  {
-    id: 251,
-    question: "What is the most beautiful lie you've ever been told?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "white lie", translation: "bugia a fin di bene", type: "Noun Phrase", example: "Sometimes a white lie is necessary to protect someone's feelings." },
-      { phrase: "fabricate", translation: "fabbricare / inventare", type: "Verb", example: "Did they fabricate the story to make you feel better?" },
-      { phrase: "blissful ignorance", translation: "beata ignoranza", type: "Noun Phrase", example: "I prefer blissful ignorance over a painful truth." },
-      { phrase: "sugar-coat", translation: "indorare la pillola", type: "Verb", example: "Stop trying to sugar-coat the reality of the situation." },
-      { phrase: "harsh reality", translation: "dura realtà", type: "Noun Phrase", example: "Do you prefer a beautiful lie or the harsh reality?" }
-    ],
-    guidedQuestions: [
-      "When is a **white lie** morally completely justified?",
-      "Have you ever chosen **blissful ignorance** over the truth?",
-      "What happens when you discover someone tried to **sugar-coat** a tragedy?"
-    ]
-  },
-  {
-    id: 252,
-    question: "If you had access to a machine that could accurately predict your exact time and cause of death, would you use it?",
-    category: "Existential",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "inevitability", translation: "inevitabilità", type: "Noun", example: "The inevitability of death is humanity's greatest fear." },
-      { phrase: "ignorance is bliss", translation: "l'ignoranza è una benedizione", type: "Idiom", example: "When it comes to the future, sometimes ignorance is bliss." },
-      { phrase: "foreknowledge", translation: "prescienza", type: "Noun", example: "Would foreknowledge of your death change how you live today?" },
-      { phrase: "impending doom", translation: "destino incombente", type: "Noun Phrase", example: "Knowing the exact date would leave me with a sense of impending doom." },
-      { phrase: "carpe diem", translation: "cogli l'attimo", type: "Phrase", example: "Would you finally embrace 'carpe diem' if you knew your time was limited?" }
-    ],
-    guidedQuestions: [
-      "Does **foreknowledge** ruin the surprise of living?",
-      "Why do some people believe that **ignorance is bliss**?",
-      "Would a deadline give you a sense of purpose or **impending doom**?"
-    ]
-  },
-  {
-    id: 253,
-    question: "What do you think is the biggest flaw in the modern education system?",
-    category: "Philosophy",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "one-size-fits-all", translation: "standardizzato / valido per tutti", type: "Adjective Phrase", example: "A one-size-fits-all approach to learning rarely works." },
-      { phrase: "stifle creativity", translation: "soffocare la creatività", type: "Collocation", example: "Do standardized tests actually stifle creativity in children?" },
-      { phrase: "rote memorization", translation: "apprendimento mnemonico", type: "Noun Phrase", example: "Rote memorization doesn't teach you how to think." },
-      { phrase: "conformity", translation: "conformismo", type: "Noun", example: "Schools often reward conformity over original thought." },
-      { phrase: "obsolete", translation: "obsoleto", type: "Adjective", example: "Many of the skills taught in high school are entirely obsolete." }
-    ],
-    guidedQuestions: [
-      "Does a **one-size-fits-all** classroom leave gifted students behind?",
-      "How relying heavily on **rote memorization** creates poor problem solvers?",
-      "What is the most **obsolete** subject taught in modern schools?"
-    ]
-  },
-  {
-    id: 254,
-    question: "If you could instantly completely erase one emotion from human existence, which would it be?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "eradicate", translation: "sradicare", type: "Verb", example: "If we could eradicate jealousy, would relationships survive?" },
-      { phrase: "double-edged sword", translation: "arma a doppio taglio", type: "Idiom", example: "Fear is a double-edged sword; it protects us but also traps us." },
-      { phrase: "necessary evil", translation: "male necessario", type: "Noun Phrase", example: "Do you consider sadness a necessary evil to appreciate joy?" },
-      { phrase: "apathy", translation: "apatia", type: "Noun", example: "Without anger at injustice, we might just fall into total apathy." },
-      { phrase: "human condition", translation: "condizione umana", type: "Noun Phrase", example: "Pain is a fundamental part of the human condition." }
-    ],
-    guidedQuestions: [
-      "Is fear a **necessary evil** for keeping humanity alive?",
-      "Why is anger a **double-edged sword**?",
-      "Would eliminating sadness reduce the richness of the **human condition**?"
-    ]
-  },
-  {
-    id: 255,
-    question: "Do you believe that people are capable of profound, fundamental change?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "set in their ways", translation: "fossilizzato nelle proprie abitudini", type: "Idiom", example: "My grandfather is entirely set in his ways." },
-      { phrase: "epiphany", translation: "epifania / illuminazione", type: "Noun", example: "It took a massive epiphany for him to quit smoking." },
-      { phrase: "turn over a new leaf", translation: "voltare pagina (cambiare in meglio)", type: "Idiom", example: "She promised to turn over a new leaf this year." },
-      { phrase: "ingrained", translation: "radicato", type: "Adjective", example: "Those toxic behaviors are deeply ingrained in his personality." },
-      { phrase: "catalyst for change", translation: "catalizzatore del cambiamento", type: "Collocation", example: "Sometimes a tragedy is the only real catalyst for change." }
-    ],
-    guidedQuestions: [
-      "Are humans too **set in their ways** to change after age 30?",
-      "Have you ever seen someone totally **turn over a new leaf**?",
-      "What is the most common **catalyst for change** in a person's life?"
-    ]
-  },
-  {
-    id: 256,
-    question: "What is a memory you have that you aren't sure is actually real?",
-    category: "Dreams",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "false memory", translation: "falso ricordo", type: "Noun Phrase", example: "The brain can easily create a detailed false memory." },
-      { phrase: "blur the lines", translation: "sfumare i confini", type: "Phrase", example: "Over time, we blur the lines between reality and dreams." },
-      { phrase: "vividly", translation: "vividamente", type: "Adverb", example: "I vividly remember a dog we never even owned." },
-      { phrase: "figment of my imagination", translation: "frutto della mia immaginazione", type: "Idiom", example: "Was that conversation real, or just a figment of my imagination?" },
-      { phrase: "distort", translation: "distorcere", type: "Verb", example: "Every time you recall a memory, you slightly distort it." }
-    ],
-    guidedQuestions: [
-      "Do you have a **vividly** clear memory from a very young age?",
-      "Why does the brain **distort** the past to protect us?",
-      "Has a dream ever **blurred the lines** between sleep and reality for you?"
-    ]
-  },
-  {
-    id: 257,
-    question: "If you could spend one hour speaking with anyone who is dead, who would you choose and what would you ask?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "closure", translation: "chiusura (psicologica)", type: "Noun", example: "Many people want to talk to deceased relatives just for closure." },
-      { phrase: "pick someone's brain", translation: "chiedere consiglio a qualcuno (estrarre idee)", type: "Idiom", example: "I would love to pick Leonardo da Vinci's brain." },
-      { phrase: "beyond the grave", translation: "dall'oltretomba", type: "Phrase", example: "What advice would they give from beyond the grave?" },
-      { phrase: "leave unsaid", translation: "lasciare non detto", type: "Phrase", example: "There is always something you leave unsaid when someone dies." },
-      { phrase: "profound insight", translation: "intuizione profonda", type: "Collocation", example: "Seeking profound insight from historical figures is a common fantasy." }
-    ],
-    guidedQuestions: [
-      "Is seeking **closure** the main reason we miss the dead?",
-      "Whose brain would you love to **pick** about history?",
-      "What is the hardest thing to **leave unsaid**?"
-    ]
-  },
-  {
-    id: 258,
-    question: "When did you first realize that your parents are just ordinary people making it up as they go?",
-    category: "Family",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "put on a pedestal", translation: "mettere su un piedistallo", type: "Idiom", example: "As children, we put our parents on a pedestal." },
-      { phrase: "shatter the illusion", translation: "infrangere l'illusione", type: "Phrase", example: "Seeing my father cry for the first time shattered the illusion." },
-      { phrase: "flawed", translation: "imperfetto / difettoso", type: "Adjective", example: "It is scary to realize your heroes are deeply flawed." },
-      { phrase: "wing it", translation: "improvvisare", type: "Idiom", example: "Most adults are just winging it, hoping for the best." },
-      { phrase: "coming of age", translation: "raggiungimento della maturità", type: "Noun Phrase", example: "Realizing your parents are human is a crucial coming of age moment." }
-    ],
-    guidedQuestions: [
-      "Why do we naturally **put our parents on a pedestal**?",
-      "What was the moment that **shattered the illusion** for you?",
-      "Is it comforting or terrifying to know all adults are just **winging it**?"
-    ]
-  },
-  {
-    id: 259,
-    question: "What is something that society treats as a luxury, but you believe should be a fundamental human right?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "commodify", translation: "mercificare", type: "Verb", example: "We shouldn't commodify basic needs like water and shelter." },
-      { phrase: "disparity", translation: "disparità", type: "Noun", example: "The disparity between the rich and the poor is growing." },
-      { phrase: "basic necessity", translation: "necessità di base", type: "Noun Phrase", example: "Internet access is now a basic necessity, not a luxury." },
-      { phrase: "privilege", translation: "privilegio", type: "Noun", example: "Having access to mental healthcare is currently a massive privilege." },
-      { phrase: "level the playing field", translation: "livellare il campo di gioco (dare pari opportunità)", type: "Idiom", example: "Universal education helps level the playing field." }
-    ],
-    guidedQuestions: [
-      "Should access to fast internet be a **basic necessity**?",
-      "How does free healthcare **level the playing field**?",
-      "Is it dangerous to **commodify** human attention on social media?"
-    ]
-  },
-  {
-    id: 260,
-    question: "What is a belief you held 5 years ago that you completely disagree with today?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "change my tune", translation: "cambiare musica / opinione", type: "Idiom", example: "After seeing the evidence, I had to completely change my tune." },
-      { phrase: "outdated", translation: "datato / obsoleto", type: "Adjective", example: "That is a highly outdated way of looking at gender roles." },
-      { phrase: "paradigm shift", translation: "cambiamento di paradigma", type: "Noun Phrase", example: "Moving across the world caused a paradigm shift in my thinking." },
-      { phrase: "double down", translation: "raddoppiare (ostinarsi)", type: "Phrasal Verb", example: "When confronted with facts, some people just double down on their errors." },
-      { phrase: "humbling experience", translation: "esperienza che rende umili", type: "Collocation", example: "Realizing you were wrong for years is a deeply humbling experience." }
-    ],
-    guidedQuestions: [
-      "What evidence forced you to **change your tune**?",
-      "Why do people **double down** when they know they are wrong?",
-      "Has therapy ever caused a **paradigm shift** in your life?"
-    ]
-  },
-  {
-    id: 261,
-    question: "Do you think humanity will ultimately destroy itself or save itself?",
-    category: "Existential",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "tipping point", translation: "punto di non ritorno", type: "Noun Phrase", example: "Have we already passed the climate tipping point?" },
-      { phrase: "self-destruction", translation: "autodistruzione", type: "Noun", example: "Our greed is driving us toward total self-destruction." },
-      { phrase: "resilience", translation: "resilienza", type: "Noun", example: "Human resilience has survived ice ages and plagues." },
-      { phrase: "hubris", translation: "arroganza / tracotanza", type: "Noun", example: "Our technological hubris might be our downfall." },
-      { phrase: "doom and gloom", translation: "pessimismo e catastrofismo", type: "Idiom", example: "I get tired of hearing constantly about doom and gloom in the news." }
-    ],
-    guidedQuestions: [
-      "Are we approaching a dangerous **tipping point** in history?",
-      "Is **hubris** humanity's worst flaw?",
-      "Can human **resilience** overcome our tendency for war?"
-    ]
-  },
-  {
-    id: 262,
-    question: "If you could measure the total impact of your life in one specific metric, what would you want that metric to be?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "leave a legacy", translation: "lasciare un'eredità", type: "Idiom", example: "Everyone wants to leave a legacy, but very few do." },
-      { phrase: "quantify", translation: "quantificare", type: "Verb", example: "You cannot quantify love or human connection." },
-      { phrase: "ripple effect", translation: "effetto a catena", type: "Noun Phrase", example: "The ripple effect of one good teacher can span generations." },
-      { phrase: "benchmark", translation: "parametro di riferimento", type: "Noun", example: "Wealth is a terrible benchmark for human value." },
-      { phrase: "net positive", translation: "saldo positivo", type: "Noun Phrase", example: "Was my existence a net positive for the planet?" }
-    ],
-    guidedQuestions: [
-      "Is it possible to accurately **quantify** happiness?",
-      "What is the ultimate **benchmark** of a successful life?",
-      "Do you think your life will ultimately be a **net positive** to society?"
-    ]
-  },
-  {
-    id: 263,
-    question: "Do you think true freedom is having unlimited choices, or having no choices to make?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "paradox of choice", translation: "il paradosso della scelta", type: "Noun Phrase", example: "The paradox of choice means more options make us incredibly unhappy." },
-      { phrase: "liberating", translation: "liberatorio", type: "Adjective", example: "Having your schedule strictly managed can actually be very liberating." },
-      { phrase: "boundless", translation: "senza limiti", type: "Adjective", example: "Boundless freedom often leads to heavy anxiety." },
-      { phrase: "burden of responsibility", translation: "peso della responsabilità", type: "Collocation", example: "With total freedom comes the crushing burden of responsibility." },
-      { phrase: "paralyzed", translation: "paralizzato", type: "Adjective", example: "I am paralyzed by trying to pick a movie on Netflix." }
-    ],
-    guidedQuestions: [
-      "Have you ever felt **paralyzed** by the **paradox of choice**?",
-      "Can strict routines actually be **liberating**?",
-      "Is **boundless** freedom mostly an illusion?"
-    ]
-  },
-  {
-    id: 264,
-    question: "What is the hardest part about getting older that nobody warns you about?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "take a toll", translation: "lasciare il segno / pesare", type: "Phrase", example: "Years of stress will rapidly take a toll on your body." },
-      { phrase: "drift apart", translation: "allontanarsi", type: "Phrasal Verb", example: "It is incredibly painful to watch close friends slowly drift apart." },
-      { phrase: "blink of an eye", translation: "un batter d'occhio", type: "Idiom", example: "Your twenties are gone in the blink of an eye." },
-      { phrase: "mortality", translation: "mortalità", type: "Noun", example: "Facing your fading mortality changes everything." },
-      { phrase: "trade-off", translation: "compromesso", type: "Noun", example: "Aging is a trade-off: you lose energy, but gain wisdom." }
-    ],
-    guidedQuestions: [
-      "Why do childhood friends naturally **drift apart** over time?",
-      "Does understanding your **mortality** make life richer?",
-      "What is the biggest **trade-off** between being young and old?"
-    ]
-  },
-  {
-    id: 270,
-    question: "What is a seemingly simple word that you always spell wrong?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "mind blank", translation: "vuoto di memoria", type: "Noun Phrase", example: "I had a total mind blank on how to spell 'restaurant'." },
-      { phrase: "second-guess", translation: "mettere in dubbio", type: "Verb", example: "I always second-guess myself when writing emails." },
-      { phrase: "rely heavily on", translation: "fare grande affidamento su", type: "Phrase", example: "We rely heavily on autocorrect nowadays." },
-      { phrase: "slip up", translation: "scivolone / errore", type: "Noun/Verb", example: "It was just a minor slip up in the text message." },
-      { phrase: "pet peeve", translation: "cosa fastidiosa", type: "Noun Phrase", example: "Bad grammar is my biggest pet peeve." }
-    ],
-    guidedQuestions: [
-      "Have you ever had a sudden **mind blank** during a presentation?",
-      "Do people **rely heavily on** AI for writing too much?",
-      "What spelling mistake is a major **pet peeve** for you?"
-    ]
-  },
-  {
-    id: 271,
-    question: "What is the most beautiful piece of architecture you've ever seen?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "breathtaking", translation: "mozzafiato", type: "Adjective", example: "The ceiling of the cathedral was simply breathtaking." },
-      { phrase: "stand the test of time", translation: "resistere alla prova del tempo", type: "Idiom", example: "Roman aqueducts certainly stand the test of time." },
-      { phrase: "intricate details", translation: "dettagli complessi", type: "Collocation", example: "I was amazed by the intricate details of the wood carvings." },
-      { phrase: "in awe", translation: "incantato / in soggezione", type: "Idiom", example: "Standing inside the Colosseum left me in awe." },
-      { phrase: "monstrosity", translation: "mostruosità", type: "Noun", example: "Some people think modern skyscrapers are a visual monstrosity." }
-    ],
-    guidedQuestions: [
-      "Does classical architecture **stand the test of time** better than modern designs?",
-      "What famous building left you entirely **in awe**?",
-      "Do you consider brutalist concrete buildings a masterpiece or a **monstrosity**?"
-    ]
-  },
-  {
-    id: 272,
-    question: "If you had to master one instrument instantly, which one would fit your personality best?",
-    category: "Dreams",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "struck a chord", translation: "toccare le corde del cuore (fig)", type: "Idiom", example: "The sad melody completely struck a chord with me." },
-      { phrase: "steep learning curve", translation: "curva di apprendimento ripida", type: "Noun Phrase", example: "The violin has a notoriously steep learning curve." },
-      { phrase: "in tune with", translation: "in sintonia con", type: "Idiom", example: "Are you in tune with your artistic side?" },
-      { phrase: "virtuoso", translation: "virtuoso", type: "Noun", example: "It takes decades to become a true piano virtuoso." },
-      { phrase: "jam out", translation: "suonare liberamente / fare jam session", type: "Phrasal Verb", example: "It would be fun to just jam out with a band on weekends." }
-    ],
-    guidedQuestions: [
-      "Why does a specific instrument have such a **steep learning curve**?",
-      "What type of music generally **strikes a chord** with you?",
-      "Are you highly **in tune with** your emotions when listening to sad songs?"
-    ]
-  },
-  {
-    id: 273,
-    question: "What is an assumption people always make about you that is completely wrong?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "judge a book by its cover", translation: "giudicare dalle apparenze", type: "Idiom", example: "People judge a book by its cover, assuming I am arrogant because I'm quiet." },
-      { phrase: "misread", translation: "fraintendere / leggere male", type: "Verb", example: "They completely misread my intentions." },
-      { phrase: "vibe", translation: "vibrazione / energia", type: "Noun", example: "I apparently give off a highly intimidating vibe." },
-      { phrase: "first impression", translation: "prima impressione", type: "Noun Phrase", example: "My first impression of him was totally off the mark." },
-      { phrase: "deep down", translation: "in fondo", type: "Phrase", example: "Deep down, I am actually incredibly sensitive." }
-    ],
-    guidedQuestions: [
-      "Do you think it's impossible not to **judge a book by its cover**?",
-      "Why do people often **misread** your tone in text messages?",
-      "What **vibe** do you think you give off to strangers?"
-    ]
-  },
-  {
-    id: 274,
-    question: "Do you think we are living in the 'good old days' right now?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "nostalgia", translation: "nostalgia", type: "Noun", example: "Nostalgia makes us remember the past as better than it actually was." },
-      { phrase: "take for granted", translation: "dare per scontato", type: "Phrase", example: "We take the internet for granted until it breaks." },
-      { phrase: "rose-tinted glasses", translation: "lenti rosa (vedere il mondo in modo idealizzato)", type: "Idiom", example: "Looking back at the 90s with rose-tinted glasses ignores the real problems." },
-      { phrase: "fleeting", translation: "fugace", type: "Adjective", example: "Happiness is a very fleeting emotion." },
-      { phrase: "ignorance is bliss", translation: "l'ignoranza è una benedizione", type: "Idiom", example: "We were happy as kids mainly because ignorance is bliss." }
-    ],
-    guidedQuestions: [
-      "Is **nostalgia** a dangerous emotion?",
-      "What technology do we currently **take for granted**?",
-      "Why do generations always view their childhood through **rose-tinted glasses**?"
-    ]
-  },
-  {
-    id: 275,
-    question: "What is an unconventional feature you would build into your dream house?",
-    category: "Dreams",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "spare no expense", translation: "non badare a spese", type: "Phrase", example: "If I built a house, I would spare no expense on the kitchen." },
-      { phrase: "novelty", translation: "novità / stravaganza", type: "Noun", example: "A slide instead of stairs is a fun novelty." },
-      { phrase: "game-changer", translation: "punto di svolta", type: "Noun Phrase", example: "Having heated floors in the winter is considered a game-changer." },
-      { phrase: "cozy nook", translation: "angolino accogliente", type: "Noun Phrase", example: "I want a cozy reading nook built into the wall." },
-      { phrase: "over-the-top", translation: "esagerato", type: "Adjective", example: "An indoor waterfall might be a little over-the-top." }
-    ],
-    guidedQuestions: [
-      "If you could **spare no expense**, what is the first room you would design?",
-      "What modern home appliance is a total **game-changer**?",
-      "Would you prefer an **over-the-top** mansion or a small cabin?"
-    ]
-  },
-  {
-    id: 276,
-    question: "What is the biggest risk you've actively decided NOT to take?",
-    category: "Deep",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "play it safe", translation: "non rischiare / andare sul sicuro", type: "Idiom", example: "Instead of moving to New York, I chose to play it safe." },
-      { phrase: "what-if", translation: "il 'cosa succederebbe se'", type: "Noun", example: "Do you constantly live with the 'what-if' of that decision?" },
-      { phrase: "leap of faith", translation: "salto nel buio / atto di fede", type: "Noun Phrase", example: "Quitting my job was a massive leap of faith." },
-      { phrase: "weigh the pros and cons", translation: "soppesare i pro e i contro", type: "Phrase", example: "You must carefully weigh the pros and cons before buying a house." },
-      { phrase: "dodged a bullet", translation: "schivato un proiettile", type: "Idiom", example: "Looking back at that toxic startup, I really dodged a bullet." }
-    ],
-    guidedQuestions: [
-      "Is it better to **play it safe** or take wild risks in your 20s?",
-      "Have you ever taken a massive **leap of faith** that actually worked?",
-      "When evaluating a job offer, how do you **weigh the pros and cons**?"
-    ]
-  },
-  {
-    id: 277,
-    question: "What is something that strongly gives you a sense of purpose?",
-    category: "Wisdom",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "anchor", translation: "àncora (fig.)", type: "Noun", example: "My family acts as an anchor when I feel lost." },
-      { phrase: "driving force", translation: "forza motrice", type: "Noun Phrase", example: "Curiosity is the main driving force behind my career." },
-      { phrase: "give back", translation: "restituire (alla comunità)", type: "Phrasal Verb", example: "I want to gain wealth so I can eventually give back." },
-      { phrase: "inner compass", translation: "bussola interiore", type: "Noun Phrase", example: "When society is chaotic, you have to follow your inner compass." },
-      { phrase: "larger than life", translation: "più grande della vita", type: "Idiom", example: "To feel fulfilled, do we need to be part of something larger than life?" }
-    ],
-    guidedQuestions: [
-      "What is your primary **driving force** to wake up in the morning?",
-      "How do you plan to **give back** to your local community?",
-      "Is it possible to live without an **inner compass**?"
-    ]
-  },
-  {
-    id: 278,
-    question: "What is an incredibly difficult task that you actually genuinely enjoy doing?",
-    category: "Personal",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "flow state", translation: "stato di flusso", type: "Noun Phrase", example: "When I am painting, I enter a deep flow state." },
-      { phrase: "get lost in", translation: "perdersi in", type: "Phrasal Verb", example: "I can easily get lost in organizing scattered data." },
-      { phrase: "labor of love", translation: "lavoro fatto con amore", type: "Noun Phrase", example: "Restoring that old car was a total labor of love." },
-      { phrase: "daunting", translation: "scoraggiante", type: "Adjective", example: "Writing a novel seemed daunting, but I loved it." },
-      { phrase: "rewarding", translation: "gratificante", type: "Adjective", example: "Nothing is more rewarding than a hard-earned victory." }
-    ],
-    guidedQuestions: [
-      "What activity reliably puts you into a deep **flow state**?",
-      "Have you ever completed a project that was pure **labor of love**?",
-      "Why do some **daunting** tasks ultimately feel so **rewarding**?"
-    ]
-  },
-  {
-    id: 279,
-    question: "If humans stopped needing to sleep, what would you do with your extra 8 hours?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "hustle culture", translation: "cultura del lavoro incessante", type: "Noun Phrase", example: "Hustle culture would completely ruin the extra time." },
-      { phrase: "night owl", translation: "nottambulo", type: "Noun Phrase", example: "As a night owl, I would love the quiet hours of 3 AM." },
-      { phrase: "monopolize", translation: "monopolizzare", type: "Verb", example: "Our employers would just monopolize the extra hours." },
-      { phrase: "pass the time", translation: "far passare il tempo", type: "Phrase", example: "We would probably just invent more scrolling apps to pass the time." },
-      { phrase: "burn the midnight oil", translation: "lavorare fino a tardi", type: "Idiom", example: "Without sleep, everyone would burn the midnight oil forever." }
-    ],
-    guidedQuestions: [
-      "Would **hustle culture** force us to work 16 hour days?",
-      "Do you think the quiet peace of the **night owl** hours would be ruined?",
-      "Is it unhealthy to constantly **burn the midnight oil**?"
-    ]
-  }
-,
-    {
-    id: 280,
-    question: "If you could witness any event past, present, or future, what would it be?",
-    category: "Dreams",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "front-row seat", translation: "posto in prima fila", type: "Noun Phrase", example: "I would want a front-row seat to the building of the pyramids." },
-      { phrase: "monumental", translation: "storico / monumentale", type: "Adjective", example: "Graduating from college was a monumental achievement for her family." },
-      { phrase: "unprecedented", translation: "senza precedenti", type: "Adjective", example: "Landing on Mars will be an unprecedented event in human history." },
-      { phrase: "turn back the clock", translation: "riportare indietro le lancette dell'orologio (il tempo)", type: "Idiom", example: "If I could turn back the clock, I would visit ancient Rome." },
-      { phrase: "awe-inspiring", translation: "che incute soggezione (in senso positivo)", type: "Adjective", example: "The sheer scale of the universe is awe-inspiring." }
-    ],
-    guidedQuestions: [
-      "What **monumental** moment in history do you wish you saw?",
-      "Would you rather **turn back the clock** or see the future?",
-      "What is the most **awe-inspiring** thing you have ever seen in real life?"
-    ]
-  },
-  {
-    id: 281,
-    question: "What is a seemingly innocent habit that surprisingly reveals a lot about a person?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "tell-tale sign", translation: "segno rivelatore", type: "Noun Phrase", example: "Looking at their phone while you speak is a tell-tale sign of disrespect." },
-      { phrase: "subtle cue", translation: "segnale sottile", type: "Noun Phrase", example: "Are you good at picking up on subtle cues during a date?" },
-      { phrase: "give away", translation: "rivelare (involontariamente)", type: "Phrasal Verb", example: "Her nervous laughter gave away that she was lying." },
-      { phrase: "read between the lines", translation: "leggere tra le righe", type: "Idiom", example: "You have to read between the lines to know what they truly mean." },
-      { phrase: "idiosyncrasy", translation: "idiosincrasia / vezzo", type: "Noun", example: "Everyone has a unique idiosyncrasy when they are stressed." }
-    ],
-    guidedQuestions: [
-      "What is a **tell-tale sign** that someone is uncomfortable?",
-      "Do people often **give away** their true feelings through body language?",
-      "What personal **idiosyncrasy** do you have that people notice?"
-    ]
-  },
-  {
-    id: 282,
-    question: "Do you believe the pursuit of happiness actually makes people more miserable?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "chasing a mirage", translation: "inseguire un miraggio", type: "Idiom", example: "Searching for perfect happiness is like chasing a mirage." },
-      { phrase: "fleeting", translation: "fugace", type: "Adjective", example: "Joy is a very fleeting emotion; it never lasts forever." },
-      { phrase: "baseline", translation: "livello base", type: "Noun", example: "People generally return to their baseline level of happiness." },
-      { phrase: "paradox", translation: "paradosso", type: "Noun", example: "The paradox is that the harder you try to sleep, the more awake you feel." },
-      { phrase: "contentment", translation: "appagamento", type: "Noun", example: "Is there a difference between happiness and contentment?" }
-    ],
-    guidedQuestions: [
-      "Is constantly searching for joy just **chasing a mirage**?",
-      "Why is happiness so **fleeting** compared to sadness?",
-      "Should we aim for peace and **contentment** over intense joy?"
-    ]
-  },
-  {
-    id: 283,
-    question: "What is the most beautiful word you know in any language?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "roll off the tongue", translation: "scivolare sulla lingua (suonare bene)", type: "Idiom", example: "Italian words just effortlessly roll off the tongue." },
-      { phrase: "profound", translation: "profondo", type: "Adjective", example: "That poem contains a very profound truth about aging." },
-      { phrase: "lost in translation", translation: "perso nella traduzione", type: "Phrase", example: "Some beautiful concepts are completely lost in translation." },
-      { phrase: "eloquent", translation: "eloquente / facondo", type: "Adjective", example: "He is an extremely eloquent speaker when he talks about art." },
-      { phrase: "evoke", translation: "evocare", type: "Verb", example: "What emotions does the word 'home' evoke for you?" }
-    ],
-    guidedQuestions: [
-      "What foreign word doesn't translate but is deeply **profound**?",
-      "Do you think poetry is always **lost in translation**?",
-      "What name do you think **rolls off the tongue** beautifully?"
-    ]
-  },
-  {
-    id: 284,
-    question: "If your life was a movie, what would the current chapter be named?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "plot twist", translation: "colpo di scena", type: "Noun Phrase", example: "Losing my job was an unexpected plot twist in my life." },
-      { phrase: "turning point", translation: "punto di svolta", type: "Noun Phrase", example: "Moving abroad was the ultimate turning point for me." },
-      { phrase: "in limbo", translation: "in un limbo / in sospeso", type: "Idiom", example: "I feel like my career is currently stuck in limbo." },
-      { phrase: "character development", translation: "sviluppo del personaggio", type: "Noun Phrase", example: "Painful breakups are just aggressive character development." },
-      { phrase: "cliffhanger", translation: "finale in sospeso", type: "Noun", example: "Last year ended on a massive cliffhanger for my family." }
-    ],
-    guidedQuestions: [
-      "Was your last major life change a good or bad **plot twist**?",
-      "Are you currently stuck **in limbo** or moving forward quickly?",
-      "What event provided the most **character development** for you?"
-    ]
-  },
-  {
-    id: 285,
-    question: "What is the most subtle, passive-aggressive thing people do regularly?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "backhanded compliment", translation: "complimento velato (offesa travestita da complimento)", type: "Noun Phrase", example: "Saying 'you look great for your age' is a classic backhanded compliment." },
-      { phrase: "sugar-coat", translation: "indorare la pillola", type: "Verb", example: "She tried to sugar-coat the criticism, but it still hurt." },
-      { phrase: "give the cold shoulder", translation: "trattare con freddezza", type: "Idiom", example: "He gave me the cold shoulder after our argument." },
-      { phrase: "read the room", translation: "leggere la stanza (capire l'atmosfera)", type: "Idiom", example: "You need to learn to read the room before making a joke." },
-      { phrase: "ulterior motive", translation: "secondo fine", type: "Noun Phrase", example: "Did she actually mean that, or did she have an ulterior motive?" }
-    ],
-    guidedQuestions: [
-      "Have you ever received a truly terrible **backhanded compliment**?",
-      "Why is it so painful when someone **gives you the cold shoulder**?",
-      "Is it polite to **sugar-coat** negative feedback at work?"
-    ]
-  },
-  {
-    id: 286,
-    question: "What is a seemingly boring topic that you could talk about passionately for an hour?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "niche", translation: "di nicchia", type: "Adjective", example: "He has a very niche interest in vintage fountain pens." },
-      { phrase: "go on a tangent", translation: "partire per la tangente (divagare)", type: "Idiom", example: "I try to quickly answer, but I always go on a tangent." },
-      { phrase: "infodump", translation: "scaricare informazioni", type: "Verb", example: "I accidentally infodumped about coffee brewing to a stranger." },
-      { phrase: "passionate", translation: "appassionato", type: "Adjective", example: "She is incredibly passionate about urban city planning." },
-      { phrase: "geek out", translation: "entusiasmarsi da 'nerd'", type: "Phrasal Verb", example: "I love to geek out over new camera equipment." }
-    ],
-    guidedQuestions: [
-      "What extremely **niche** hobby do you have?",
-      "When was the last time you completely **geeked out** over something?",
-      "Do people ever get annoyed when you **go on a tangent**?"
-    ]
-  },
-  {
-    id: 287,
-    question: "If you had to sacrifice your most treasured personal possession to save a stranger, would you?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "sentimental value", translation: "valore affettivo", type: "Noun Phrase", example: "This cheap old watch has massive sentimental value to me." },
-      { phrase: "materialistic", translation: "materialista", type: "Adjective", example: "Do you consider yourself a highly materialistic person?" },
-      { phrase: "greater good", translation: "bene superiore", type: "Noun Phrase", example: "Are you willing to sacrifice personal joy for the greater good?" },
-      { phrase: "part ways with", translation: "separarsi da", type: "Phrase", example: "It is incredibly difficult to part ways with sentimental items." },
-      { phrase: "moral dilemma", translation: "dilemma morale", type: "Noun Phrase", example: "The trolley problem is a classic moral dilemma." }
-    ],
-    guidedQuestions: [
-      "Is an item's **sentimental value** more important than its price?",
-      "Are humans naturally selfish, or naturally geared toward the **greater good**?",
-      "What makes this specific **moral dilemma** so difficult to answer?"
-    ]
-  },
-  {
-    id: 288,
-    question: "What is your best tip for instantly getting out of a bad mood?",
-    category: "Feelings",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "snap out of it", translation: "riprendersi / scuotersi", type: "Idiom", example: "Sometimes you just need to slap your face to snap out of it." },
-      { phrase: "change of scenery", translation: "cambio d'aria / di cenário", type: "Noun Phrase", example: "A quick walk outside provides a nice change of scenery." },
-      { phrase: "coping mechanism", translation: "meccanismo di difesa / di adattamento", type: "Noun Phrase", example: "Listening to angry music is my primary coping mechanism." },
-      { phrase: "silver lining", translation: "lato positivo", type: "Idiom", example: "Can you usually find the silver lining when things go wrong?" },
-      { phrase: "blow off steam", translation: "sfogarsi", type: "Idiom", example: "I like to go for a run just to blow off steam." }
-    ],
-    guidedQuestions: [
-      "What is the fastest way to **snap out of it** when you feel miserable?",
-      "Does a sudden **change of scenery** really impact your brain?",
-      "Is complaining to friends a healthy **coping mechanism**?"
-    ]
-  },
-  {
-    id: 289,
-    question: "If you could only listen to one album for the rest of your life, what would it be?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "all-time favorite", translation: "preferito di tutti i tempi", type: "Noun Phrase", example: "That is undoubtedly my all-time favorite movie." },
-      { phrase: "stand the test of time", translation: "resistere alla prova del tempo", type: "Idiom", example: "The Beatles' music completely stands the test of time." },
-      { phrase: "on repeat", translation: "a ripetizione", type: "Phrase", example: "I have had this new song on repeat for three days." },
-      { phrase: "nostalgic", translation: "nostalgico", type: "Adjective", example: "Listening to 2000s pop makes me incredibly nostalgic." },
-      { phrase: "skip a track", translation: "saltare una traccia", type: "Phrase", example: "It is a perfect album; I never skip a track." }
-    ],
-    guidedQuestions: [
-      "Why do some songs **stand the test of time** while others fade?",
-      "Have you ever completely ruined an **all-time favorite** song by playing it **on repeat**?",
-      "What music makes you instantly feel **nostalgic** for your childhood?"
-    ]
-  },
-  {
-    id: 290,
-    question: "Is it more important to be respected, or to be loved?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "mutual respect", translation: "rispetto reciproco", type: "Noun Phrase", example: "Every healthy relationship must be built on mutual respect." },
-      { phrase: "people pleaser", translation: "persona che cerca sempre di accontentare gli altri", type: "Noun Phrase", example: "As a people pleaser, she sacrifices her own needs completely." },
-      { phrase: "cross the line", translation: "passare il limite", type: "Idiom", example: "Without respect, people will eventually cross the line." },
-      { phrase: "foundation", translation: "fondamenta / base", type: "Noun", example: "Trust is the absolute foundation of love." },
-      { phrase: "dictate", translation: "dettare / imporre", type: "Verb", example: "Do not let other people's opinions dictate your self-worth." }
-    ],
-    guidedQuestions: [
-      "Can love truly exist without **mutual respect**?",
-      "Does being a **people pleaser** guarantee you will be loved?",
-      "Why is respect considered the ultimate **foundation** of a professional career?"
-    ]
-  },
-  {
-    id: 291,
-    question: "What is a seemingly weird rule you have for yourself?",
-    category: "Personal",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "strict code", translation: "codice rigoroso", type: "Noun Phrase", example: "He lives by a highly strict code of ethics." },
-      { phrase: "non-negotiable", translation: "non negoziabile", type: "Adjective", example: "Eight hours of sleep is absolutely non-negotiable for me." },
-      { phrase: "set boundaries", translation: "stabilire dei limiti / confini", type: "Phrase", example: "You must learn to set boundaries with your employer." },
-      { phrase: "stick to my guns", translation: "tenere duro (sulle proprie posizioni)", type: "Idiom", example: "Even when mocked, I will firmly stick to my guns." },
-      { phrase: "creature of habit", translation: "abitudinario / animale abitudinario", type: "Idiom", example: "I am a total creature of habit when it comes to breakfast." }
-    ],
-    guidedQuestions: [
-      "What is one daily routine that is completely **non-negotiable** for you?",
-      "Why is it so difficult for some people to **set boundaries**?",
-      "Are you a **creature of habit**, or do you prefer total chaos?"
-    ]
-  },
-  {
-    id: 292,
-    question: "If you were given one million dollars right now, what is the first purely selfish thing you would buy?",
-    category: "Dreams",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "spare no expense", translation: "non badare a spese", type: "Phrase", example: "I would spare no expense on building a home cinema." },
-      { phrase: "guilty pleasure", translation: "piacere inconfessabile", type: "Noun Phrase", example: "Buying designer shoes is a massive guilty pleasure." },
-      { phrase: "splurge on", translation: "sperperare in / fare una pazzia per", type: "Phrasal Verb", example: "I would immediately splurge on a first-class ticket to Tokyo." },
-      { phrase: "materialistic", translation: "materialista", type: "Adjective", example: "Is it materialistic to want a beautiful, expensive car?" },
-      { phrase: "treat myself", translation: "concedermi uno sfizio", type: "Phrase", example: "After finishing exams, I like to treat myself to a fancy dinner." }
-    ],
-    guidedQuestions: [
-      "What item would you instantly **splurge on** without hesitation?",
-      "Do people judge others too harshly for being slightly **materialistic**?",
-      "If you could **spare no expense**, where would you travel tomorrow?"
-    ]
-  },
-  {
-    id: 293,
-    question: "Do you believe the universe cares about human affairs, or are we entirely on our own?",
-    category: "Existential",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "insignificant", translation: "insignificante", type: "Adjective", example: "Looking at the stars makes humanity feel totally insignificant." },
-      { phrase: "grand scheme of things", translation: "nel grande schema delle cose", type: "Idiom", example: "In the grand scheme of things, our problems are incredibly tiny." },
-      { phrase: "destiny", translation: "destino", type: "Noun", example: "Do you think meeting her was destiny or random chance?" },
-      { phrase: "cold and indifferent", translation: "freddo e indifferente", type: "Phrase", example: "Many believe the cosmos is vast, cold, and entirely indifferent." },
-      { phrase: "seek meaning", translation: "cercare il senso", type: "Phrase", example: "Humans are biologically wired to constantly seek meaning." }
-    ],
-    guidedQuestions: [
-      "Does feeling **insignificant** in the universe depress you or comfort you?",
-      "**In the grand scheme of things**, do our daily choices really matter?",
-      "Is nature inherently cruel, or just **cold and indifferent**?"
-    ]
-  },
-  {
-    id: 294,
-    question: "What is a small detail you notice about someone the moment you meet them?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "first impression", translation: "prima impressione", type: "Noun Phrase", example: "You never get a second chance to make a first impression." },
-      { phrase: "body language", translation: "linguaggio del corpo", type: "Noun Phrase", example: "Her closed-off body language heavily suggested she was angry." },
-      { phrase: "eye contact", translation: "contatto visivo", type: "Noun Phrase", example: "Maintaining firm eye contact implies great confidence." },
-      { phrase: "vibe", translation: "energia (aura)", type: "Noun", example: "He gave off a very weird, uncomfortable vibe immediately." },
-      { phrase: "pay attention to", translation: "prestare attenzione a", type: "Phrase", example: "Do you pay attention to the shoes people wear?" }
-    ],
-    guidedQuestions: [
-      "How reliable is a gut-feeling **first impression**?",
-      "Do you actively **pay attention to** someone's **body language**?",
-      "Is lack of **eye contact** a sign of disrespect or just shyness?"
-    ]
-  },
-  {
-    id: 300,
-    question: "What is a piece of advice you often give but rarely follow yourself?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "easier said than done", translation: "più facile a dirsi che a farsi", type: "Idiom", example: "Telling someone to calm down is always easier said than done." },
-      { phrase: "practice what you preach", translation: "predicare bene e razzolare male (mancare di coerenza)", type: "Idiom", example: "You must learn to practice what you preach." },
-      { phrase: "hypocrite", translation: "ipocrita", type: "Noun", example: "I felt like a massive hypocrite giving her relationship advice." },
-      { phrase: "take to heart", translation: "prendere a cuore / sul serio", type: "Phrase", example: "Did you actually take that harsh criticism to heart?" },
-      { phrase: "blind spot", translation: "punto cieco (difetto non visto)", type: "Noun Phrase", example: "We all have a massive blind spot regarding our own flaws." }
-    ],
-    guidedQuestions: [
-      "Why is it so incredibly hard to **practice what you preach**?",
-      "Do you think having a **blind spot** is entirely natural?",
-      "If advice is **easier said than done**, is it still good advice?"
-    ]
-  },
-  {
-    id: 301,
-    question: "Do you think artificial intelligence will eventually understand human emotion?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "mimic", translation: "imitare", type: "Verb", example: "An algorithm can easily mimic sadness, but does it feel it?" },
-      { phrase: "sentient", translation: "senziente", type: "Adjective", example: "If an AI becomes fully sentient, do we have to give it human rights?" },
-      { phrase: "soul", translation: "anima", type: "Noun", example: "Many argue that the soul is what separates humans from machines." },
-      { phrase: "uncanny valley", translation: "zona perturbante (teoria)", type: "Noun Phrase", example: "The robot falls into the uncanny valley because it looks too human." },
-      { phrase: "boundless", translation: "sconfinato", type: "Adjective", example: "The boundless potential of AI is both exciting and terrifying." }
-    ],
-    guidedQuestions: [
-      "Is it inevitable that computers become fully **sentient**?",
-      "Can a machine ever replicate a human **soul**?",
-      "If a robot can perfectly **mimic** love, is it actually love?"
-    ]
-  },
-  {
-    id: 302,
-    question: "If you could fast forward to the end of your life and watch a 5-minute highlight reel, would you?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "spoiler alert", translation: "allerta spoiler", type: "Noun Phrase", example: "Knowing the ending is the ultimate spoiler alert for life." },
-      { phrase: "journey over destination", translation: "il viaggio più della destinazione", type: "Phrase", example: "I firmly believe the journey is significantly more important than the destination." },
-      { phrase: "inevitability", translation: "inevitabilità", type: "Noun", example: "The inevitability of death makes life incredibly precious." },
-      { phrase: "regret", translation: "rimpianto / rimpiangere", type: "Noun/Verb", example: "Would that highlight reel fill you with immense regret?" },
-      { phrase: "appreciate the present", translation: "apprezzare il presente", type: "Phrase", example: "Knowing the future would make it impossible to appreciate the present." }
-    ],
-    guidedQuestions: [
-      "Would seeing an early death fill you with **regret** or peace?",
-      "Does knowing the ending ruin the ability to **appreciate the present**?",
-      "Do you truly value the **journey over destination**?"
-    ]
-  },
-  {
-    id: 303,
-    question: "What is your absolute favorite smell in the whole world?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "whiff", translation: "folata / zaffata", type: "Noun", example: "I caught a brief whiff of fresh coffee from the bakery." },
-      { phrase: "trigger a memory", translation: "scatenare un ricordo", type: "Phrase", example: "The smell of pine needles can instantly trigger a memory." },
-      { phrase: "intoxicating", translation: "inebriante", type: "Adjective", example: "The scent of wild jasmine on a summer night is intoxicating." },
-      { phrase: "nostalgia", translation: "nostalgia", type: "Noun", example: "The smell of old books brings me an intense sense of nostalgia." },
-      { phrase: "comforting", translation: "confortante", type: "Adjective", example: "There is nothing more comforting than the smell of baking bread." }
-    ],
-    guidedQuestions: [
-      "Can a random **whiff** of perfume completely **trigger a memory**?",
-      "Why is the smell of rain so universally **comforting**?",
-      "What scent gives you the deepest feeling of childhood **nostalgia**?"
-    ]
-  },
-  {
-    id: 304,
-    question: "What is an assumption you made about adult life when you were kids that turned out to be wildly inaccurate?",
-    category: "Personal",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "have it all figured out", translation: "aver capito tutto / avere il controllo", type: "Idiom", example: "I used to think my parents had it all completely figured out." },
-      { phrase: "rude awakening", translation: "brusco risveglio", type: "Noun Phrase", example: "Paying taxes for the first time was a very rude awakening." },
-      { phrase: "wing it", translation: "improvvisare", type: "Idiom", example: "The terrifying secret is that most adults are just winging it." },
-      { phrase: "disillusioned", translation: "disilluso", type: "Adjective", example: "Many young graduates quickly become highly disillusioned." },
-      { phrase: "on autopilot", translation: "col pilota automatico", type: "Idiom", example: "Sometimes I feel like I am just living my life on autopilot." }
-    ],
-    guidedQuestions: [
-      "When was your biggest **rude awakening** regarding adulthood?",
-      "Do you think anyone actually **has it all figured out**?",
-      "How do we avoid living the next 30 years entirely **on autopilot**?"
-    ]
-  },
-  {
-    id: 305,
-    question: "Do you believe there is such a thing as a truly selfless act?",
-    category: "Deep",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "selfish motive", translation: "motivo egoistico", type: "Noun Phrase", example: "Even giving money to a beggar might stem from a selfish motive." },
-      { phrase: "altruism", translation: "altruismo", type: "Noun", example: "Biological altruism exists in many wild animal species." },
-      { phrase: "ego boost", translation: "innalzamento dell'ego", type: "Noun Phrase", example: "Posting your charity work online gives a massive ego boost." },
-      { phrase: "wired to", translation: "programmato per (biologicamente)", type: "Phrase", example: "Humans are biologically wired to ultimately protect themselves." },
-      { phrase: "hidden agenda", translation: "secondo fine", type: "Noun Phrase", example: "Why do we always assume politicians have a deep hidden agenda?" }
-    ],
-    guidedQuestions: [
-      "If helping someone gives you an **ego boost**, is it still **altruism**?",
-      "Are humans naturally **wired to** care for strangers?",
-      "Can we ever do something kind without a **hidden agenda**?"
-    ]
-  },
-  {
-    id: 306,
-    question: "What was the most stressful situation you eventually learned to laugh at?",
-    category: "Social",
-    depthLevel: 2,
-    vocabulary: [
-      { phrase: "nightmare", translation: "incubo", type: "Noun", example: "Getting stuck at the airport for two days was an absolute nightmare." },
-      { phrase: "silver lining", translation: "lato positivo", type: "Idiom", example: "The only silver lining was that I got a funny story out of it." },
-      { phrase: "laugh it off", translation: "farsela passare con una risata", type: "Phrasal Verb", example: "We were furious at the time, but now we just laugh it off." },
-      { phrase: "hindsight", translation: "col senno di poi", type: "Noun", example: "In hindsight, it was actually a highly comedic sequence of events." },
-      { phrase: "overreact", translation: "reagire in modo spropositato", type: "Verb", example: "I tend to completely overreact to minor inconveniences." }
-    ],
-    guidedQuestions: [
-      "Have you ever completely **overreacted** to a minor failure?",
-      "Is it true that tragedy plus time equals comedy in **hindsight**?",
-      "How quickly do you usually find the **silver lining**?"
-    ]
-  },
-  {
-    id: 307,
-    question: "What is your strangest irrational fear?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "irrational", translation: "irrazionale", type: "Adjective", example: "I have a completely irrational fear of large moths." },
-      { phrase: "give the creeps", translation: "fare venire i brividi", type: "Idiom", example: "Those old porcelain dolls give me the serious creeps." },
-      { phrase: "phobia", translation: "fobia", type: "Noun", example: "She developed an intense phobia of crowded spaces." },
-      { phrase: "freak out", translation: "andare fuori di testa / farsi prendere dal panico", type: "Phrasal Verb", example: "I heavily freak out whenever an airplane shakes." },
-      { phrase: "paranoia", translation: "paranoia", type: "Noun", example: "Is checking the door lock five times caution or mild paranoia?" }
-    ],
-    guidedQuestions: [
-      "Does thinking about the deep ocean **give you the creeps**?",
-      "Why do completely **irrational** fears persist in adults?",
-      "Has a childhood fear eventually turned into a lifelong **phobia**?"
-    ]
-  },
-  {
-    id: 308,
-    question: "Do you think society is currently becoming more lonely or more connected?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "paradox", translation: "paradosso", type: "Noun", example: "The great paradox is that we have social media but zero friends." },
-      { phrase: "superficial", translation: "superficiale", type: "Adjective", example: "Online interactions are often incredibly superficial." },
-      { phrase: "epidemic of isolation", translation: "epidemia di isolamento", type: "Noun Phrase", example: "We are currently living through a silent epidemic of isolation." },
-      { phrase: "echo chamber", translation: "cassa di risonanza (bolla)", type: "Noun Phrase", example: "The internet just traps people in a comforting echo chamber." },
-      { phrase: "crave connection", translation: "bramare connessione", type: "Collocation", example: "As humans, we biologically crave deep, meaningful connection." }
-    ],
-    guidedQuestions: [
-      "Why does a highly **superficial** network leave us feeling empty?",
-      "Are we living in a dangerous **epidemic of isolation**?",
-      "Do we use social media to **crave connection** or avoid it?"
-    ]
-  },
-  {
-    id: 309,
-    question: "What is a major goal you successfully achieved, only to discover it didn't make you happy?",
-    category: "Dreams",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "letdown", translation: "delusione", type: "Noun", example: "Reaching the summit was honestly a massive letdown for him." },
-      { phrase: "anticipation", translation: "anticipazione / attesa", type: "Noun", example: "Often, the anticipation is vastly better than the reward." },
-      { phrase: "empty victory", translation: "vittoria vuota", type: "Noun Phrase", example: "Getting promoted but losing my friends felt like a totally empty victory." },
-      { phrase: "misplaced priorities", translation: "priorità sbagliate", type: "Noun Phrase", example: "Focusing solely on money reveals highly misplaced priorities." },
-      { phrase: "soul-searching", translation: "introspezione", type: "Noun", example: "After the project failed, I had to do some serious soul-searching." }
-    ],
-    guidedQuestions: [
-      "Is the **anticipation** of an event always better than the reality?",
-      "Have you ever experienced a completely **empty victory**?",
-      "When did you realize you had heavily **misplaced priorities**?"
-    ]
-  },
-  {
-    id: 310,
-    question: "If there were absolutely zero consequences, what mildly illegal thing would you do today?",
-    category: "Fun",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "consequence", translation: "conseguenza", type: "Noun", example: "Actions online usually have zero real-world consequences." },
-      { phrase: "bend the rules", translation: "piegare le regole / chiudere un occhio sulle regole", type: "Idiom", example: "Sometimes you have to bend the rules to get things done securely." },
-      { phrase: "victimless crime", translation: "crimine senza vittime", type: "Noun Phrase", example: "Jaywalking is widely considered a victimless crime." },
-      { phrase: "thrill-seeker", translation: "amante del brivido", type: "Noun Phrase", example: "Are you a natural thrill-seeker or generally highly cautious?" },
-      { phrase: "rebellious", translation: "ribelle", type: "Adjective", example: "Stealing an extra pastry felt like a very rebellious act." }
-    ],
-    guidedQuestions: [
-      "Are you the type of person to **bend the rules**?",
-      "Do you think digital piracy is a completely **victimless crime**?",
-      "Does a lack of **consequences** turn good people evil?"
-    ]
-  },
-  {
-    id: 311,
-    question: "Do you think art is essentially a luxury for the rich, or a basic necessity for the human soul?",
-    category: "Philosophy",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "intrinsic value", translation: "valore intrinseco", type: "Noun Phrase", example: "Music has massive intrinsic value beyond its commercial price." },
-      { phrase: "elitist", translation: "elitario", type: "Adjective", example: "The modern fine art market often feels incredibly elitist." },
-      { phrase: "food for the soul", translation: "nutrimento per l'anima", type: "Idiom", example: "Poetry might not pay the bills, but it is food for the soul." },
-      { phrase: "commodify", translation: "mercificare", type: "Verb", example: "Should we heavily commodify creative expression?" },
-      { phrase: "frivolous", translation: "frivolo", type: "Adjective", example: "Some politicians view arts funding as a totally frivolous expense." }
-    ],
-    guidedQuestions: [
-      "Does the expensive art market make the concept of art **elitist**?",
-      "Why do some people view painting as a totally **frivolous** career?",
-      "Is storytelling the ultimate **food for the soul**?"
-    ]
-  },
-  {
-    id: 312,
-    question: "What is a simple thing you do that instantly makes you feel like your life is together?",
-    category: "Daily",
-    depthLevel: 1,
-    vocabulary: [
-      { phrase: "on top of things", translation: "avere il controllo della situazione", type: "Idiom", example: "Making my bed every morning makes me feel absolutely on top of things." },
-      { phrase: "momentum", translation: "slancio", type: "Noun", example: "Starting the day with exercise builds incredible momentum." },
-      { phrase: "clutter", translation: "disordine", type: "Noun", example: "Physical clutter almost always leads to severe mental clutter." },
-      { phrase: "grounding", translation: "radicante / che ti fa stare coi piedi per terra", type: "Adjective", example: "Watering my plants is a surprisingly grounding daily ritual." },
-      { phrase: "small win", translation: "piccola vittoria", type: "Noun Phrase", example: "Getting up on the first alarm is a crucial small win." }
-    ],
-    guidedQuestions: [
-      "How heavily does physical **clutter** affect your mental health?",
-      "What is your favorite highly **grounding** habit?",
-      "Does securing a **small win** early give you daily **momentum**?"
-    ]
-  },
-  {
-    id: 313,
-    question: "When did you finally forgive someone who never formally apologized to you?",
-    category: "Wisdom",
-    depthLevel: 3,
-    vocabulary: [
-      { phrase: "hold a grudge", translation: "portare rancore", type: "Idiom", example: "Choosing to hold a grudge is like drinking poison." },
-      { phrase: "closure", translation: "chiusura (psicologica)", type: "Noun", example: "You cannot always wait for them to give you closure." },
-      { phrase: "make peace with", translation: "fare pace con / accettare", type: "Phrase", example: "I had to eventually make peace with the painful reality." },
-      { phrase: "let go of the past", translation: "lasciar andare il passato", type: "Phrase", example: "It takes immense strength to truly let go of the past." },
-      { phrase: "resentment", translation: "risentimento", type: "Noun", example: "Deep resentment will slowly destroy your own mental health." }
-    ],
-    guidedQuestions: [
-      "Why is it so harmful to **hold a grudge** for years?",
-      "Is it possible to find internal **closure** without an apology?",
-      "How do you successfully **make peace with** a broken friendship?"
-    ]
-  },
-  {
-    id: 314,
-    question: "If you found out you were a character in a simulation, what is the first thing you would do?",
-    category: "Existential",
-    depthLevel: 4,
-    vocabulary: [
-      { phrase: "mind-bending", translation: "da far girare la testa (sconvolgente)", type: "Adjective", example: "The ending of that movie was a totally mind-bending experience." },
-      { phrase: "glitch in the matrix", translation: "falla nel sistema", type: "Idiom", example: "Experiencing heavy déjà vu feels like a bizarre glitch in the matrix." },
-      { phrase: "free will", translation: "libero arbitrio", type: "Noun Phrase", example: "Does human free will exist if someone else programmed us?" },
-      { phrase: "nihilistic", translation: "nichilista", type: "Adjective", example: "Knowing the truth might lead to an intensely nihilistic spiral." },
-      { phrase: "embrace the absurdity", translation: "accettare l'assurdità", type: "Phrase", example: "If nothing is real, we must simply embrace the absurdity." }
-    ],
-    guidedQuestions: [
-      "Would losing your **free will** completely break your mind?",
-      "How often do you experience a surreal **glitch in the matrix**?",
-      "Is it healthier to panic or wildly **embrace the absurdity**?"
     ]
   }
 ];
