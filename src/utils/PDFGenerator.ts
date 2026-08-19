@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
 import type { Question, VocabularyItem } from '../data/questions';
+import type { QuestionDetail } from '../data/questionDetails';
 import { generateCrossword } from './CrosswordGenerator';
 import type { CrosswordResult } from './CrosswordGenerator';
 import { generateWordSearch } from './WordSearchGenerator';
@@ -47,8 +48,20 @@ export const smartMask = (sentence: string, phrase: string): string => {
     return sentence;
 };
 
-export const generatePDF = (question: Question) => {
-    console.log('Generating PDF for:', question.question);
+type FullVocabularyItem = VocabularyItem & { example: string };
+type FullQuestion = Omit<Question, 'vocabulary'> & {
+    vocabulary: FullVocabularyItem[];
+    guidedQuestions: string[];
+};
+
+export const generatePDF = (base: Question, detail: QuestionDetail) => {
+    // Examples and prompts arrive separately so they can stay out of the
+    // initial bundle; stitch them back together for the worksheet.
+    const question: FullQuestion = {
+        ...base,
+        vocabulary: base.vocabulary.map((v, i) => ({ ...v, example: detail.examples[i] ?? '' })),
+        guidedQuestions: detail.guidedQuestions,
+    };
     const doc = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
@@ -293,7 +306,6 @@ export const generatePDF = (question: Question) => {
     }
 
     // --- SENTENCE UNSCRAMBLE ---
-    console.log(`PDF: Entering Part V (Unscramble) at yPos: ${yPos}`);
     checkPageBreak(60);
     addText('V. SENTENCE UNSCRAMBLE', margin, yPos, 12, 'helvetica', 'bold');
     yPos += 8;
@@ -301,7 +313,7 @@ export const generatePDF = (question: Question) => {
     yPos += 10;
 
     const unscrambleItems = shuffle(question.vocabulary.slice(0, 4));
-    unscrambleItems.forEach((item: VocabularyItem, index: number) => {
+    unscrambleItems.forEach((item: FullVocabularyItem, index: number) => {
         checkPageBreak(30);
         const originalWords = item.example.replace(/[.!?,]/g, '').split(' ');
         const shuffledWords = shuffle(originalWords);
@@ -315,14 +327,13 @@ export const generatePDF = (question: Question) => {
     yPos += 5;
 
     // --- GAP FILL ---
-    console.log(`PDF: Entering Part VI (Gap Fill) at yPos: ${yPos}`);
     checkPageBreak(60);
     addText('VI. CONTEXTUAL GAP FILL', margin, yPos, 12, 'helvetica', 'bold');
     yPos += 8;
     addText('Complete the sentences using the vocabulary from Part I.', margin, yPos, 9, 'helvetica', 'italic', 'left', [100, 100, 100]);
     yPos += 10;
 
-    question.vocabulary.forEach((item: VocabularyItem, index: number) => {
+    question.vocabulary.forEach((item: FullVocabularyItem, index: number) => {
         checkPageBreak(20);
         // Use smart masking
         const maskedSentence = smartMask(item.example, item.phrase);
@@ -336,7 +347,6 @@ export const generatePDF = (question: Question) => {
 
     // --- DISCUSSION & JOURNALING ---
     if (question.guidedQuestions && question.guidedQuestions.length > 0) {
-        console.log(`PDF: Entering Part VIII (Discussion) at yPos: ${yPos}`);
         doc.addPage();
         yPos = 25;
         addText('VIII. PERSONAL REFLECTION & DISCUSSION', margin, yPos, 12, 'helvetica', 'bold');
@@ -360,7 +370,6 @@ export const generatePDF = (question: Question) => {
     }
 
     // --- ANSWER KEY ---
-    console.log(`PDF: Entering Answer Key at yPos: ${yPos}`);
     doc.addPage();
     yPos = 25;
     addText('ANSWER KEY', pageWidth / 2, yPos, 16, 'helvetica', 'bold', 'center');
@@ -407,7 +416,7 @@ export const generatePDF = (question: Question) => {
     // Unscramble Key
     addText('Part V: Sentence Unscramble', margin, yPos, 12, 'helvetica', 'bold');
     yPos += 8;
-    unscrambleItems.forEach((item: VocabularyItem, index: number) => {
+    unscrambleItems.forEach((item: FullVocabularyItem, index: number) => {
         const addedHeight = wrapText(`${index + 1}. ${item.example}`, margin + 5, yPos, pageWidth - margin * 2 - 5, 5);
         yPos += addedHeight + 2;
     });
@@ -449,7 +458,6 @@ export const generatePDF = (question: Question) => {
         doc.text(`© ${new Date().getFullYear()} Matthew James Soldato - All Rights Reserved`, pageWidth / 2, pageHeight - 8, { align: 'center' });
     }
 
-    console.log(`PDF: Generation complete. Total pages: ${doc.getNumberOfPages()}`);
     doc.save(`Worksheet_${question.category.replace(/\s+/g, '_')}_${question.id}.pdf`);
 };
 

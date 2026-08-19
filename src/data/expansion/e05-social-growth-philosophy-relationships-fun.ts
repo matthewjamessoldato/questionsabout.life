@@ -1,6 +1,6 @@
-import type { Question } from '../questions';
+import type { AuthoredQuestion } from '../authoring';
 
-export const batch: Omit<Question, 'id'>[] = [
+export const batch: AuthoredQuestion[] = [
   {
     question: "How long can you go without speaking to anyone before it bothers you?",
     category: "Social",

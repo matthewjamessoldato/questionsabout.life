@@ -1,7 +1,7 @@
-import type { Question } from '../questions';
+import type { AuthoredQuestion } from '../authoring';
 
 /** Community & Family — both sat at a single question before this batch. */
-export const batch: Omit<Question, 'id'>[] = [
+export const batch: AuthoredQuestion[] = [
   {
     question: "What would your neighbourhood lose if you moved away tomorrow?",
     category: "Community",

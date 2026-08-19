@@ -1,6 +1,6 @@
-import type { Question } from '../questions';
+import type { AuthoredQuestion } from '../authoring';
 
-export const batch: Omit<Question, 'id'>[] = [
+export const batch: AuthoredQuestion[] = [
   {
     question: "What do you need that you have never asked anyone for?",
     category: "Personal",

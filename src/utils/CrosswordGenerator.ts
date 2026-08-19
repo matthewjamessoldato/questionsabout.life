@@ -24,7 +24,7 @@ interface PlacedWord {
     number: number;
 }
 
-export function generateCrossword(vocabulary: { phrase: string; translation?: string; example?: string }[], clueType: 'translation' | 'target' = 'translation'): any {
+export function generateCrossword(vocabulary: { phrase: string; translation?: string; example?: string }[], clueType: 'translation' | 'target' = 'translation'): CrosswordResult {
     const allWords = vocabulary.map(v => {
         const answer = v.phrase.toUpperCase().replace(/[^A-Z]/g, '');
         let clue = v.translation || 'Define this';
@@ -49,7 +49,10 @@ export function generateCrossword(vocabulary: { phrase: string; translation?: st
                 if (hasPronoun) {
                     try {
                         masked = v.example.replace(new RegExp(regexPattern, 'gi'), '__________');
-                    } catch (e) { }
+                    } catch {
+                        // The phrase produced an invalid pattern — fall through to the
+                        // longest-word strategy below rather than losing the clue.
+                    }
                 }
             }
 
@@ -75,7 +78,7 @@ export function generateCrossword(vocabulary: { phrase: string; translation?: st
     if (allWords.length === 0) return { grid: [], clues: { across: [], down: [] }, width: 0, height: 0 };
 
     const gridSize = 30; // Larger grid for better placement
-    let bestResult: any = null;
+    let bestResult: { grid: (CrosswordCell | null)[][]; placedWords: PlacedWord[]; area: number } | null = null;
 
     // Try multiple times to find the best layout
     for (let attempt = 0; attempt < 15; attempt++) {
@@ -151,9 +154,9 @@ export function generateCrossword(vocabulary: { phrase: string; translation?: st
         // Place remaining
         for (let i = 1; i < words.length; i++) {
             const current = words[i];
-            let options: { x: number; y: number; dir: 'across' | 'down'; score: number }[] = [];
+            const options: { x: number; y: number; dir: 'across' | 'down'; score: number }[] = [];
 
-            for (let pw of placedWords) {
+            for (const pw of placedWords) {
                 for (let j = 0; j < pw.word.length; j++) {
                     for (let k = 0; k < current.answer.length; k++) {
                         if (pw.word[j] === current.answer[k]) {
@@ -189,12 +192,10 @@ export function generateCrossword(vocabulary: { phrase: string; translation?: st
 
         // Calculate current area for "best result" selection
         let minX = gridSize, maxX = 0, minY = gridSize, maxY = 0;
-        let cells = 0;
         grid.forEach((row, y) => row.forEach((cell, x) => {
             if (cell) {
                 minX = Math.min(minX, x); maxX = Math.max(maxX, x);
                 minY = Math.min(minY, y); maxY = Math.max(maxY, y);
-                cells++;
             }
         }));
         const area = (maxX - minX + 1) * (maxY - minY + 1);
@@ -207,17 +208,16 @@ export function generateCrossword(vocabulary: { phrase: string; translation?: st
     }
 
     // Shrink and Format
+    if (!bestResult) return { grid: [], clues: { across: [], down: [] }, width: 0, height: 0 };
     const { grid, placedWords } = bestResult;
     let minX = gridSize, maxX = 0, minY = gridSize, maxY = 0;
-    grid.forEach((row: any, y: number) => row.forEach((cell: any, x: number) => {
+    grid.forEach((row, y) => row.forEach((cell, x) => {
         if (cell) {
             minX = Math.min(minX, x); maxX = Math.max(maxX, x);
             minY = Math.min(minY, y); maxY = Math.max(maxY, y);
         }
     }));
 
-
-    console.log(`DEBUG: Bounds - minX:${minX}, maxX:${maxX}, minY:${minY}, maxY:${maxY}, Placed:${placedWords.length}`);
 
     const width = maxX - minX + 1;
     const height = maxY - minY + 1;
@@ -227,8 +227,8 @@ export function generateCrossword(vocabulary: { phrase: string; translation?: st
     return {
         grid: finalGrid,
         clues: {
-            across: placedWords.filter((w: any) => w.direction === 'across').map((w: any) => ({ number: w.number, clue: w.clue, answer: w.word })),
-            down: placedWords.filter((w: any) => w.direction === 'down').map((w: any) => ({ number: w.number, clue: w.clue, answer: w.word })),
+            across: placedWords.filter(w => w.direction === 'across').map(w => ({ number: w.number, clue: w.clue, answer: w.word })),
+            down: placedWords.filter(w => w.direction === 'down').map(w => ({ number: w.number, clue: w.clue, answer: w.word })),
         },
         width, height
     };

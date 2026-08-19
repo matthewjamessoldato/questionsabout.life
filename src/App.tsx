@@ -3,6 +3,7 @@ import { Download, ChevronRight, ChevronLeft, Share2, Eye, EyeOff, Search, X, In
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { questions, categories } from './data/questions';
 import type { Question } from './data/questions';
+import type { QuestionDetail } from './data/questionDetails';
 
 import bg1 from './assets/backgrounds/bg-1.jpg';
 import bg2 from './assets/backgrounds/bg-2.jpg';
@@ -131,6 +132,21 @@ function App() {
 
   const [isSharing, setIsSharing] = useState(false);
   const [isBuildingPDF, setIsBuildingPDF] = useState(false);
+
+  /* Example sentences and worksheet prompts are ~213 kB and are not needed to
+     paint the first screen, so they stream in just behind it. */
+  const [details, setDetails] = useState<Record<number, QuestionDetail> | null>(null);
+  const detailsPromise = useRef<Promise<Record<number, QuestionDetail>> | null>(null);
+
+  const loadDetails = useCallback(() => {
+    detailsPromise.current ??= import('./data/questionDetails').then(m => {
+      setDetails(m.questionDetails);
+      return m.questionDetails;
+    });
+    return detailsPromise.current;
+  }, []);
+
+  useEffect(() => { void loadDetails(); }, [loadDetails]);
 
   useEffect(() => {
     saveState({
@@ -311,6 +327,7 @@ function App() {
 
   const anyOverlayOpen = isSearchOpen || isInfoOpen || mode === 'categories' || focusedVocabIndex !== null;
   const isFavorite = currentQuestion ? favorites.has(currentQuestion.id) : false;
+  const examples = currentQuestion ? details?.[currentQuestion.id]?.examples : undefined;
 
   // --- Swipe navigation (left = next, right = previous) ---
   const onTouchStart = (e: React.TouchEvent) => {
@@ -498,10 +515,13 @@ function App() {
     setIsBuildingPDF(true);
     showToast('Preparing worksheet…');
     try {
-      const { generatePDF } = await import('./utils/PDFGenerator');
+      const [{ generatePDF }, loaded] = await Promise.all([
+        import('./utils/PDFGenerator'),
+        loadDetails(),
+      ]);
       // Yield a frame so the toast paints before jsPDF blocks the main thread.
       await new Promise(resolve => setTimeout(resolve, 60));
-      generatePDF(currentQuestion);
+      generatePDF(currentQuestion, loaded[currentQuestion.id]);
     } catch (err) {
       console.error('Worksheet failed:', err);
       showToast('Could not build the worksheet');
@@ -514,9 +534,12 @@ function App() {
     const questionsToDownload = filteredQuestions;
     if (!window.confirm(`Download ${questionsToDownload.length} worksheets? This will take a while.`)) return;
 
-    const { generatePDF } = await import('./utils/PDFGenerator');
+    const [{ generatePDF }, loaded] = await Promise.all([
+      import('./utils/PDFGenerator'),
+      loadDetails(),
+    ]);
     for (const q of questionsToDownload) {
-      generatePDF(q);
+      generatePDF(q, loaded[q.id]);
       await new Promise(resolve => setTimeout(resolve, 600)); // Delay to prevent browser download issues
     }
   };
@@ -774,7 +797,7 @@ function App() {
                             >
                               {v.translation && <span className="vocab-translation">{v.translation}</span>}
                               {v.type && <span className="vocab-type">{v.type}</span>}
-                              <span className="vocab-example">“{v.example}”</span>
+                              {examples?.[i] && <span className="vocab-example">“{examples[i]}”</span>}
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -817,7 +840,7 @@ function App() {
                     <div className="vocab-detail large">
                       {v.translation && <span className="vocab-translation">{v.translation}</span>}
                       {v.type && <span className="vocab-type">{v.type}</span>}
-                      <p className="vocab-example">“{v.example}”</p>
+                      {examples?.[focusedVocabIndex] && <p className="vocab-example">“{examples[focusedVocabIndex]}”</p>}
                     </div>
                   </>
                 );
