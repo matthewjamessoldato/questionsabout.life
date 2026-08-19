@@ -279,7 +279,7 @@ export const questionDetails: Record<number, QuestionDetail> = {
         "Where do you go to blow off steam?",
         "Do you actually count to ten when you are angry?",
         "When was the last time you had to bite your tongue?",
-        "How lung does it usually take you to cool down after an argument?",
+        "How long does it usually take you to cool down after an argument?",
         "Why do people lash out when they are stressed?"
       ],
       "guidedQuestions": [
@@ -482,7 +482,7 @@ export const questionDetails: Record<number, QuestionDetail> = {
         "What is one thing you have achieved that **exceeded your own expectations**?",
         "Do you think people often **underestimate** your true potential?",
         "When was the last time you were completely **taken aback** by someone's behavior?",
-        "If you had a **hidden talent**, what would you want it to be?"
+        "Are you **spontaneous** enough to still surprise yourself?"
       ]
     },
     "32": {
@@ -1899,7 +1899,7 @@ export const questionDetails: Record<number, QuestionDetail> = {
       "guidedQuestions": [
         "Is it a **fine line** between the two?",
         "Do you **dig your heels in**?",
-        "Is it **perseverance** or **obstinancy**?",
+        "Is it **perseverance**, or are you simply being **obstinate**?",
         "Does the **sunk cost fallacy** apply?"
       ]
     },
@@ -1985,7 +1985,7 @@ export const questionDetails: Record<number, QuestionDetail> = {
         "Does facing **mortality** scare you?",
         "What is on your **bucket list**?",
         "Do you need to **make amends**?",
-        "Are you **at peace**?"
+        "Do you have genuine **peace of mind**?"
       ]
     },
     "201": {

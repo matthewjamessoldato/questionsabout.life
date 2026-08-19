@@ -7,47 +7,89 @@ import { generateWordSearch } from './WordSearchGenerator';
 import type { WordSearchResult } from './WordSearchGenerator';
 
 
-// Helper for masking phrases in sentences (handling pronouns/conjugations)
-export const smartMask = (sentence: string, phrase: string): string => {
-    // 1. Try exact match (case insensitive)
-    const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // Use a standard length mask that isn't too long to cause wrapping issues
-    let masked = sentence.replace(new RegExp(escapedPhrase, 'gi'), '______________');
-    if (masked !== sentence) return masked;
+const MASK = '______________';
 
-    // 2. Try handling pronouns (myself -> yourself, etc.)
-    const pronouns = ['myself', 'yourself', 'himself', 'herself', 'ourselves', 'themselves', 'oneself', 'one\'s', 'my', 'your', 'his', 'her', 'our', 'their', 'someone', 'somebody', 'something'];
-    let regexPattern = phrase;
-    let hasPronoun = false;
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-    // Replace pronouns in the phrase with a wildcard regex
-    pronouns.forEach(p => {
-        if (new RegExp(`\\b${p}\\b`, 'i').test(regexPattern)) {
-            regexPattern = regexPattern.replace(new RegExp(`\\b${p}\\b`, 'gi'), '\\S+');
-            hasPronoun = true;
-        }
-    });
+/** "deal-breaker" is written with a hyphen and said without one. */
+const loosenHyphens = (s: string) => s.replace(/-/g, '[-\\s]?');
 
-    if (hasPronoun) {
-        try {
-            masked = sentence.replace(new RegExp(regexPattern, 'gi'), '______________');
-            if (masked !== sentence) return masked;
-        } catch (e) { console.warn('Regex error in smartMask', e); }
-    }
+/** Slot words: the bank writes "put someone at ease", the sentence says
+ *  "puts people at ease". These stand for whatever the sentence puts there. */
+const SLOT = /^(?:someone|somebody|something|oneself|myself|yourself|himself|herself|ourselves|themselves|one|my|your|his|her|our|their|its)('s)?$/i;
+const ARTICLE = /^(?:a|an|the)$/i;
 
-    // 3. Fallback: Mask the longest word (if > 3 chars) to avoid giving away the key concept
-    const words = phrase.split(/[\s-]+/);
-    const longestWord = words.reduce((a, b) => a.length > b.length ? a : b, '');
-    if (longestWord.length > 3) {
-        masked = sentence.replace(new RegExp(longestWord, 'gi'), '_______');
-        return masked;
-    }
-
-    // 4. Ultimate Fallback: Just return the sentence (or could mask everything?)
-    // For now, let's just return it, but maybe verify script will catch this.
-    return sentence;
+/** A leading verb inflects: "pay" -> "pays", "paid"; "rub" -> "rubbed". */
+const inflected = (w: string) => {
+    // Strip a trailing "e" so "bite" also reaches "biting"/"bites" — and list
+    // bare "e" among the endings so it can still match "bite" itself.
+    const base = escapeRe(w.replace(/e$/, ''));
+    return `${base}(?:e|es|ed|ing|s|d|[bdgklmnprt](?:ed|ing))?`;
 };
 
+/**
+ * Blank out a vocabulary phrase inside its example sentence.
+ *
+ * A gap-fill exercise whose sentence contains no gap is worse than useless, so
+ * this works through four increasingly forgiving strategies and the test suite
+ * asserts that every phrase in the bank produces a gap.
+ */
+export const smartMask = (sentence: string, phrase: string): string => {
+    // 1. Verbatim.
+    const exact = sentence.replace(new RegExp(escapeRe(phrase), 'gi'), MASK);
+    if (exact !== sentence) return exact;
+
+    // 2. Rebuild the phrase as a pattern that tolerates the ways a real
+    //    sentence bends it: slot words, article swaps, a conjugated leading
+    //    verb, and an object pushed between a separable verb and its particle
+    //    ("sum up" -> "sum you up").
+    const words = phrase.split(/\s+/).filter(Boolean);
+    const parts = words.map((w, i) => {
+        const bare = w.replace(/[^\w'-]/g, '');
+        if (!bare) return '';
+        // A slot in the middle can span a short noun phrase because the next
+        // literal word anchors it. A trailing slot must take exactly one token,
+        // or it runs on and swallows the rest of the sentence.
+        if (SLOT.test(bare)) {
+            return i === words.length - 1 ? "[\\w']+" : "[\\w']+(?:\\s+[\\w']+){0,2}?";
+        }
+        if (ARTICLE.test(bare)) return '(?:a|an|the|my|your|his|her|their|our|its)';
+        return loosenHyphens(i === 0 ? inflected(bare) : escapeRe(bare));
+    }).filter(Boolean);
+
+    if (parts.length) {
+        const body = parts.length > 1
+            ? `${parts[0]}(?:\\s+[\\w']+)?\\s+${parts.slice(1).join("\\s+")}`
+            : parts[0];
+        try {
+            const flexible = sentence.replace(new RegExp(`\\b${body}\\b`, 'gi'), MASK);
+            // Guard against a pattern so loose it eats the whole sentence.
+            if (flexible !== sentence && flexible.replace(/_/g, '').trim().length >= sentence.length * 0.25) {
+                return flexible;
+            }
+        } catch {
+            // A phrase can still produce an invalid pattern; fall through.
+        }
+    }
+
+    // 3. Blank the longest word of the phrase that actually appears, allowing
+    //    for inflection. Slot words are skipped — they never appear literally.
+    const candidates = words
+        .map(w => w.replace(/[^\w'-]/g, ''))
+        .filter(w => w.length >= 3 && !SLOT.test(w) && !ARTICLE.test(w))
+        .sort((a, b) => b.length - a.length);
+
+    for (const w of candidates) {
+        try {
+            const hit = sentence.replace(new RegExp(`\\b${loosenHyphens(inflected(w))}\\b`, 'gi'), '_______');
+            if (hit !== sentence) return hit;
+        } catch {
+            // try the next candidate
+        }
+    }
+
+    return sentence;
+};
 type FullVocabularyItem = VocabularyItem & { example: string };
 type FullQuestion = Omit<Question, 'vocabulary'> & {
     vocabulary: FullVocabularyItem[];
