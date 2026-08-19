@@ -53,7 +53,9 @@ body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   min-height: 100vh;
+  min-height: 100dvh;
   height: 100%;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   /* No scrolling */
@@ -77,10 +79,10 @@ body {
   z-index: -2;
   background-size: cover;
   background-position: center;
-  transition: background-image 0.8s ease-in-out;
-  /* Cinematic slow fade */
   transform: scale(1.02);
-  /* Slight scale to prevent edge bleeding */
+  /* Slight scale to prevent edge bleeding. The fade is a real opacity
+     crossfade between two stacked layers — see AnimatePresence in App.tsx. */
+  will-change: opacity;
 }
 
 /* Dark Overlay for Readability */
@@ -437,7 +439,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem calc(1.5rem + env(safe-area-inset-bottom)) 1rem;
   /* More space at bottom */
 }
 
@@ -848,7 +850,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
   z-index: 10;
 }
 
@@ -1456,7 +1458,7 @@ body {
 
 .search-results {
   flex: 1;
-  overflow: hiddne;
+  overflow: hidden;
   /* Use flex and overflow on child */
   display: flex;
   flex-direction: column;
@@ -1757,4 +1759,1527 @@ body {
 .timer-bar-fill.timer-done {
   background: #ef4444;
   box-shadow: 0 0 15px #ef4444;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE LAYER
+   Everything below is authored mobile-first and intentionally last in the
+   cascade so it wins over the older desktop-era rules above.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Platform hygiene ─────────────────────────────────────────────────── */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  /* 100vw ignores the scrollbar and causes a phantom horizontal scroll */
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  /* kills the 300ms double-tap-zoom delay, keeps pinch-zoom */
+}
+
+body.overlay-open {
+  overscroll-behavior: contain;
+}
+
+button,
+[role='button'] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Visible keyboard focus without a permanent ring for mouse/touch users */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(243, 241, 234, 0.75);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── 2. Shell layout ─────────────────────────────────────────────────────── */
+
+.app-container {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  padding: 0;
+  /* padding now lives on the individual bands so the scroll area can be edge-to-edge */
+}
+
+.top-bar {
+  padding: calc(1.1rem + env(safe-area-inset-top)) 3rem 0.75rem;
+  gap: 1rem;
+}
+
+.brand {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 0 0 auto;
+}
+
+/* The scroll region. Content centres when it fits and scrolls when it doesn't. */
+.main-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-top: 0;
+  align-items: stretch;
+}
+
+.main-stage::-webkit-scrollbar {
+  display: none;
+}
+
+.content-wrapper {
+  height: auto;
+  min-height: 100%;
+  gap: 2.5rem;
+  padding: 1rem 3rem 2rem;
+  animation: none;
+  /* framer-motion already owns the entrance */
+}
+
+.question-area {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+}
+
+.vocab-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── 3. Headline typography ──────────────────────────────────────────────── */
+
+.main-question {
+  max-width: min(1100px, 100%);
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  text-wrap: balance;
+}
+
+.main-question .q-word {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  /* word spacing comes from a real space text node in the markup, so the
+     headline stays copy-pasteable and readable to screen readers */
+}
+
+/* Length buckets — fluid, so a phone never gets a 72px headline */
+.main-question[data-size='xl'] {
+  font-size: clamp(2.15rem, 9.5vw, 4.5rem);
+}
+
+.main-question[data-size='lg'] {
+  font-size: clamp(1.95rem, 8.2vw, 4rem);
+}
+
+.main-question[data-size='md'] {
+  font-size: clamp(1.6rem, 6.6vw, 3rem);
+}
+
+.main-question[data-size='sm'] {
+  font-size: clamp(1.35rem, 5.4vw, 2.5rem);
+}
+
+.depth-indicator {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.75rem;
+  justify-content: center;
+}
+
+.depth-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background 0.5s ease;
+}
+
+.depth-dot.on {
+  background: #F3F1EA;
+}
+
+/* ── 4. Vocabulary chips (now real buttons) ──────────────────────────────── */
+
+.vocab-chip {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  text-align: center;
+  color: inherit;
+  border-radius: 10px;
+}
+
+.vocab-detail,
+.vocab-example {
+  display: block;
+}
+
+/* The example lives in a <span> now; keep it dark inside an open card */
+.vocab-chip.active .vocab-detail,
+.vocab-chip.active .vocab-detail .vocab-example {
+  color: #1A1918 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.vocab-chip.active .vocab-example {
+  font-style: italic;
+}
+
+/* ── 5. Action bar ───────────────────────────────────────────────────────── */
+
+.action-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 0.5rem 2rem 2.75rem;
+  z-index: 60;
+  /* above the vignette (z-40) so the controls never sit in shadow */
+}
+
+.act-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.25rem;
+  color: rgba(243, 241, 234, 0.55);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  text-transform: lowercase;
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  transition: color 0.25s ease, opacity 0.25s ease;
+  min-height: 44px;
+}
+
+.act-btn svg {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+}
+
+.act-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.act-primary {
+  color: rgba(243, 241, 234, 0.85);
+}
+
+/* Put "Next" on the right on desktop by reversing the icon order visually */
+.act-primary svg {
+  order: 2;
+}
+
+.app-footer {
+  bottom: 0.55rem;
+  z-index: 55;
+  pointer-events: auto;
+}
+
+.author-credit {
+  transition: opacity 0.3s ease;
+}
+
+/* ── 6. Toast ────────────────────────────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(6.5rem + env(safe-area-inset-bottom));
+  z-index: 3000;
+  background: rgba(26, 25, 24, 0.92);
+  border: 1px solid rgba(243, 241, 234, 0.18);
+  color: #F3F1EA;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+}
+
+/* ── 7. Overlays: dynamic viewport units + safe areas ────────────────────── */
+
+.vocab-focus-overlay,
+.practice-backdrop {
+  height: 100dvh;
+  width: 100%;
+}
+
+.vocab-focus-card {
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.close-focus-btn {
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.search-overlay {
+  padding-top: calc(10vh + env(safe-area-inset-top));
+}
+
+.search-container {
+  height: 100%;
+  min-height: 0;
+}
+
+.search-count {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(243, 241, 234, 0.35);
+  padding: 0 1rem 0.5rem;
+}
+
+.search-header input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search-results {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  overscroll-behavior: contain;
+}
+
+.category-overlay {
+  padding: 0;
+  gap: 0;
+  align-items: stretch;
+}
+
+.category-scroll {
+  width: 100%;
+  max-height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: calc(2.5rem + env(safe-area-inset-top)) 1.5rem calc(2.5rem + env(safe-area-inset-bottom));
+  min-height: 100%;
+}
+
+.category-list button.is-selected {
+  color: #F3F1EA;
+}
+
+.category-list button.is-selected::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  margin: 0.4rem auto 0;
+  opacity: 0.5;
+}
+
+.info-container {
+  max-height: min(85dvh, 100%);
+}
+
+.info-shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.info-shortcuts kbd {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  margin: 0 0.1rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MOBILE — up to 767px
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+  /* -- Header: icon-only, 44px targets, single row ----------------------- */
+  .top-bar {
+    flex-direction: row !important;
+    /* beats the old max-width:600px column rule */
+    align-items: center;
+    padding: calc(0.5rem + env(safe-area-inset-top)) 0.75rem 0.25rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .brand {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .header-controls {
+    gap: 0.1rem;
+  }
+
+  .control-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+  }
+
+  .control-btn::after {
+    display: none;
+    /* the hover underline is meaningless on touch */
+  }
+
+  .control-btn.active {
+    color: #F3F1EA;
+  }
+
+  .control-btn.active::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.9;
+  }
+
+  .btn-label {
+    display: none;
+  }
+
+  /* The running clock still needs to be legible with the label gone */
+  .timer-pip {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-sans);
+    font-size: 0.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    color: #F3F1EA;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+  }
+
+  .timer-menu {
+    top: calc(100% + 0.4rem);
+    right: 0;
+    min-width: 168px;
+  }
+
+  .timer-menu button {
+    padding: 0.9rem 1rem;
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
+  /* -- Stage ------------------------------------------------------------- */
+  .main-stage {
+    padding-bottom: 0;
+  }
+
+  .content-wrapper {
+    gap: 1.75rem;
+    padding: 0.5rem 1.15rem 1rem;
+  }
+
+  .depth-indicator {
+    margin-bottom: 1.15rem;
+  }
+
+  .main-question {
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    animation: none;
+    /* the "breathe" scale repaints the whole headline — costly on phones */
+  }
+
+  /* -- Vocabulary -------------------------------------------------------- */
+  .vocab-list {
+    gap: 0.6rem;
+    max-width: 100%;
+  }
+
+  .vocab-chip {
+    padding: 0.95rem 1.1rem;
+    min-height: 52px;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.32);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    /* one blur layer per chip is a real scroll-jank source on mobile GPUs */
+  }
+
+  .vocab-chip.active {
+    background: rgba(243, 241, 234, 0.97);
+    border-color: rgba(243, 241, 234, 0.9);
+  }
+
+  .vocab-term {
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+
+  .vocab-detail {
+    font-size: 0.9rem;
+    margin-top: 0.65rem;
+  }
+
+  .vocab-translation {
+    font-size: 1.05rem;
+  }
+
+  .vocab-chip .vocab-example {
+    font-size: 0.88rem;
+    margin-top: 0.45rem;
+  }
+
+  /* -- Action bar: fixed tab bar in the thumb zone ----------------------- */
+  .action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    padding: 0.45rem 0.25rem calc(0.45rem + env(safe-area-inset-bottom));
+    background: linear-gradient(to top,
+        rgba(12, 11, 10, 0.94) 0%,
+        rgba(12, 11, 10, 0.82) 55%,
+        rgba(12, 11, 10, 0) 100%);
+    backdrop-filter: blur(14px) saturate(115%);
+    -webkit-backdrop-filter: blur(14px) saturate(115%);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .act-btn {
+    flex-direction: column;
+    gap: 0.28rem;
+    min-height: 54px;
+    padding: 0.4rem 0.1rem;
+    font-size: 0.52rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: rgba(243, 241, 234, 0.5);
+  }
+
+  .act-btn svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .act-btn .act-label {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .act-primary {
+    color: #F3F1EA;
+  }
+
+  .act-primary svg {
+    order: 0;
+  }
+
+  .act-btn:active:not(:disabled) {
+    color: #fff;
+    transform: scale(0.94);
+  }
+
+  /* Stage has to clear the fixed bar */
+  .content-wrapper {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+
+  /* The copyright line lives in the Info panel on mobile — the bar owns the bottom */
+  .app-footer {
+    display: none;
+  }
+
+  .toast {
+    bottom: calc(5.75rem + env(safe-area-inset-bottom));
+    font-size: 0.78rem;
+  }
+
+  /* -- Search: full-screen sheet ---------------------------------------- */
+  .search-overlay {
+    padding-top: calc(0.5rem + env(safe-area-inset-top));
+  }
+
+  .search-container {
+    padding: 0 0.85rem;
+    max-width: 100%;
+  }
+
+  .search-header {
+    margin-bottom: 1rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.85rem;
+    border-radius: 14px;
+  }
+
+  .search-icon-inner {
+    margin-right: 0.65rem;
+  }
+
+  .search-header input {
+    font-size: 1.0625rem;
+    /* ≥16px, otherwise iOS zooms the whole page on focus */
+    padding: 0.85rem 0;
+  }
+
+  .close-search {
+    width: 44px;
+    height: 44px;
+  }
+
+  .search-result-item {
+    min-height: 56px;
+    padding: 0.85rem 0.75rem;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+  }
+
+  .result-text {
+    font-size: 1.05rem;
+  }
+
+  .search-results {
+    padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+  }
+
+  .no-results,
+  .search-hint {
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* -- Categories -------------------------------------------------------- */
+  .category-scroll {
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: calc(1.75rem + env(safe-area-inset-top)) 1rem calc(2rem + env(safe-area-inset-bottom));
+  }
+
+  .category-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .category-list button {
+    font-size: 1.3rem;
+    min-height: 52px;
+    padding: 0.5rem 0.35rem;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bulk-download-btn {
+    min-height: 50px;
+    font-size: 0.75rem;
+    padding: 0.85rem 1.25rem;
+    text-align: center;
+  }
+
+  .close-cat {
+    min-height: 48px;
+    padding: 0.75rem 2rem;
+  }
+
+  /* -- Vocab focus card -------------------------------------------------- */
+  .vocab-focus-overlay {
+    padding: 1rem;
+    align-items: flex-end;
+    /* bottom sheet — reachable with one hand */
+  }
+
+  .vocab-focus-card {
+    padding: 2rem 1.25rem 1.75rem;
+    border-radius: 18px;
+    max-height: calc(100dvh - 5rem);
+    margin-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  }
+
+  .vocab-term.large {
+    font-size: clamp(1.85rem, 8.5vw, 3rem);
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .vocab-detail.large {
+    font-size: 1.05rem;
+  }
+
+  .vocab-detail.large .vocab-translation {
+    font-size: 1.3rem;
+  }
+
+  .vocab-detail.large .vocab-type {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .vocab-detail.large .vocab-example {
+    font-size: 1.1rem;
+    margin-top: 1.25rem;
+  }
+
+  /* -- Info sheet -------------------------------------------------------- */
+  .info-overlay {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .info-container {
+    max-width: 100%;
+    max-height: 100dvh;
+    height: 100dvh;
+    border: none;
+    overscroll-behavior: contain;
+  }
+
+  .info-content {
+    padding: calc(3.25rem + env(safe-area-inset-top)) 1.35rem calc(3rem + env(safe-area-inset-bottom));
+  }
+
+  .info-title {
+    font-size: 2.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .info-section {
+    margin-bottom: 2rem;
+  }
+
+  .info-section p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .info-footer {
+    margin-top: 2.5rem;
+  }
+
+  .close-info {
+    top: calc(0.6rem + env(safe-area-inset-top));
+    right: 0.6rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* -- Cheaper compositing on phones ------------------------------------- */
+  .app-overlay {
+    background: rgba(0, 0, 0, 0.64);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .film-grain {
+    opacity: 0.09;
+  }
+
+  .cinematic-vignette {
+    background: radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+  }
+
+  .app-background {
+    transform: none;
+    background-position: center center;
+  }
+
+  .search-overlay,
+  .category-overlay {
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+  }
+}
+
+/* Very small handsets (iPhone SE and friends) */
+@media (max-width: 360px) {
+  .brand {
+    font-size: 0.52rem;
+  }
+
+  .control-btn {
+    width: 40px;
+    min-width: 40px;
+  }
+
+  .content-wrapper {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .act-btn {
+    font-size: 0.46rem;
+    letter-spacing: 0.06em;
+  }
+
+  .act-btn svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .category-list button {
+    font-size: 1.15rem;
+  }
+}
+
+/* Phones held sideways: vertical space is the scarce resource */
+@media (max-height: 500px) and (orientation: landscape) {
+  .top-bar {
+    padding-top: calc(0.35rem + env(safe-area-inset-top));
+    padding-bottom: 0.1rem;
+  }
+
+  .content-wrapper {
+    gap: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+
+  .depth-indicator {
+    margin-bottom: 0.6rem;
+  }
+
+  .main-question[data-size='xl'] {
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+  }
+
+  .main-question[data-size='lg'] {
+    font-size: clamp(1.5rem, 4.5vw, 2.3rem);
+  }
+
+  .main-question[data-size='md'] {
+    font-size: clamp(1.3rem, 3.8vw, 2rem);
+  }
+
+  .main-question[data-size='sm'] {
+    font-size: clamp(1.15rem, 3.2vw, 1.7rem);
+  }
+
+  .action-bar {
+    padding-top: 0.25rem;
+    padding-bottom: calc(0.25rem + env(safe-area-inset-bottom));
+  }
+
+  .act-btn {
+    min-height: 42px;
+  }
+
+  .act-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .search-overlay {
+    padding-top: calc(0.35rem + env(safe-area-inset-top));
+  }
+}
+
+/* Tablets — roomier than a phone, not yet a desktop */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .top-bar {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .content-wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .action-bar {
+    gap: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .category-list button {
+    font-size: 2rem;
+    min-height: 52px;
+  }
+}
+
+/* ── Touch devices of any size: no sticky :hover states ──────────────────── */
+
+@media (hover: none) {
+
+  .vocab-chip:hover:not(.active) {
+    background: rgba(0, 0, 0, 0.32);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: none;
+  }
+
+  .vocab-chip:hover:not(.active) .vocab-term {
+    color: #F3F1EA !important;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4) !important;
+    font-weight: 500;
+  }
+
+  .vocab-chip:hover:not(.active) .vocab-translation {
+    color: var(--text-secondary) !important;
+    text-shadow: none !important;
+    opacity: 1;
+  }
+
+  .nav-btn:hover,
+  .act-btn:hover,
+  .control-btn:hover {
+    transform: none;
+  }
+
+  .control-btn:hover {
+    background: none;
+    color: #F3F1EA;
+  }
+
+  .control-btn:hover::after {
+    width: 0;
+  }
+
+  .category-list button:hover {
+    transform: none;
+    color: rgba(243, 241, 234, 0.4);
+    text-shadow: none;
+  }
+
+  .category-list button.is-selected:hover,
+  .category-list button:active {
+    color: #F3F1EA;
+  }
+
+  .search-result-item:hover {
+    background: transparent;
+  }
+
+  .search-result-item:active {
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .bulk-download-btn:hover {
+    background: rgba(243, 241, 234, 0.1);
+    color: #F3F1EA;
+    transform: none;
+  }
+
+  .close-cat:hover {
+    color: rgba(243, 241, 234, 0.5);
+  }
+
+  .close-info:hover {
+    transform: none;
+    opacity: 0.5;
+  }
+
+  .practice-btn:hover {
+    padding-bottom: 0.2rem;
+  }
+
+  .vocab-chip:active:not(.active) {
+    background: rgba(255, 255, 255, 0.14);
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .main-question {
+    animation: none !important;
+  }
+
+  .app-background {
+    transition: none;
+  }
+}
+
+/* ── Touch ergonomics: taps must not become text selections ──────────────── */
+
+/* A tap that drifts a few pixels turns into a drag-select on the chips and
+   bar labels, and a long press pops the OS selection callout. The question
+   itself stays selectable — people copy those. */
+.vocab-chip,
+.act-btn,
+.control-btn,
+.category-list button,
+.timer-menu button,
+.close-cat,
+.bulk-download-btn,
+.close-search,
+.close-info,
+.close-focus-btn,
+.brand,
+.depth-indicator,
+.act-label,
+.btn-label,
+.timer-pip,
+.author-credit {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.main-question,
+.vocab-detail,
+.vocab-detail.large,
+.result-text,
+.info-content {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* ── Header scrim: content scrolls under the bar, so give it a ground ────── */
+
+.top-bar {
+  position: relative;
+}
+
+.top-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  bottom: -1.5rem;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(12, 11, 10, 0.85) 0%,
+      rgba(12, 11, 10, 0.55) 45%,
+      rgba(12, 11, 10, 0) 100%);
+}
+
+@media (max-width: 767px) {
+  .top-bar::before {
+    bottom: -2rem;
+    background: linear-gradient(to bottom,
+        rgba(12, 11, 10, 0.92) 0%,
+        rgba(12, 11, 10, 0.7) 50%,
+        rgba(12, 11, 10, 0) 100%);
+  }
+}
+
+/* ── Category sheet corrections ──────────────────────────────────────────── */
+
+/* The buttons are flex containers, so the selected underline was laying out
+   as a sibling column next to the label instead of beneath it. */
+.category-list button {
+  flex-direction: column;
+}
+
+.category-list button.is-selected::after {
+  margin-top: 0.35rem;
+}
+
+/* 0.4 alpha reads fine on a big backlit monitor; on a phone outdoors it does not. */
+@media (max-width: 767px) {
+  .category-list button {
+    color: rgba(243, 241, 234, 0.62);
+  }
+
+  .category-list button.is-selected {
+    color: #F3F1EA;
+  }
+
+  @media (hover: none) {
+    .category-list button:hover:not(.is-selected) {
+      color: rgba(243, 241, 234, 0.62);
+    }
+  }
+}
+
+/* A phone in landscape is wide enough to miss the mobile breakpoint, so the
+   fixed copyright line lands on top of the action bar. Vertical room is the
+   constraint there anyway — drop it. */
+@media (max-height: 560px) {
+  .app-footer {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   EDITORIAL PASS
+   The layout was correct but the components read as default UI sitting on
+   top of an editorial design. This pass makes them belong to it.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Meta line: category + depth, above the headline ─────────────────────── */
+
+.question-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+  opacity: 0.75;
+}
+
+.meta-category {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #F3F1EA;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+  padding-left: 0.28em;
+  /* optical: letter-spacing adds a trailing gap, so pad the head to re-centre */
+}
+
+.meta-rule {
+  width: 22px;
+  height: 1px;
+  background: rgba(243, 241, 234, 0.35);
+}
+
+.depth-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0;
+}
+
+.depth-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(243, 241, 234, 0.22);
+  transition: background 0.5s ease;
+}
+
+.depth-dot.on {
+  background: #F3F1EA;
+}
+
+/* ── Vocabulary: hairline rows, not boxes ────────────────────────────────── */
+
+.vocab-list {
+  gap: 0;
+  border-top: 1px solid rgba(243, 241, 234, 0.14);
+}
+
+.vocab-chip {
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(243, 241, 234, 0.14);
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 1.05rem 2.5rem;
+  min-height: 56px;
+  justify-content: center;
+  transition: background 0.35s ease, padding 0.35s ease, border-color 0.35s ease;
+}
+
+/* The affordance: terms are tappable, and nothing said so. */
+.vocab-chip::after {
+  content: '';
+  position: absolute;
+  top: 1.55rem;
+  right: 1.1rem;
+  width: 9px;
+  height: 9px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background:
+    linear-gradient(currentColor, currentColor) center/100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center/1px 100% no-repeat;
+}
+
+.vocab-chip.active::after {
+  /* Collapse the vertical stroke so the plus becomes a minus. Rotate a half
+     turn, not a quarter — a quarter turn would stand the remaining line back up. */
+  transform: rotate(180deg);
+  background:
+    linear-gradient(currentColor, currentColor) center/100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center/1px 0 no-repeat;
+  opacity: 0.5;
+}
+
+.vocab-chip.active {
+  background: rgba(243, 241, 234, 0.97);
+  border-bottom-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+}
+
+.vocab-term {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.vocab-chip.active .vocab-term {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.vocab-chip.active .vocab-detail {
+  margin-top: 0.7rem;
+}
+
+.vocab-chip.active .vocab-translation {
+  font-size: 1.15rem;
+}
+
+.vocab-chip.active .vocab-type {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.vocab-chip.active .vocab-example {
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Desktop keeps the row rhythm rather than reverting to floating pills */
+@media (min-width: 768px) {
+  .vocab-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-width: 720px;
+  }
+
+  .vocab-chip {
+    max-width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(243, 241, 234, 0.14);
+  }
+
+  .vocab-chip.active {
+    border-bottom-color: transparent;
+  }
+
+  /* "Show all" still gets the dense grid, but as cards that match the rows */
+  .vocab-list.show-all-mode {
+    border-top: none;
+    max-width: 1200px;
+  }
+
+  .vocab-list.show-all-mode .vocab-chip {
+    border: 1px solid rgba(243, 241, 234, 0.14);
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 767px) {
+  .vocab-chip {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(243, 241, 234, 0.14);
+    padding: 1rem 2.25rem;
+  }
+
+  .vocab-chip.active {
+    background: rgba(243, 241, 234, 0.97);
+    border-bottom-color: transparent;
+  }
+
+  .vocab-chip::after {
+    top: 1.45rem;
+    right: 0.75rem;
+  }
+
+  .vocab-term {
+    font-size: 1.1rem;
+  }
+
+  .vocab-chip.active .vocab-term {
+    font-size: 1.5rem;
+  }
+
+  .question-meta {
+    gap: 0.7rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .meta-category {
+    font-size: 0.55rem;
+    letter-spacing: 0.24em;
+  }
+}
+
+/* ── Bottom bar: give "Next" a quiet primary weight ──────────────────────── */
+
+.act-primary {
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .act-primary svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .act-primary::before {
+    content: '';
+    position: absolute;
+    top: 0.15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(243, 241, 234, 0.12);
+    border: 1px solid rgba(243, 241, 234, 0.18);
+    transition: background 0.25s ease;
+  }
+
+  .act-primary:active::before {
+    background: rgba(243, 241, 234, 0.24);
+  }
+
+  .act-btn {
+    padding-top: 0.5rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PROGRESS, SAVED QUESTIONS & CATEGORY META
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* The category label is the way into the category sheet, so it has to read
+   as a control without shouting. */
+.meta-category {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.35rem 0 0.35rem 0.28em;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #F3F1EA;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid rgba(243, 241, 234, 0.28);
+  transition: border-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .meta-category:hover {
+    border-bottom-color: rgba(243, 241, 234, 0.85);
+  }
+}
+
+.meta-category:active {
+  border-bottom-color: rgba(243, 241, 234, 0.85);
+}
+
+/* Saved state on the bottom bar */
+.act-saved {
+  color: #E8C97A;
+}
+
+@media (max-width: 767px) {
+  .act-saved {
+    color: #E8C97A;
+  }
+
+  .act-saved svg {
+    filter: drop-shadow(0 0 8px rgba(232, 201, 122, 0.35));
+  }
+}
+
+/* Per-category progress in the category sheet */
+.category-list button {
+  line-height: 1.15;
+}
+
+.cat-count {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.45;
+  margin-top: 0.45rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.category-list button.is-empty {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.category-list button.is-selected::after {
+  margin-top: 0.5rem;
+}
+
+/* Progress block in the Info sheet */
+.info-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.info-progress strong {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.info-reset {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  .info-reset:hover {
+    opacity: 1;
+    border-color: var(--text-primary);
+  }
+}
+
+/* ── Touch sizing is a function of the pointer, not the viewport ─────────── */
+
+/* A touch tablet or touchscreen laptop can be 1024–1440px wide and still be
+   driven by a fingertip, where the desktop 34px controls are too small. */
+@media (pointer: coarse) {
+
+  .control-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .meta-category {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .act-btn {
+    min-height: 48px;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .search-result-item {
+    min-height: 56px;
+  }
+
+  .category-list button {
+    min-height: 52px;
+  }
+
+  .timer-menu button {
+    min-height: 48px;
+  }
+
+  .close-search,
+  .close-info,
+  .close-focus-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .vocab-chip {
+    min-height: 56px;
+  }
+
+  .close-cat,
+  .bulk-download-btn,
+  .info-reset {
+    min-height: 48px;
+  }
 }
